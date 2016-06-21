@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\btn_text_big.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\btn_text_big.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_takeaway.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_takeaway.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_payment.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_payment.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\date_picker_selector.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\color\\date_picker_selector.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\btn_txt.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\btn_txt.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_ticket_hist.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_ticket_hist.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_teamlist.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_teamlist.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_select_table_name.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_select_table_name.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_order_dish.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_order_dish.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\neighbor_title_btn.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\neighbor_title_btn.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_notify.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_notify.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\dlog_btn_txt.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\dlog_btn_txt.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_payment_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_payment_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_time_radio.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_time_radio.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\txt_subedticket_confirm.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\txt_subedticket_confirm.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\btn_text_gray.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\btn_text_gray.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\done_text_color.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\color\\done_text_color.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\date_picker_year_selector.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\color\\date_picker_year_selector.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\btn_title.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\btn_title.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\color\\main_btn_txt.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\color\\main_btn_txt.xml"
+    }
+]

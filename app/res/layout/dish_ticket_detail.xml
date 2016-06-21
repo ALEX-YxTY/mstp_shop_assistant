@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_ticket_gray" >
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <include layout="@layout/title_with_back" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_ordered_dishes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_ticket_op"
+        android:layout_below="@+id/ll_title"
+        android:background="@color/white">
+
+        <ListView
+            android:id="@+id/lv_ordered_dishes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_ticket_gray"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@color/transparent"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_ticket_op"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_30" >
+
+        <TextView
+            android:id="@+id/tv_checkout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round_corner"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/checkout"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/margin_15"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_42" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/bg_round_corner_nor_blue"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_42" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:gravity="center"
+            android:background="@drawable/bg_cancle_red"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/cancelticket"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_42" />
+    </LinearLayout>
+
+</RelativeLayout>

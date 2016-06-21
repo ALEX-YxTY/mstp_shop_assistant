@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jsums-M-SDK-1.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../milaimerlib/libs/jsums-M-SDK-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

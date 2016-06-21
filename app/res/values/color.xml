@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="alpha_gray">#f4f4f4</color>
+    <color name="light_light_gray">#eeeeee</color>
+    <color name="light_gray">#cccccc</color>
+    <color name="tv_gray">#adadad</color>
+	<color name="bg_gray">#f4f3f3</color>
+    <color name="light_gray1">#f2cab8</color>
+    <color name="bg_grid">#f4f3f3</color>
+    <color name="mid_gray">#888888</color>
+    <color name="mid_dark_gray">#AFAFAF</color>
+    <color name="cafe_coupon_value">#AF4F4F</color>
+    <!-- loadable listview -->
+    <color name="list_more_text_color">#000000</color>
+	<color name="title_sep">#f2dbbf</color>
+    <!-- main page -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="buttn_text_color">#f2dfc9</color>
+    <color name="yellow">#EEB422</color>
+    <color name="btn_yellow">#f39603</color>
+    <color name="black_half_tr">#801C1C01</color>
+    <drawable name="black_half_tr">#99000000</drawable>
+    <drawable name="translucent_background">#e0000000</drawable>
+	<drawable name="yellow_half_tr">#99EEB422</drawable>
+    <color name="dark_gray">#FF404040</color>
+    <color name="middle_gray">#69727c</color>
+    <color name="loadabe_list_foot_text_color">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="main_bt_text">#a4a4a4</color>
+	<color name="main_bt_text1">#ff7300</color>
+    <!-- main_button -->
+    <color name="main_bg_pay">#89d4fa</color>
+    <color name="main_bg_payment_detail">#fe8831</color>
+    <color name="main_bg_order">#feb748</color>
+    <color name="main_bg_order_search">#b2d75c</color>
+    <color name="main_bg_member_manage">#ff5131</color>
+    <color name="main_bg_numeral">#54c8fe</color>
+    
+    <!-- umeng -->
+    <color name="accent_1">#ff29549f</color>
+    <color name="whats_on_separator">#4d000000</color>
+    
+    <!-- new ui -->
+    <color name="tv_title">#bfbfbf</color>
+    <color name="tv_cafe">#5d4e47</color>
+    <color name="dialog_tv">#baa088</color>
+    <color name="tv_share_bog_txt">#6f6f6f</color>
+
+    <!-- new payment -->
+    <color name="pos_color">#3eaceb</color>
+    <color name="alipay_color">#0c3177</color>
+    <color name="upay_color">#000000</color>
+    <color name="weixin_color">#4db232</color>
+    <color name="cash_color">#c769c7</color>
+    <color name="faceToface_color">#dd650f</color>
+    <color name="deep_gray">#5d5d5d</color>
+    <color name="bg_coupon_tel_light_gray">#F9F9F9</color>
+    <color name="bg_coupon_tel_gray_board">#E6E6E6</color>
+    <color name="tv_cafe2">#8d8d8d</color>
+    <!-- 点菜 -->
+    <color name="bg_sel_dish_done">#80ffffff</color>
+    <color name="bg_ticket_gray">#ededed</color>
+    <color name="button_green">#33c895</color>
+    <color name="button_blue">#3aaaeb</color>
+    <color name="dash_dot">#887c75</color>
+    <color name="bg_app">#ededed</color>
+    <color name="dim_bg">#80000000</color>
+    <color name="trans_white">#D8ffffff</color>
+    
+    <color name="main_bg">#f2f2f2</color>
+    <color name="item_neighbor_shop_border">#e3e3e3</color>
+    <color name="bg_refresh_my_loc">#dddddd</color>
+    
+    <color name="nofity">#33c895</color>
+    <color name="ticket_hist">#3aaaeb</color>
+    <color name="order_dish">#ff841a</color>
+    <color name="order_dish1">#fff9c0</color>
+    
+    <color name="tv_light_yellow">#ff831a</color>
+    <color name="tv_yellow">#e56b00</color>
+    <color name="text_orange">#ff7800</color>
+    <color name="red">#f94f41</color>
+    <color name="status_prompts">#4abd96</color>
+    <color name="takeaway">#33c895</color>
+    <color name="payment">#ff6b31</color>
+    <color name="payment_detail">#cc66cc</color>
+    <color name="teamlist">#7a82ed</color>
+    <color name="buttonblue">#3aaaeb</color>
+    <color name="coupon_red">#E86049</color>
+    <color name="green">#009933</color>
+    <color name="light_orange">#ff8c00</color>
+    <color name="dark_orange">#ff7300</color>
+    <color name="payment_bg_tel_coupon">#445366</color>
+    <color name="dividers_color_dark">#1f000000</color>
+
+</resources>

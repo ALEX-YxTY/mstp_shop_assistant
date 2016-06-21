@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\raw\\dingdong.wav",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\raw\\dingdong.wav"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\raw\\voice.ogg",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\raw\\voice.ogg"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\raw\\beep.ogg",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\raw\\beep.ogg"
+    }
+]

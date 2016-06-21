@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical" >
+
+    <TextView
+        android:id="@+id/team_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tv_43"
+        android:text="A001"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_15" />
+    <TextView
+        android:id="@+id/people_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tv_43" 
+        android:text="4人"
+        android:layout_toRightOf="@+id/team_num"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_15"/>
+
+    <TextView
+        android:id="@+id/get_num_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tv_43" 
+        android:text="2014-11-10 20：23"
+        android:layout_toRightOf="@+id/people_num"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_15"/>
+
+    <TextView
+        android:id="@+id/bt_cancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bule_border_selector"
+        android:paddingBottom="@dimen/margin_10"
+        android:paddingLeft="@dimen/margin_30"
+        android:paddingRight="@dimen/margin_30"
+        android:paddingTop="@dimen/margin_10"
+        android:text="@string/destorynum"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_15"
+        android:textSize="@dimen/tv_30" 
+        android:textColor="@color/buttonblue"/>
+
+    <TextView 
+        android:id="@+id/horizon_sep"
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/light_gray"/>
+</RelativeLayout>

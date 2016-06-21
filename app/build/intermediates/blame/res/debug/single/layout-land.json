@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\time_picker_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout-land\\time_picker_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\date_picker_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout-land\\date_picker_dialog.xml"
+    }
+]

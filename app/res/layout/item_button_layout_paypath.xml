@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/payment_keyboard_selector"
+    android:paddingBottom="@dimen/margin_30"
+    android:paddingTop="@dimen/margin_30" >
+    <!--android:gravity="center"-->
+
+    <ImageView
+        android:id="@+id/iv_pay_path_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+    <ImageView
+    android:id="@+id/iv_pay_path"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    />
+    <ImageView
+        android:id="@+id/iv_pay_path_T"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/index_choice"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/tv_pay_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付方式"
+        android:textColor="@color/deep_gray"
+        android:textSize="@dimen/tv_30"
+        android:layout_alignBottom="@+id/iv_pay_path_B"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/ll_title"
+        layout="@layout/layout_title_with_back" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:padding="@dimen/margin_30" >
+
+        <ImageView
+            android:id="@+id/iv_qr_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />         
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ticket_op"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_46"
+        android:background="@color/white" >
+
+         <TextView
+             android:id="@+id/tv_rtn"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_centerHorizontal="true"
+             android:background="@drawable/bg_round_corner"
+             android:paddingBottom="@dimen/margin_20"
+             android:paddingLeft="@dimen/margin_46"
+             android:paddingRight="@dimen/margin_46"
+             android:paddingTop="@dimen/margin_20"
+             android:text="完成"
+             android:layout_margin="@dimen/margin_15"
+             android:gravity="center"
+             android:textColor="@color/white"
+             android:textSize="@dimen/tv_50" />
+    
+    </RelativeLayout>
+</LinearLayout>

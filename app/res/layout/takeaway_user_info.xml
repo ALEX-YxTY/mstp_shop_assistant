@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_26"
+        android:background="@drawable/bg_btn_full_width"
+        android:padding="@dimen/margin_20" >
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bg_user_nick_name" />
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/imageView7"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@color/light_light_gray" />
+
+    <RelativeLayout
+        android:id="@+id/rl_shop_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_full_width"
+        android:padding="@dimen/margin_20" >
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bg_tel" />
+
+        <TextView
+            android:id="@+id/tv_user_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/imageView8"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@color/light_light_gray" />
+
+    <TextView
+        android:id="@+id/tv_delivery_addr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_full_width"
+        android:drawableLeft="@drawable/bg_addr_big"
+        android:drawablePadding="@dimen/option_item_conten_hzrtl_side_margin"
+        android:padding="@dimen/margin_20"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/tv_36" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@color/light_light_gray" />
+
+    <TextView
+        android:id="@+id/tv_delivery_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_full_width"
+        android:drawableLeft="@drawable/bg_time"
+        android:drawablePadding="@dimen/option_item_conten_hzrtl_side_margin"
+        android:padding="@dimen/margin_20"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/tv_36" />
+
+    <TextView
+        android:id="@+id/tv_create_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/margin_20"
+        android:singleLine="true"
+        android:text="点菜时间：2000000000"
+        android:textColor="@color/light_gray"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_36" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@color/light_gray" />
+
+</LinearLayout>

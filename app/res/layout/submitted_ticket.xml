@@ -1,0 +1,169 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_ticket_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/more_title_h"
+        android:gravity="right" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_26"
+            android:background="@color/transparent"
+            android:drawableLeft="@drawable/btn_back"
+            android:drawablePadding="0dp"
+            android:text="返回"
+            android:textSize="@dimen/tv_36" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/margin_142"
+            android:layout_marginRight="@dimen/margin_142"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal"
+            android:marqueeRepeatLimit="1"
+            android:singleLine="true"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/more_title_txt_sz" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_36"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_takeaway_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"               
+                android:background="@null" />
+            
+            <Button
+                android:id="@+id/btn_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_marginLeft="@dimen/margin_10"          
+                android:background="@drawable/coupon_scan" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/yellow" />
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_time_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_status1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/order_status1"
+            android:textColor="@color/txt_time_radio"
+            android:textSize="@dimen/tv_30" />
+        <!-- 已接受未验证 -->
+
+        <RadioButton
+            android:id="@+id/rb_status2_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/order_status1_2"
+            android:textColor="@color/txt_time_radio"
+            android:textSize="@dimen/tv_30" />
+
+        <RadioButton
+            android:id="@+id/rb_status2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/order_status2"
+            android:textColor="@color/txt_time_radio"
+            android:textSize="@dimen/tv_30" />
+
+        <RadioButton
+            android:id="@+id/rb_status3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/order_status3"
+            android:textColor="@color/txt_time_radio"
+            android:textSize="@dimen/tv_30" />
+
+        <RadioButton
+            android:id="@+id/rb_status4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/order_status4"
+            android:textColor="@color/txt_time_radio"
+            android:textSize="@dimen/tv_30" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/yellow" />
+
+    <com.meishipintu.core.widget.LoadableListView
+        android:id="@+id/llv_orderdish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_36"
+        android:layout_marginRight="@dimen/margin_36"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:dividerHeight="@dimen/margin_20"
+        android:fadingEdge="none"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none" />
+
+</LinearLayout>

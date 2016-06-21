@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_15"
+    android:background="@color/white" >
+
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="就餐人数"
+        android:padding="@dimen/margin_15"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/tv_46"/>
+    <GridView
+        android:layout_below="@+id/tv_title"
+        android:id="@+id/list_get_paynum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:cacheColorHint="@color/transparent"
+        android:fadingEdge="none"
+        android:horizontalSpacing="@dimen/margin_5"
+        android:listSelector="@color/transparent"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_30"
+        android:padding="@dimen/margin_30"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/margin_5" />
+
+    <Button
+        android:id="@+id/btn_getnum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginRight="@dimen/margin_30"
+        android:layout_marginBottom="@dimen/margin_30"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_round_corner"
+        android:layout_below="@+id/list_get_paynum"
+        android:padding="@dimen/margin_18"
+        android:text="取号"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_60" />
+
+</RelativeLayout>

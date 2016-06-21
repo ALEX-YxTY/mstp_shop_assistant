@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/more_title_h"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/title_with_back" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tv_check_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
+            android:textColor="@color/order_dish"
+            android:textSize="@dimen/tv_30" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_check_comment"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/margin_5"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10" />
+
+        <ListView
+            android:id="@+id/lv_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bt_select"
+            android:layout_below="@+id/et_comment"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:background="@color/white"
+            android:choiceMode="multipleChoice" />
+
+        <LinearLayout
+            android:id="@+id/bt_select"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/margin_15"
+            android:paddingRight="@dimen/margin_10" >
+
+            <Button
+                android:id="@+id/bt_yes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_corner"
+                android:paddingBottom="@dimen/margin_18"
+                android:paddingTop="@dimen/margin_18"
+                android:text="确定"
+                android:textColor="@color/btn_text_big" />
+
+            <Button
+                android:id="@+id/bt_cancle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_corner"
+                android:paddingBottom="@dimen/margin_18"
+                android:paddingTop="@dimen/margin_18"
+                android:text="取消"
+                android:textColor="@color/btn_text_big" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

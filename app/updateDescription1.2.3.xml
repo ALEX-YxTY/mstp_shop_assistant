@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>修复银联刷卡撤销验签失败的bug</item>
+	<item>添加IC卡刷卡功能</item>
+	<item>bug修复</item>
+	<item>优化收银界面的用户操作</item>
+	<item>添加会员中心红包规则提示功能</item>
+	<item>修复店铺新会员不能显示红包的bug</item>
+</updateDescription>

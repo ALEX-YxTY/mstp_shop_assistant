@@ -1,0 +1,171 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/ll_title"
+        layout="@layout/layout_title_with_back" />
+
+    <LinearLayout
+        android:id="@+id/ll_submit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bt_mpos_bluetoothStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2px"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/bule_tooth"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_bluetoothStart"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+
+        <Button
+            android:id="@+id/bt_mpos_signIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2px"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/sign"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_signIn"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+
+        <Button
+            android:id="@+id/bt_mpos_leftmoney"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2px"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/download_key"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_left_money"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+
+        <Button
+            android:id="@+id/bt_mpos_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/download_parameter"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_account"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+        
+         <Button
+            android:id="@+id/bt_mpos_liandi_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/icon_landi"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_landi_manage"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+
+        <Button
+            android:id="@+id/bt_mpos_passwordMod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2px"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/change_parameter"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_passwordMod"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46"
+            android:visibility="gone" />
+        
+        <Button
+            android:id="@+id/bt_mpos_landi_print"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2px"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/icon_printorder"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/mpos_print"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" />
+        <Button
+            android:id="@+id/bt_mpos_liandi_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_20"
+            android:background="@drawable/bg_btn_full_width"
+            android:drawableLeft="@drawable/icon_landi"
+            android:drawablePadding="@dimen/margin_46"
+            android:drawableRight="@drawable/about_right_arrow"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingLeft="@dimen/margin_46"
+            android:paddingRight="@dimen/margin_46"
+            android:paddingTop="@dimen/margin_18"
+            android:text="设置pos类型（测试）"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_46" 
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

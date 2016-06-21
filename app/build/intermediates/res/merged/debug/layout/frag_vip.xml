@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" > 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_50"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@drawable/bg_main_vip_edit_tel1"
+        android:focusable="false"
+        android:paddingBottom="@dimen/margin_20"
+        android:paddingLeft="@dimen/margin_36"
+        android:paddingRight="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_20" >
+
+        <TextView
+            android:id="@+id/tv_icon_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/coupon_scan"/>
+        <EditText
+            android:id="@+id/et_vip_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_toRightOf="@+id/tv_icon_scan"
+            android:layout_toLeftOf="@+id/tv_clear_tel"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_centerVertical="true"
+            android:inputType="phone"
+            android:maxLength="14"
+            android:singleLine="true"
+            android:gravity="center"
+            android:text=""
+            android:textColorHint="@color/light_gray"
+            android:textColor="@color/text_orange"
+            android:textSize="@dimen/tv_64"
+            />
+       <TextView 
+           android:id="@+id/tv_clear_tel"
+           android:layout_width="@dimen/tv_64"
+           android:layout_height="@dimen/tv_64"
+           android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:background="@drawable/popup_close"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tag_tel_sn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*请输入SN码或者会员手机号"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:textColor="#898989"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginBottom="@dimen/margin_20"
+        />
+    <Button
+        android:id="@+id/bt_verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:layout_marginRight="@dimen/margin_26"
+        android:background="@drawable/bg_btn_vip_edit_tel"
+        android:padding="@dimen/margin_30"
+        android:text="验 证"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_52" />
+</LinearLayout>

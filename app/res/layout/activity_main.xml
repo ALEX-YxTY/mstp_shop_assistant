@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_back_img_btn" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1" />
+        
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       	android:background="@color/white"
+        android:orientation="horizontal" 
+        android:layout_weight="1">
+
+        <RadioButton
+            android:id="@+id/rb_home"
+            style="@style/my_tab"
+            android:drawableTop="@drawable/bg_tab_home"
+            android:text="@string/home" />
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/white" />
+
+        <RadioButton
+            android:id="@+id/rb_vip"
+            style="@style/my_tab"
+            android:drawableTop="@drawable/bg_tab_vip"
+            android:text="@string/vip" />
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/white" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/my_tab"
+            android:drawableTop="@drawable/bg_tab_mine"
+            android:text="@string/mine" />
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/white" />
+
+    </RadioGroup>
+        </LinearLayout>
+</LinearLayout>

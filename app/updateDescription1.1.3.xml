@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>首页界面修改</item>
+	<item>添加依据服务员类型加载不同模块的功能</item>
+	<item>添加绑定桌号功能</item>
+</updateDescription>

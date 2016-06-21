@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_block_gray_border"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="@dimen/margin_5"
+            android:text="18"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/tv_80" />
+
+        <TextView
+            android:id="@+id/tv_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_date"
+            android:layout_toLeftOf="@+id/tv_tel"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="老锚"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_42" />
+
+        <TextView
+            android:id="@+id/tv_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_10"
+            android:text="电话：13851797320"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+		<TextView
+            android:id="@+id/tv_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nick"
+            android:layout_toRightOf="@+id/tv_date"
+            android:layout_toLeftOf="@+id/tv_paid"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_5"
+            android:text="A001"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_42" />		
+		<TextView
+		    android:id="@+id/tv_paid"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/tv_nick"
+            android:layout_toLeftOf="@+id/tv_time"
+		    android:text="未支付"
+		    android:textColor="@color/tv_cafe"
+		    android:textSize="@dimen/tv_36" />				
+		<TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_tel"
+            android:layout_marginRight="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_5"
+            android:text="点菜时间：15:40PM"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+		
+	    <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+		    android:layout_below="@+id/tv_time"            
+            android:layout_marginLeft="@dimen/margin_30"
+            android:layout_marginRight="@dimen/margin_30"
+            android:layout_marginTop="@dimen/margin_5"
+            android:text="地址：江苏省南京市鼓楼区古平岗4号，紫金智梦园C座410"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />	
+
+    </RelativeLayout>
+    
+
+</LinearLayout>

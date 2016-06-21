@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/about_us_logo_bottom_margin"
+        android:layout_marginTop="@dimen/about_us_logo_top_margin"
+        android:src="@drawable/img_app" />
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/about_us_app_name_txt_size" />
+
+    <TextView
+        android:id="@+id/tv_app_ver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_app_name"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/about_us_app_ver_txt_size" />
+
+    <TextView
+        android:id="@+id/tv_app_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_app_ver"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/about_us_sum_txt_top_margin"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/about_us_app_sum_txt_size" />
+
+    <LinearLayout         
+        android:id="@+id/ll_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_app_sum"
+        android:orientation="vertical">
+        
+    <RelativeLayout
+        android:id="@+id/rl_shop_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/option_items_vrtcl_margin"
+        android:background="@drawable/bg_btn_full_width"
+        android:padding="@dimen/margin_20" >
+
+        <ImageView
+            android:id="@+id/iv_shop_contact_us"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_more_shop_contact_icon" />
+
+        <TextView
+            android:id="@+id/tv_help_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_shop_contact_us"
+            android:text="@string/shop_contact_us"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/option_item_text_sz" />
+
+        <ImageView
+            android:id="@+id/iv_help_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/about_right_arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_service_contract"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/option_items_vrtcl_margin"
+        android:background="@drawable/bg_btn_full_width"
+        android:padding="@dimen/margin_20" >
+
+        <ImageView
+            android:id="@+id/iv_service_contract"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_more_service_contract_icon" />
+
+        <TextView
+            android:id="@+id/tv_service_contract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_service_contract"
+            android:text="@string/service_contract"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/option_item_text_sz" />
+
+        <ImageView
+            android:id="@+id/iv_help_arrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/about_right_arrow" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/option_items_vrtcl_margin"
+        android:background="@drawable/bg_btn_full_width"
+        android:padding="@dimen/margin_20" >
+
+        <ImageView
+            android:id="@+id/iv_feedback"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_more_feedback_icon" />
+
+        <TextView
+            android:id="@+id/tv_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_feedback"
+            android:text="@string/feedback"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/option_item_text_sz" />
+
+        <ImageView
+            android:id="@+id/iv_help_arrow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/about_right_arrow" />
+    </RelativeLayout>
+</LinearLayout>
+    
+
+    <TextView
+        android:id="@+id/tv_copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="2dp"
+        android:text="@string/copyright"
+        android:textColor="@color/light_gray"
+        android:textSize="@dimen/about_us_copyright_txt_font" />
+
+</RelativeLayout>

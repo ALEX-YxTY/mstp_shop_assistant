@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/more_title_h"
+    android:background="#ff8c00"
+     >
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/margin_88"
+        android:layout_marginRight="@dimen/margin_88"
+        android:textColor="@color/white"
+        android:textSize="@dimen/more_title_txt_sz" />
+
+    <RelativeLayout
+        android:id="@+id/rl_sel_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_10" >
+
+        <TextView
+            android:id="@+id/tv_cur_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:drawablePadding="0dp"
+            android:drawableRight="@drawable/icon_arrow_down"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_36" />
+
+        <!--等到定位-->
+        <ProgressBar
+            android:id="@+id/pb_locating"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </RelativeLayout>
+    
+    <Button
+        android:id="@+id/btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_26"
+        android:padding="0dip"
+        android:textColor="@color/tv_cafe"
+        android:textSize="@dimen/tv_34" />
+    
+</RelativeLayout>

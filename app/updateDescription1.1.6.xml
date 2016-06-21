@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>订单详情页界面优化</item>
+	<item>订单详情页下单流程优化</item>
+	<item>添加微信支付</item>
+	<item>添加暂存订单验证功能</item>
+	<item>详情页添加补充打印订单功能</item>
+	<item>Bug修复</item>
+</updateDescription>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<TextView
+	    android:layout_width="match_parent"
+	    android:layout_height="1px"
+	    android:background="@color/light_gray1"
+	    />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_266"
+        android:background="@color/light_orange" >
+
+        <RelativeLayout
+            android:id="@+id/rl_price"            
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_132"
+			android:layout_centerVertical="true"
+            android:background="@drawable/bg_main_home_edit_tel"
+            android:focusable="false"
+            android:paddingLeft="@dimen/margin_36"
+            android:paddingRight="@dimen/margin_36"
+            android:layout_marginLeft="@dimen/margin_36"
+            android:layout_marginRight="@dimen/margin_36"
+            >
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_42"
+            	android:layout_marginBottom="@dimen/margin_42"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/amount"
+                android:textColor="@color/light_gray1"
+                android:textSize="@dimen/tv_42" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/grid_pay_path"
+        android:layout_width="match_parent"
+        android:layout_height="385dp"
+        android:layout_weight="0.76"
+        android:background="@color/bg_grid"
+        android:choiceMode="singleChoice"
+        android:gravity="center"
+        android:horizontalSpacing="1px"
+        android:listSelector="@null"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="1px" />
+
+
+</LinearLayout>

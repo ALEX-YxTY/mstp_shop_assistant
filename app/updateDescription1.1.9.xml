@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>添加VIP模块功能，支持手机号码验证用户红包</item>
+	<item>红包SN码支持扫码输入</item>
+	<item>修复同一账号不同设备登陆导致原设备无法操作的bug</item>
+	<item>优化收银界面的用户操作</item>
+</updateDescription>

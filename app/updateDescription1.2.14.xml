@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>支持个人支付宝转账支付</item>
+	<item>支持支付界面直接验证卡券</item>
+	<item>简化验证卡券流程</item>
+</updateDescription>

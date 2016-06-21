@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <corners 
+        android:radius="@dimen/margin_15"/>
+
+    <solid
+        android:color="@color/bg_coupon_tel_light_gray"
+        />
+    <stroke
+        android:width="2px"
+        android:color="@color/bg_coupon_tel_gray_board"/>
+</shape>

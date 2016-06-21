@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>会员中心，“使用”红包码修改为“发送SN”</item>
+	<item>验证完会员后进入收款页面时弹出提醒验证红包SN的提示</item>
+</updateDescription>

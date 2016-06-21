@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+<TextView
+        android:id="@+id/tv_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/margin_26"
+        android:layout_marginLeft="@dimen/margin_26"
+        android:singleLine="true"
+        android:textColor="@color/yellow"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_36" />
+
+    <TextView
+        android:id="@+id/tv_total_dish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/tv_total_price"
+		android:layout_centerVertical="true"     
+        android:layout_marginLeft="@dimen/margin_30"
+        android:layout_marginTop="@dimen/margin_26"
+        android:singleLine="true"
+        android:textColor="@color/light_gray"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_36" />
+    
+    <TextView
+        android:id="@+id/tv_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"     
+        android:layout_marginRight="@dimen/margin_36"
+        android:layout_marginTop="@dimen/margin_26"
+        android:paddingRight="@dimen/margin_30"
+        android:paddingLeft="@dimen/margin_30"
+        android:paddingTop="@dimen/margin_10"
+        android:paddingBottom="@dimen/margin_10"
+        android:background="@drawable/bg_button"
+        android:singleLine="true"
+        android:textColor="@color/btn_txt"
+        android:textSize="@dimen/tv_42"
+        android:text="@string/modify" />
+    
+
+</RelativeLayout>

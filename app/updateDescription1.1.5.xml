@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>首页界面修改</item>
+	<item>修复支付订单详情页面返回按钮无响应的bug</item>
+	<item>修复清理缓存数据库不更新的bug</item>
+	<item>修复扫码点菜功能</item>
+	<item>支付页面添加扫码获取价格功能</item>
+	<item>首页添加商户后台功能</item>
+</updateDescription>

@@ -1,0 +1,7 @@
+include ':app'
+include ':datetimepicker-library'
+include ':milaimerlib'
+include ':qrlib'
+project(':datetimepicker-library').projectDir=new File("../datetimepicker-library")
+project(':milaimerlib').projectDir=new File("../milaimerlib")
+project(':qrlib').projectDir=new File("../qrlib")

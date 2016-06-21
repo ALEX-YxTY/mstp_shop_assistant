@@ -1,0 +1,158 @@
+<resources>
+
+    <!-- common -->
+    <dimen name="button_h">150dp</dimen>
+    <!-- loadable listview -->
+    <dimen name="list_item_level1_text_size">34sp</dimen>
+    <dimen name="level1_text_size">30sp</dimen>
+    <dimen name="list_item_level3_text_size">22sp</dimen>
+
+    <!-- public -->
+    <dimen name="success_dialog_width">294dp</dimen>
+    <dimen name="success_dialog_height">220dp</dimen>
+    <!-- 推荐 -->
+    <dimen name="img_recommend_width">254dp</dimen>
+    <dimen name="ref_info_txt_small">30dp</dimen>
+    <dimen name="ref_info_txt_big">32dp</dimen>
+    <dimen name="ref_name_tex_width">66dp</dimen>
+
+    <!-- must know -->
+    <dimen name="must_konw_pic_height">600dp</dimen>
+    <dimen name="must_shop_name_txt_width">126dp</dimen>
+    
+    <!-- 菜 -->
+    <dimen name="food_pic_height">614dp</dimen>
+    
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_13">12dp</dimen>
+    <dimen name="margin_15">14dp</dimen>
+    <dimen name="margin_18">17dp</dimen>
+    <dimen name="margin_20">18dp</dimen>
+    <dimen name="margin_24">22dp</dimen>
+    <dimen name="margin_26">24dp</dimen>
+    <dimen name="margin_28">26dp</dimen>
+    <dimen name="margin_30">27dp</dimen>
+    <dimen name="margin_32">28dp</dimen>
+    <dimen name="margin_36">32dp</dimen>
+    <dimen name="margin_42">38dp</dimen>
+    <dimen name="margin_46">41sp</dimen>
+    <dimen name="margin_48">43sp</dimen>
+    <dimen name="margin_50">45sp</dimen>
+    <dimen name="margin_52">47dp</dimen>
+    <dimen name="margin_54">49dp</dimen>
+    <dimen name="margin_56">50dp</dimen>
+    <dimen name="margin_58">52dp</dimen>
+    <dimen name="margin_62">56dp</dimen>
+    <dimen name="margin_64">58dp</dimen>
+    <dimen name="margin_68">61dp</dimen>
+    <dimen name="margin_70">63dp</dimen>
+    <dimen name="margin_76">68dp</dimen>
+    <dimen name="margin_78">70dp</dimen>
+    <dimen name="margin_88">79dp</dimen>
+    <dimen name="margin_90">81dp</dimen>
+    <dimen name="margin_94">85dp</dimen>
+    <dimen name="margin_102">92dp</dimen>
+    <dimen name="margin_104">94dp</dimen>
+    <dimen name="margin_106">95dp</dimen>
+    <dimen name="margin_112">101dp</dimen>
+    <dimen name="margin_120">108dp</dimen>
+    <dimen name="margin_127">114dp</dimen>
+    <dimen name="margin_130">117dp</dimen>
+    <dimen name="margin_132">119dp</dimen>
+    <dimen name="margin_142">128dp</dimen>
+    <dimen name="margin_154">139dp</dimen>
+    <dimen name="margin_184">166dp</dimen>
+    <dimen name="margin_200">180dp</dimen>
+    <dimen name="margin_216">194dp</dimen>
+    <dimen name="margin_222">200dp</dimen>
+    <dimen name="margin_224">202dp</dimen>
+    <dimen name="margin_266">239dp</dimen>
+    <dimen name="margin_429">386dp</dimen>
+    <dimen name="margin_494">455dp</dimen>
+	<dimen name="margin_670">606dp</dimen>
+
+    <!-- 更多 -->
+    <dimen name="more_title_h">104dp</dimen>
+    <dimen name="option_item_icon_w">60dp</dimen>
+    <dimen name="option_item_text_icon_margin">44dp</dimen>
+    <dimen name="option_item_conten_hzrtl_side_margin">40dp</dimen>
+    <dimen name="option_items_vrtcl_margin">10dp</dimen>
+    <dimen name="download_app_icon_w">112dp</dimen>
+    <dimen name="more_title_txt_sz">40sp</dimen>
+    <dimen name="option_item_text_sz">40sp</dimen>
+    <dimen name="app_dl_sum_text_sz">36sp</dimen>
+    <dimen name="app_dl_txt_icon_margin">32dp</dimen>
+    <dimen name="about_us_logo_top_margin">32dp</dimen>
+    <dimen name="about_us_logo_bottom_margin">28dp</dimen>
+    <dimen name="about_us_sum_txt_top_margin">22dp</dimen>
+    <dimen name="about_us_copyright_txt_font">24sp</dimen>
+    <dimen name="about_us_app_name_txt_size">44sp</dimen>
+    <dimen name="about_us_app_ver_txt_size">24sp</dimen>
+    <dimen name="about_us_app_sum_txt_size">30sp</dimen>
+
+    <!-- 美食护照 -->
+    <dimen name="passport_cover_w">668dp</dimen>
+    <dimen name="passport_cover_h">434dp</dimen>
+    <dimen name="passport_no_margin_bottom">16dp</dimen>
+    <dimen name="passport_no_margin_right">32dp</dimen>
+    <dimen name="passport_no_txt_sz">40sp</dimen>
+    <dimen name="passport_sep_margin_hrztl">32dp</dimen>
+    <dimen name="passport_detail_title_margin_top">60dp</dimen>
+    <dimen name="passport_detail_title_margin_bottom">10dp</dimen>
+    <dimen name="passport_detail_title_txt_sz">36sp</dimen>
+    <dimen name="passport_detail_margin_top">72dp</dimen>
+    <dimen name="passport_detail_margin_hrztl">72dp</dimen>
+    <dimen name="passport_detail_txt_sz">28sp</dimen>
+    
+    <!-- 主页面 -->
+    <dimen name="mainpage_shopname_font_sz">68sp</dimen>
+    <dimen name="mainpage_recommneder_font_sz">34sp</dimen>
+    <dimen name="mainpage_txt_container_sidebar_width">8dp</dimen>
+    <dimen name="mainpage_txt_container_left_margin">48dp</dimen>
+    <dimen name="mainpage_txt_container_top_margin">672dp</dimen>
+    <dimen name="mainpage_txt_container_width">450dp</dimen>
+    <dimen name="mainpage_txt_hrztl_margin_with_container">18dp</dimen>
+    <dimen name="mainpage_txt_vrtcl_margin_with_container">8dp</dimen>
+    <dimen name="mainpage_date_right_margin">48dp</dimen>
+    <dimen name="mainpage_date_top_margin">36dp</dimen>
+
+    <!-- 城市选择 -->
+    <dimen name="citymap_city_font_sz">60sp</dimen>
+    
+    <!-- 字体 -->
+    <dimen name="tv_30">28sp</dimen>
+    <dimen name="tv_34">30sp</dimen>
+    <dimen name="tv_36">32sp</dimen>
+    <dimen name="tv_43">39sp</dimen>
+    <dimen name="tv_46">41sp</dimen>
+    <dimen name="tv_50">45sp</dimen>
+    <dimen name="tv_52">48sp</dimen>
+    <dimen name="tv_60">54sp</dimen>
+    <dimen name="tv_64">58sp</dimen>
+    <dimen name="tv_80">72sp</dimen>
+    <!-- sliding menu -->
+    <dimen name="shadow_width">1dp</dimen>
+    <dimen name="slidingmenu_offset">120dp</dimen>
+
+    <!-- 餐馆信息 -->
+    <dimen name="bg_average_cost_h">80dp</dimen>
+
+    <!-- fans list -->
+    <dimen name="fans_list_top_margin">20dp</dimen>
+    <dimen name="fans_list_head_w">120dp</dimen>
+    <dimen name="fans_list_content_vrtcl_margin">12dp</dimen>
+    <dimen name="lv1_text_size">36sp</dimen>
+    <dimen name="lv2_text_size">26sp</dimen>
+
+    
+	<dimen name="myavatar_height">170dp</dimen>
+    <dimen name="myavatar_width">170dp</dimen>
+    <dimen name="myavatar_top_margin">32dp</dimen>
+    <dimen name="myavatar_img_margin">4dp</dimen>
+    <dimen name="login_share_txt_sz">24sp</dimen>
+    
+    <!-- 点菜 -->
+    <dimen name="myticket_date">96sp</dimen>
+</resources>

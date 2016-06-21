@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>修复刷卡失败重新点击银联刷卡时弹出"会员号必须"的bug</item>
+	<item>修复支付完成红包不能清除bug</item>
+</updateDescription>

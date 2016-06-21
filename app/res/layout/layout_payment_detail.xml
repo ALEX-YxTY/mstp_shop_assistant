@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_light_gray"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/include1"
+        android:layout_above="@+id/tv_refund">
+
+        <LinearLayout
+            android:id="@+id/ll_payment_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20">
+
+                <TextView
+                    android:layout_width="@dimen/tv_46"
+                    android:layout_height="@dimen/tv_46"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:background="@drawable/bg_user_nick_name" />
+
+                <TextView
+                    android:id="@+id/tv_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="老锚"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20">
+
+                <TextView
+                    android:layout_width="@dimen/tv_46"
+                    android:layout_height="@dimen/tv_46"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:background="@drawable/bg_tel" />
+
+                <TextView
+                    android:id="@+id/tv_tel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="电话:13333333333"
+                    android:textColor="@color/tv_cafe"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_20"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="@dimen/margin_15"
+                android:text="时间：2014-07-14 17:00:00"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/tv_36" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tv_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20"
+                android:text="米来商户-消费"
+                android:textColor="@color/tv_cafe"
+                android:textSize="@dimen/tv_43" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付金额："
+                    android:textSize="@dimen/tv_43" />
+
+                <TextView
+                    android:id="@+id/tv_total_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="金额：￥138.00元"
+                    android:textColor="@color/yellow"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付方式："
+                    android:textSize="@dimen/tv_43" />
+
+                <TextView
+                    android:id="@+id/tv_paytype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="金额：￥138.00元"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="支付单号："
+                    android:textColor="@color/tv_cafe"
+                    android:textSize="@dimen/tv_43" />
+
+                <TextView
+                    android:id="@+id/tv_tradeno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="25645162(支付宝)"
+                    android:textColor="@color/tv_cafe"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20" >
+
+                <TextView
+                    android:id="@+id/tv_outtradeno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="订单号：6566"
+                    android:textColor="@color/tv_cafe"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray" />
+
+            <LinearLayout
+                android:id="@+id/ll_coupon_sn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_46"
+                android:paddingTop="@dimen/margin_20" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_sn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="券号：8000 1532 4960"
+                    android:textColor="@color/tv_cafe"
+                    android:textSize="@dimen/tv_43" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_refund"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_5"
+        android:background="@drawable/bg_cancle_red"
+        android:gravity="center"
+        android:paddingBottom="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_20"
+        android:text="退   款"
+        android:textColor="@color/white"
+        android:textSize="@dimen/tv_43" />
+
+</RelativeLayout>

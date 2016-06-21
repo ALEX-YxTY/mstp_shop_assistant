@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/light_light_gray" >
+
+    <RelativeLayout
+        android:id="@+id/rl_search_box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/et_search_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_marginLeft="@dimen/margin_46"
+            android:layout_marginTop="@dimen/margin_20"
+            android:layout_toLeftOf="@+id/bt_done"
+            android:padding="@dimen/margin_10"
+            android:background="@drawable/bg_searchbox"
+            android:drawableLeft="@drawable/bg_btn_search_nor"
+            android:drawablePadding="@dimen/margin_10"
+            android:hint="@string/please_input_key"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+
+        <Button
+            android:id="@+id/bt_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/margin_20"            
+            android:layout_marginRight="@dimen/margin_46"
+            android:background="@drawable/bg_button"
+            android:paddingBottom="@dimen/margin_5"
+            android:paddingLeft="@dimen/margin_20"
+            android:paddingRight="@dimen/margin_20"
+            android:paddingTop="@dimen/margin_5"
+            android:text="@string/confirm"
+            android:textColor="@color/tv_cafe"
+            android:textSize="@dimen/tv_36" />
+
+        <LinearLayout
+            android:id="@+id/ll_tile"
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/et_search_key"
+            android:background="@color/title_sep"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_list_container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/rl_search_box"
+        android:background="@color/light_light_gray" >
+
+        <ListView
+            android:id="@+id/lv_dishes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0dp" />
+    </LinearLayout>
+
+    
+
+</RelativeLayout>

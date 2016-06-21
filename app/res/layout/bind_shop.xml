@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_bind_prompts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_46"
+            android:layout_marginRight="@dimen/margin_46"
+            android:layout_marginTop="@dimen/margin_46"
+            android:visibility="gone"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="您还没有绑定任何商户"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/tv_36" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="您可以输入商户识别码进行绑定，商户识别码请向商户负责人咨询"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/tv_36" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shop_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_46"
+            android:layout_marginRight="@dimen/margin_46"
+            android:layout_marginTop="@dimen/margin_46"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_20" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:text="@string/shop_id"
+                android:textColor="@color/mid_gray"
+                android:textSize="@dimen/tv_36" />
+
+            <EditText
+                android:id="@+id/et_shop_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:hint="@string/hint_shop_id"
+                android:textColor="@color/mid_gray"
+                android:textSize="@dimen/tv_36" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_bind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_46"
+            android:layout_marginRight="@dimen/margin_46"
+            android:layout_marginTop="@dimen/margin_64"
+            android:background="@drawable/bg_button_yellow"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/margin_10"
+            android:text="@string/bind"
+            android:textColor="@color/btn_text_big"
+            android:textSize="@dimen/tv_64" />
+    </LinearLayout>
+
+</RelativeLayout>

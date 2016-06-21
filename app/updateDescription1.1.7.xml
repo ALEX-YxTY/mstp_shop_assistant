@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>修复部分Android4.3及以下机型不能查看订单详情的Bug</item>
+</updateDescription>

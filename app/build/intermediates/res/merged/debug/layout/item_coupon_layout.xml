@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_item_vip_coupon"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/iv_bg_top_sep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/coupon_item_top"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingTop="@dimen/margin_30" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_62"
+            android:layout_weight="0.8" >
+
+            <RelativeLayout
+                android:id="@+id/rl_coupon_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" >
+
+                <TextView
+                    android:id="@+id/tv_coupon_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/coupon_tag"
+                    android:text="10"
+                    android:textColor="@color/cafe_coupon_value"
+                    android:textSize="@dimen/tv_64" />
+
+                <TextView
+                    android:id="@+id/coupon_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_coupon_value"
+                    android:text="¥"
+                    android:textColor="@color/cafe_coupon_value"
+                    android:textSize="@dimen/tv_36" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_min_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_coupon_value"
+                android:layout_centerHorizontal="true"
+                android:text="满30元使用"
+                android:textColor="@color/mid_gray"
+                android:textSize="@dimen/tv_30" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sep_vertical"
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_8"
+            android:layout_marginRight="@dimen/margin_8"
+            android:background="@color/light_gray" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.9"
+            android:paddingLeft="@dimen/margin_15" >
+
+            <TextView
+                android:id="@+id/tv_coupon_shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="美食拼图"
+                android:textColor="@color/tv_cafe"
+                android:textSize="@dimen/tv_43" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_coupon_shopname"
+                android:layout_marginTop="@dimen/margin_8"
+                android:text="2015.12.25——2015.6.25到期"
+                android:textColor="@color/mid_gray"
+                android:textSize="@dimen/tv_30" />
+
+            <Button
+                android:id="@+id/bt_use_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_vip_coupon_sendsn"
+                android:paddingBottom="@dimen/margin_10"
+                android:paddingLeft="@dimen/margin_20"
+                android:paddingRight="@dimen/margin_20"
+                android:paddingTop="@dimen/margin_10"
+                android:text="@string/send_coupon_sn"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

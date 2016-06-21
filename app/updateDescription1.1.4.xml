@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>首页界面修改</item>
+	<item>添加支付订单详情页面</item>
+	<item>添加针对单个菜单添加备注的功能</item>
+	<item>修复清理缓存数据库不更新的bug</item>
+	<item>重新设计收银界面，添加红包验证功能</item>
+	<item>修复扫码点菜功能</item>
+
+</updateDescription>

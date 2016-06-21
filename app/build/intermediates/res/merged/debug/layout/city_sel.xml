@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_title_with_back" />
+
+    <TextView
+        android:id="@+id/tv_tag_cur_pos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:paddingTop="@dimen/margin_10"        
+        android:paddingBottom="@dimen/margin_10"
+        android:paddingLeft="@dimen/margin_20"
+        android:text="当前定位"
+        android:textColor="@color/tv_cafe" />
+    
+    <TextView
+        android:id="@+id/tv_cur_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/margin_20"
+        android:textColor="@color/tv_cafe"
+    android:textSize="@dimen/tv_46" />
+	<TextView
+        android:id="@+id/tv_tag_city_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:paddingTop="@dimen/margin_10"        
+        android:paddingBottom="@dimen/margin_10"
+        android:paddingLeft="@dimen/margin_20"
+        android:text="开通城市"
+        android:textColor="@color/tv_cafe" />
+	<ListView 
+	    android:id="@+id/lv_valid_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_light_gray"
+        android:dividerHeight="1px"
+        
+	    />
+</LinearLayout>

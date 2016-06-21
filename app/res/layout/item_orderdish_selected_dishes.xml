@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_8"
+    >
+
+    <TextView
+        android:id="@+id/tv_dish_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:singleLine="true"
+        android:text="大肉丸"
+        android:textColor="@color/tv_cafe"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_30" />
+
+    <TextView 
+        android:id="@+id/tv_comment"
+        android:layout_width="@dimen/tv_36"
+        android:layout_height="@dimen/tv_36"
+        android:layout_below="@+id/tv_dish_name"
+        android:layout_toRightOf="@+id/tv_dish_price"
+        android:background="@drawable/dish_comment"/>
+    <TextView
+        android:id="@+id/tv_dish_price"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_36"
+        android:singleLine="true"
+        android:layout_below="@+id/tv_dish_name"
+        android:text="988"
+        android:textColor="@color/yellow"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_30" />
+
+    <Button
+        android:id="@+id/btn_dish_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_10"
+        android:background="@drawable/btn_dish_plus"
+        android:focusable="false" />
+
+    <TextView
+        android:id="@+id/tv_dish_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_5"
+        android:layout_marginRight="@dimen/margin_5"
+        android:layout_toLeftOf="@+id/btn_dish_plus"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:text="2"
+        android:textColor="@color/tv_cafe"
+        android:textIsSelectable="false"
+        android:textSize="@dimen/tv_43"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/btn_dish_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tv_dish_quantity"
+        android:background="@drawable/btn_dish_sub"
+        android:focusable="false"
+        android:visibility="invisible" />
+
+
+</RelativeLayout>

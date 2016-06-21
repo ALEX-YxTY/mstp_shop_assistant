@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back"/>
+    <RadioGroup
+        android:id="@+id/rg_time_filter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_status1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/payment_status_1"
+            android:textSize="@dimen/tv_30"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:textSize="@dimen/tv_30"
+            android:text="@string/payment_status_2"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:textSize="@dimen/tv_30"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/payment_status_3"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/tv_30"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/payment_status_4"
+            android:textColor="@color/txt_time_radio" />
+        <RadioButton
+            android:id="@+id/rb_status5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/tv_30"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_18"
+            android:paddingTop="@dimen/margin_18"
+            android:text="@string/payment_status_5"
+            android:textColor="@color/txt_time_radio" />
+    </RadioGroup>
+    <TextView
+        android:id="@+id/horizontal_sep"
+        android:layout_width="fill_parent"
+        android:layout_height="2px"
+        android:layout_below="@+id/rg_time_filter"
+        android:background="@color/yellow" />
+
+    <com.meishipintu.core.widget.LoadableListView
+        android:id="@+id/llv_payment_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/horizontal_sep"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:scrollbars="none" />
+</RelativeLayout>

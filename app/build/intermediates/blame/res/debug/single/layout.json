@@ -1,0 +1,470 @@
+[
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dish_ticket_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dish_ticket_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bookmark_picker_list_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\bookmark_picker_list_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\search_book_contents_header.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\search_book_contents_header.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\submitted_ticket.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\submitted_ticket.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_act_choose_date.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_act_choose_date.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_guide.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_guide.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_fb_new_reply_alert_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_fb_new_reply_alert_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_pay_path.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_pay_path.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\year_label_text_view.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\year_label_text_view.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_register.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_picker_list_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\app_picker_list_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\left_scroll.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\left_scroll.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dishlist_dish.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dishlist_dish.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_choice.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_choice.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_table.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\select_table.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\settting.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\settting.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_3_choice.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_3_choice.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pay_ticket_qr.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\pay_ticket_qr.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_payment.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_payment.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\history_list_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\history_list_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\search_book_contents_list_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\search_book_contents_list_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_alipay.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_alipay.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_payteam.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_payteam.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\orderdish_load_menu_err.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\orderdish_load_menu_err.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dishlist_type.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dishlist_type.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_okdialogview.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_okdialogview.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_coupon_layout.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_coupon_layout.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\time_picker_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\time_picker_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_fb_list_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_fb_list_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\change_pwd.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\change_pwd.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\city_sel.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\city_sel.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_people_num.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_people_num.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\orderdish_dish_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\orderdish_dish_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_loadable_list_foot.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_loadable_list_foot.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_payment_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_payment_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_title_with_back.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_title_with_back.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\frag_mine.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\frag_mine.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\orderdish_dish_search.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\orderdish_dish_search.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_update_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_update_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\webview.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\webview.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\search_book_contents.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\search_book_contents.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\frag_home.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\frag_home.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_printtext.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_printtext.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_many_choice.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_many_choice.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\title_back_img_btn.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\title_back_img_btn.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_selected_date.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\date_picker_selected_date.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\forgot_pwd.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\forgot_pwd.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_header_view.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\date_picker_header_view.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\people_num.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\people_num.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_submitted_ticket.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_submitted_ticket.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\login.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_payment_list.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_payment_list.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_button_layout_paypath.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_button_layout_paypath.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cust_progress_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\layout\\cust_progress_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_orderdish_selected_dishes.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_orderdish_selected_dishes.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dish_ticket_detail_foot_view.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dish_ticket_detail_foot_view.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dish_ticket_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dish_ticket_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\listview_item_header.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\listview_item_header.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_new_payment.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_new_payment.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\shop_contact_us.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\shop_contact_us.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_okcanceldialogview.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_okcanceldialogview.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mpos_setting.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mpos_setting.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_comment.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_comment.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\time_header_label.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\time_header_label.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_bluetooth_config.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_bluetooth_config.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\capture.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\capture.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dish_ticket_draft_tel_note.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dish_ticket_draft_tel_note.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\calendar_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\calendar_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\help.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\help.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popupwindow_coupon.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\popupwindow_coupon.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_toast.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_toast.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\shop_check_in.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\shop_check_in.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_capture.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\layout_capture.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_team_list.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_team_list.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_dialog.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\date_picker_dialog.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\title_with_back.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\title_with_back.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_transaction_summary.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_transaction_summary.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_start_page.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_start_page.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\share.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\share.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dishlist_dish_nopic.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dishlist_dish_nopic.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\mydialog_choice_4_choise.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\mydialog_choice_4_choise.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\title_2_button.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\title_2_button.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dish_ticket_sum.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dish_ticket_sum.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_choose_payway.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_choose_payway.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_my_information_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_my_information_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popup_comment.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\popup_comment.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chosse_acount.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_chosse_acount.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\takeaway_user_info.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\takeaway_user_info.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\svc_contract.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\svc_contract.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_view_animator.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\date_picker_view_animator.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_vip_center.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_vip_center.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_loadable_list_head.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_loadable_list_head.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jpush_webview_layout.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\jpush_webview_layout.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_viewpager_dish_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_viewpager_dish_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\simple_spinner_dropdown_item.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\frag_vip.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\frag_vip.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_fb_activity_conversation.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_fb_activity_conversation.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_coupon_detail.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dialog_coupon_detail.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\title_back_button.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\title_back_button.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\about_us.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\about_us.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\register.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\register.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_dialog_peonum.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_dialog_peonum.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_dish_ticket_dish.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_dish_ticket_dish.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_cityname.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_cityname.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_done_button.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\datetimepicker-library\\unspecified\\res\\layout\\date_picker_done_button.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dish_ticket_detail_head_view.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dish_ticket_detail_head_view.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bind_shop.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\bind_shop.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_orderdish.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_orderdish.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\my_dialog_with_2editor.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\my_dialog_with_2editor.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_table_name.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\item_table_name.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dish_ticket_detail_shop_info.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\dish_ticket_detail_shop_info.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_electric_signature.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\activity_electric_signature.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\encode.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\layout\\encode.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_fb_list_header.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_fb_list_header.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_item_pager.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\layout_item_pager.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\layout\\umeng_fb_activity_contact.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\layout\\umeng_fb_activity_contact.xml"
+    }
+]

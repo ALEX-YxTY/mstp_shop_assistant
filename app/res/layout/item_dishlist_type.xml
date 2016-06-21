@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_dishtype"
+    android:layout_width="@dimen/margin_224"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/margin_20"
+    android:paddingLeft="@dimen/margin_36"
+    android:paddingRight="@dimen/margin_26"
+    android:paddingTop="@dimen/margin_20"
+    android:textColor="@drawable/slt_dish_type_text"
+    android:textSize="@dimen/tv_30"
+    android:background="@drawable/slt_dish_type"/>

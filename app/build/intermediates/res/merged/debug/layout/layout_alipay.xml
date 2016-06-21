@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ListView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_sep"></ListView>
+    <include
+        android:id="@+id/ll_title"
+        android:layout_height="@dimen/more_title_h"
+        android:layout_width="fill_parent"
+        android:background="@color/light_light_gray"
+        layout="@layout/layout_title_with_back" />
+    <TextView 
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提示：\n请用支付宝客户端扫描二维码"
+        android:textSize="@dimen/tv_30"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ll_title"
+        android:layout_marginTop="@dimen/margin_20"
+        android:textColor="@color/red"
+        android:layout_marginLeft="@dimen/margin_15"/>
+    <RelativeLayout
+        android:id="@+id/rl_alipay_qr"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_tag" >
+
+        <ImageView
+            android:id="@+id/iv_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_15"
+            android:src="@drawable/alipay_qr" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_alipay_qr"
+        android:layout_marginLeft="@dimen/margin_46"
+        android:layout_marginRight="@dimen/margin_46"
+        android:layout_marginTop="@dimen/margin_64"
+        android:background="@drawable/bg_button_yellow"
+        android:padding="@dimen/margin_10"
+        android:text="完成"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/btn_text_big"
+        android:textSize="@dimen/tv_64" />
+
+</RelativeLayout>

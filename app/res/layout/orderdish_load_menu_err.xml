@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_app"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/about_us_logo_bottom_margin"
+        android:layout_marginTop="@dimen/about_us_logo_top_margin"
+        android:src="@drawable/bg_more_logo" />
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/net_shutdown"
+        android:textColor="@color/light_gray"
+        android:textSize="@dimen/about_us_app_name_txt_size" />
+
+    
+
+    <Button
+        android:id="@+id/btn_check_net"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tip"
+        android:layout_marginTop="@dimen/option_items_vrtcl_margin"
+        android:background="@drawable/bg_btn_full_width"
+        android:text="@string/check_net_connection"
+        android:textColor="@color/tv_cafe"
+        android:padding="@dimen/margin_20"
+        android:textSize="@dimen/tv_46"/>
+    
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_check_net"
+        android:layout_marginTop="@dimen/option_items_vrtcl_margin"
+        android:background="@drawable/bg_btn_full_width"
+        android:text="@string/retry_load_menu"
+        android:textColor="@color/tv_cafe"
+        android:padding="@dimen/margin_20"
+        android:textSize="@dimen/tv_46"/>
+
+</RelativeLayout>

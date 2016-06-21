@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+
+    <string name="apk_name">mast.apk</string>
+    <string name="db_version">6</string>
+    <string name="svr_version">1.1.6</string>
+    <string name="release_date">1450174598820</string>
+    <!-- majar version change shall force app update -->
+    <string name="major_version">1</string>
+
+ <!--  
+    <string name="web_server_url">http://192.168.1.168:8888</string>
+    <string name="file_server_url">http://192.168.1.168:8888</string>
+    <string name="app_meta_info_url">http://192.168.1.168:8888/application/mspt/mast.json</string>
+    <string name="app_apk_url">http://192.168.1.168:8888/application/mspt/mast.apk</string>
+  -->
+        
+  <!--  -->
+    <string name="web_server_url">http://a.milaipay.com</string>
+    <string name="file_server_url">http://a.milaipay.com</string>
+    <string name="app_meta_info_url">http://a.milaipay.com/application/mspt/mast.json</string>
+    <string name="app_apk_url">http://a.milaipay.com/application/mspt/mast.apk</string>
+  <!--   -->
+        
+  <!--    
+    <string name="web_server_url">http://192.168.1.107/taste</string>
+    <string name="file_server_url">http://192.168.1.107/taste</string>
+    <string name="app_meta_info_url">http://192.168.1.107/taste/application/mspt/mast.json</string>
+    <string name="app_apk_url">http://192.168.1.107/taste/application/mspt/mast.apk</string>
+  -->
+  
+ 	<string name="dish_qr_magic_prefix">http://a.milaipay.com/menu/qr/sid/</string>
+	<string name="dish_qr_magic_suffix">/act/001</string>  
+	<string name="pay_prefix">msptpartner:</string>	 
+</resources>

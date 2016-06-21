@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:orientation="vertical"
+	android:background="@color/bg_app" >
+    
+    <include layout="@layout/title_with_back" />
+<RelativeLayout
+        android:id="@+id/rl_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_20"
+        android:background="@drawable/bg_btn_full_width" >
+
+        <ImageView
+            android:id="@+id/iv_tel"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_tel_icon" />
+
+        <TextView
+            android:id="@+id/tv_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_tel"
+            android:text="@string/contact_tel"
+            android:textSize="@dimen/option_item_text_sz"
+            android:textColor="@color/tv_cafe" />
+
+       
+    </RelativeLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/margin_62"
+			android:background="@color/mid_dark_gray" />
+<RelativeLayout
+        android:id="@+id/rl_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_20"
+        android:background="@drawable/bg_btn_full_width" >
+
+        <ImageView
+            android:id="@+id/iv_email"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_email_icon" />
+
+        <com.milai.widget.AutoFitTextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_marginRight="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_email"
+            android:text="@string/contact_email"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/option_item_text_sz"
+            android:textColor="@color/tv_cafe" />
+
+       
+    </RelativeLayout>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/margin_62"
+			android:background="@color/mid_dark_gray" />
+    <RelativeLayout
+        android:id="@+id/rl_visit_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_20"
+        android:background="@drawable/bg_btn_full_width" >
+
+        <ImageView
+            android:id="@+id/iv_visit_website"
+            android:layout_width="@dimen/option_item_icon_w"
+            android:layout_height="@dimen/option_item_icon_w"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_conten_hzrtl_side_margin"
+            android:src="@drawable/bg_website_icon" />
+
+        <TextView
+            android:id="@+id/tv_visit_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/option_item_text_icon_margin"
+            android:layout_toRightOf="@+id/iv_visit_website"
+            android:text="@string/visit_website"
+            android:textSize="@dimen/option_item_text_sz"
+            android:textColor="@color/tv_cafe" />
+
+       
+    </RelativeLayout>
+</LinearLayout>

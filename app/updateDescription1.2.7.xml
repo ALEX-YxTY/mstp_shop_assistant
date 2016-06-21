@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<updateDescription>
+	<item>优化红包显示界面</item>
+	<item>优化界面操作</item>
+	<item>修复排队中，网络请求失败却依然写入数据的bug</item>
+	<item>添加根据店铺类型做的界面功能筛选</item>
+</updateDescription>

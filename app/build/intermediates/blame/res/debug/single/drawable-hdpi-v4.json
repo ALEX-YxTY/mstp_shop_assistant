@@ -1,0 +1,726 @@
+[
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_setting_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_setting_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\default_user_avatar.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\default_user_avatar.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shopdetail_takeaway_disable.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_shopdetail_takeaway_disable.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_off_pressed_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_off_pressed_holo_light.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_4.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_4.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_dish_sub_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_dish_sub_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_bind_shop.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_bind_shop.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_cash.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_cash.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_table_num.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_table_num.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plus_white.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\plus_white.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_order_icon_to_order_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_order_icon_to_order_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\popup_close.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\popup_close.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_cash_payment.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_cash_payment.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\check_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\check_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_vip_tel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_vip_tel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_tel_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_tel_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_close_bg_normal.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_close_bg_normal.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\keyboard_point.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\keyboard_point.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\coupon_scan.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\coupon_scan.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\female.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\female.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_btn_selector.xml",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\richpush_btn_selector.xml"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_baidu_wallet.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_baidu_wallet.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\launcher_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\qrlib\\unspecified\\res\\drawable-hdpi-v4\\launcher_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\barcode_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\barcode_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_alipay.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_alipay.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_backspace.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_backspace.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\default_msg_pic.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\default_msg_pic.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_5.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_5.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_2.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_2.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_home_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_home_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_triangle.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_triangle.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_on_focused_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_on_focused_holo_light.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\check_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\check_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_coupon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_coupon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_order_icon_to_order_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_order_icon_to_order_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\title_for_main.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\title_for_main.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\about_right_arrow.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\about_right_arrow.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_shopdetail_takeaway_able.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_shopdetail_takeaway_able.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_check_box_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_check_box_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_service_contract_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_service_contract_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_pay_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_pay_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\dish_comment.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\dish_comment.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_ok_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_ok_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_mine_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_mine_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_dish_plus_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_dish_plus_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\coupon_scan1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\coupon_scan1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_wechat_scan_code.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_wechat_scan_code.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_notify_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_notify_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\visible.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\visible.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_pos_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_pos_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_white_arrow_down.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_white_arrow_down.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_qr_orderdish_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_qr_orderdish_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_ticket_hist_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_ticket_hist_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_btn_search_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_btn_search_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ali_pay.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\ali_pay.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_home_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_home_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_arrow_down.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_arrow_down.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_close_bg_tap.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_close_bg_tap.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_all.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_all.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_wechat.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_wechat.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_qr_orderdish_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_qr_orderdish_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_about_us.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_about_us.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\index_choice.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\index_choice.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\baidu_pay_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\baidu_pay_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_baidu.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_baidu.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_sel_type_triangle.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_sel_type_triangle.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_back.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\ic_richpush_actionbar_back.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_collapse.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_collapse.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_coupon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_coupon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_on_pressed_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_on_pressed_holo_light.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\png_dish_list.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\png_dish_list.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_ok_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_ok_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_0.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_0.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\clear_c.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\clear_c.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\jiazai.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\jiazai.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_9.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_9.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_6.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_6.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\check_bt_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\check_bt_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_vip_verify_tel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_vip_verify_tel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_setting_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_setting_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_3.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_3.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_off_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_off_holo_light.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_expand.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_expand.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_pay_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_pay_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_takeaway_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_takeaway_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_dish_sub_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_dish_sub_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_00.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_00.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\guide_3.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\guide_3.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_people_num.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_people_num.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_disp_pic_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_disp_pic_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_addr_big.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_addr_big.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_pos.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_pos.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_divider.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\ic_richpush_actionbar_divider.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\management_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\management_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\list_more_arrow_down.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\list_more_arrow_down.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\guide_4.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\guide_4.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\invisible.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\invisible.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_cup_wallet.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_cup_wallet.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_website_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_website_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_pay_pos.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_pay_pos.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\background.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\background.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_disp_pic_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_disp_pic_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_back_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_back_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_back_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_back_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_pay_detail.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_pay_detail.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\visible1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\visible1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_email_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_email_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\img_app.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\img_app.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_type_sel_rect.9.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_type_sel_rect.9.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_empty.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_empty.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_merchant_background_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_merchant_background_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_star_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_star_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_teamlist_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_teamlist_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_table_number_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_table_number_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_menu_takeaway_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_menu_takeaway_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_take_the_no_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_take_the_no_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\unsafe_thumb.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\unsafe_thumb.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_icon_bind_shop_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_icon_bind_shop_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_8.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_8.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_logo.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_logo.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_pos.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_pos.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_check_update_icon1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_check_update_icon1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_user_nick_name.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_user_nick_name.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_norrow_down.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_norrow_down.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_shop_contact_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_shop_contact_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_triangle_rvs.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_triangle_rvs.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_alipay_scan_code.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_alipay_scan_code.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\weixin.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\weixin.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_feedback_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_feedback_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_vip_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_vip_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\printorder.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\printorder.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_close.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_close.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_nopic_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_nopic_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_order_inquiry_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_order_inquiry_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pay_keyboard_back.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\pay_keyboard_back.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_7.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_7.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_upcash.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_upcash.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_check_box_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_check_box_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_choose_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_choose_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\guide_2.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\guide_2.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_payment_vip_tel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_payment_vip_tel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_clearcache_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_clearcache_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_star_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_star_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_time.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_time.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_order_icon_to_takeaway_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_order_icon_to_takeaway_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_about.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_about.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_type_sel_rec.9.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_type_sel_rec.9.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_orderdish_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_orderdish_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_statistics.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_statistics.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\guide_1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\guide_1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_orderdish_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_orderdish_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\plus_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\plus_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_off_focused_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_off_focused_holo_light.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_btn_search_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_btn_search_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_ticket_hist_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_ticket_hist_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_order_icon_to_takeaway_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_order_icon_to_takeaway_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_change_pwd_icon1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_change_pwd_icon1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\key_1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\key_1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pay_list_detail.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\pay_list_detail.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\unsafe_pic.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\exploded-aar\\mstp_shop_assistant\\milaimerlib\\unspecified\\res\\drawable-hdpi-v4\\unsafe_pic.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\male.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\male.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\management_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\management_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_payment_card.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_payment_card.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_change_pwd.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_change_pwd.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_set_up_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_set_up_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\img_mspt.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\img_mspt.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_pay_qr.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_pay_qr.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_dish_plus_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_dish_plus_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_close_clear1.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_close_clear1.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_about_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_about_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_vip_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_vip_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_notify_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\icon_notify_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_tel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_tel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\check_bt_checked.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\check_bt_checked.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tab_mine_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\tab_mine_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\barcode_sel.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\barcode_sel.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\btn_nopic_nor.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\btn_nopic_nor.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\login_img_text.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\login_img_text.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bg_more_check_update_icon.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\bg_more_check_update_icon.png"
+    },
+    {
+        "merged": "D:\\workshop-android\\mstp_shop_assistant\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\umeng_update_btn_check_on_holo_light.png",
+        "source": "D:\\workshop-android\\mstp_shop_assistant\\app\\res\\drawable-hdpi\\umeng_update_btn_check_on_holo_light.png"
+    }
+]

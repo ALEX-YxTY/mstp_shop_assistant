@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/more_title_h"
+        android:layout_gravity="center_horizontal"
+        layout="@layout/title_with_back" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/rl_title"
+        android:layout_centerInParent="true"
+        android:background="@color/white" >
+
+        <com.milai.widget.AutoFiltGridView
+            android:id="@+id/lv_people_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/white"
+            android:cacheColorHint="@color/transparent"
+            android:fadingEdge="none"
+            android:horizontalSpacing="@dimen/margin_5"
+            android:listSelector="@color/transparent"
+            android:numColumns="4"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/margin_5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_input_num"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/black_half_tr"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_102"
+                android:layout_marginLeft="@dimen/margin_50"
+                android:layout_marginRight="@dimen/margin_50"
+                android:background="@drawable/bg_dialog"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/et_people_num"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_42"
+                    android:background="@drawable/bg_layout_yellow"
+                    android:hint="请输入人数"
+                    android:inputType="number"
+                    android:padding="@dimen/margin_15"
+                    android:singleLine="true"
+                    android:textColor="@color/yellow"
+                    android:textColorHint="@color/yellow"
+                    android:textSize="@dimen/tv_46" />
+
+                <LinearLayout
+                    android:id="@+id/bt_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_15"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/margin_15"
+                    android:paddingRight="@dimen/margin_10"
+                    android:visibility="visible" >
+
+                    <Button
+                        android:id="@+id/bt_yes"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_corner"
+                        android:padding="@dimen/margin_20"
+                        android:text="确定"
+                        android:textSize="@dimen/tv_42"
+                        android:textColor="@color/btn_text_big" />
+
+                    <Button
+                        android:id="@+id/bt_cancle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_corner"
+                        android:padding="@dimen/margin_20"
+                        android:text="取消"
+                        android:textSize="@dimen/tv_42"
+                        android:textColor="@color/btn_text_big" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ListView android:layout_width="wrap_content" 
+        android:layout_height="wrap_content">
+    </ListView>
+
+</RelativeLayout>

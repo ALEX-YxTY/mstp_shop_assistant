@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MsptAssistant" default="MARelease">
+
+	<property name="version" value="1.3.0" />
+	<property name="code" value="26"/>
+
+	<!-- The local.properties file is created and updated by the 'android' tool.
+         It contains the path to the SDK. It should *NOT* be checked into
+         Version Control Systems. -->
+	<property file="local.properties"/>
+
+	<!-- The ant.properties file can be created by you. It is only edited by the
+         'android' tool to add properties to it.
+         This is the place to change some Ant specific build properties.
+         Here are some properties you may want to change/update:
+
+         source.dir
+             The name of the source directory. Default is 'src'.
+         out.dir
+             The name of the output directory. Default is 'bin'.
+
+         For other overridable properties, look at the beginning of the rules
+         files in the SDK, at tools/ant/build.xml
+
+         Properties related to the SDK location or the project target should
+         be updated using the 'android' tool with the 'update' action.
+
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems.
+
+         -->
+	<property file="ant.properties" />
+
+	<!-- The project.properties file is created and updated by the 'android'
+         tool, as well as ADT.
+
+         This contains project specific properties such as project target, and library
+         dependencies. Lower level build properties are stored in ant.properties
+         (or in .classpath for Eclipse projects).
+
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems. -->
+	<loadproperties srcFile="project.properties" />
+
+	<!-- quick check on sdk.dir -->
+	<fail message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through an env var" unless="sdk.dir" />
+
+
+	<!-- extension targets. Uncomment the ones where you want to do custom work
+     in between standard targets -->
+	<!--
+    <target name="-pre-build">
+    </target>
+    <target name="-pre-compile">
+    </target>
+
+    /* This is typically used for code obfuscation.
+       Compiled code location: ${out.classes.absolute.dir}
+       If this is not done in place, override ${out.dex.input.absolute.dir} */
+    <target name="-post-compile">
+    </target>
+-->
+
+	<!-- Import the actual build file.
+
+         To customize existing targets, there are two options:
+         - Customize only one target:
+             - copy/paste the target into this file, *before* the
+               <import> task.
+             - customize it to your needs.
+         - Customize the whole content of build.xml
+             - copy/paste the content of the rules files (minus the top node)
+               into this file, replacing the <import> task.
+             - customize to your needs.
+
+         ***********************
+         ****** IMPORTANT ******
+         ***********************
+         In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
+         in order to avoid having your file be overridden by tools such as "android update project"
+    -->
+	<!-- version-tag: 1 -->
+	<import file="${sdk.dir}/tools/ant/build.xml" />
+	<!-- 
+	<path id="path.svnant">
+		<pathelement location="${basedir}/package-tools/svnant.jar" />
+		<pathelement location="${basedir}/package-tools/svnClientAdapter.jar" />
+		<pathelement location="${basedir}/package-tools/svnjavahl.jar" />
+	</path>
+
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="path.svnant" />
+-->
+	<target name="make-update-json">
+		<java jar="${basedir}/package-tools/WdPackager.jar" fork="true" failonerror="true">
+			<arg line="AndroidManifest.xml" />
+			<arg line="${basedir}/res/values/app_config.xml" />
+			<arg line="updateDescription.xml" />
+			<arg line="mast.json" />
+			<arg line="${version}" />
+			<arg line="${code}" />
+			<arg line="${suffix}" />
+		</java>
+	</target>
+
+	<target name="makeZip">
+		<zip destfile="mast_${suffix}.zip" update="true">
+			<zipfileset dir="." includes="mast.json" />
+			<zipfileset dir="." includes="bin/*.apk, bin/proguard/*.txt" />
+		</zip>
+	</target>
+
+	<target name="MARelease" depends="createApk" description="make release." />
+
+	<target name="TestRelease" depends="createApk" description="test release." />
+
+	
+	<taskdef name="foreach" classname="net.sf.antcontrib.logic.ForEach">
+		<classpath>
+			<pathelement location="${basedir}/package-tools/ant-contrib-0.3.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="createApk">
+		<sequential>
+			<delete dir="." includes="*.zip">
+			</delete>
+ 				<foreach list="mspt" target="createSingleApk" param="suffix" delimiter="," parallel="false"> 
+	</foreach >
+		</sequential>
+	</target>
+	<target name="createSingleApk">
+		<sequential>
+			<antcall target="clean" />
+			<!-- <antcall target="config">
+				<param name="suffix" value="${suffix}" />
+			</antcall> -->
+			<antcall target="make-update-json">
+				<param name="suffix" value="${suffix}" />
+			</antcall>
+			<antcall target="release" />
+			<antcall target="makeZip">
+				<param name="suffix" value="${suffix}" />
+			</antcall>
+			<echo>${suffix} done</echo>
+		</sequential>
+	</target>
+</project>

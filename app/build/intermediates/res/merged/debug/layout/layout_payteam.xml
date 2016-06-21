@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/title_with_back" />
+
+    
+
+    <RadioGroup
+        android:id="@+id/rg_pay_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_status1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_15"
+            android:text="全部"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_15"
+            android:text="1-4人"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_15"
+            android:text="4-8人"
+            android:textColor="@color/txt_time_radio" />
+
+        <RadioButton
+            android:id="@+id/rb_status4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_radio_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_15"
+            android:text="8人以上"
+            android:textColor="@color/txt_time_radio" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/title_sep"
+        android:layout_width="fill_parent"
+        android:layout_height="2px"
+        android:layout_below="@+id/rg_pay_num"
+        android:background="@color/yellow" />
+    <ListView
+        android:id="@+id/llv_teamlist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_button"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/title_sep"
+        android:background="@color/white"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:padding="@dimen/margin_10"
+        android:scrollbars="none" />
+
+    <LinearLayout
+        android:id="@+id/rl_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_getnum"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/margin_20"
+            android:background="@drawable/bg_round_corner"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_13"
+            android:paddingLeft="@dimen/margin_36"
+            android:paddingRight="@dimen/margin_36"
+            android:paddingTop="@dimen/margin_13"
+            android:text="@string/team_num"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_50" />
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/margin_20"
+            android:background="@drawable/bg_round_corner_cancle"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_13"
+            android:paddingLeft="@dimen/margin_36"
+            android:paddingRight="@dimen/margin_36"
+            android:paddingTop="@dimen/margin_13"
+            android:text="@string/clear_team"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_50" />
+    </LinearLayout>
+
+</RelativeLayout>
