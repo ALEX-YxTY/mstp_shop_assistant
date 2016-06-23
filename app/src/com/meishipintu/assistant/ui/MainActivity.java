@@ -4,12 +4,15 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -30,6 +33,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
@@ -41,6 +46,11 @@ import com.amap.api.location.AMapLocationListener;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.assistant.app.MsptApplication;
+import com.meishipintu.assistant.bean.VersionInfo;
+import com.meishipintu.assistant.dao.MyAsyncTask;
+import com.meishipintu.assistant.dao.NetCallBack;
+import com.meishipintu.assistant.dao.NetDataHelper;
+import com.meishipintu.core.utils.VersionUtils;
 import com.milai.dao.SubmittedTicketDao;
 import com.meishipintu.assistant.fragment.B0_HomeFrag;
 import com.meishipintu.assistant.fragment.C0_VipFrag;
@@ -88,12 +98,17 @@ public class MainActivity extends FragmentActivity implements
 	private Intent inPaidFailedService=null;
 	
 	public static MainActivity mActivity = null;
-	
+	private boolean pos;
+	private boolean lkl;
+	private boolean WPos;
+	private int versionCode;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		UmengUpdateAgent.update(this);  //初始化友盟自动更新引擎
+//		UmengUpdateAgent.update(this);  //初始化友盟自动更新引擎
+		checkVersion();		//从服务器检查更新
 				
 		setContentView(R.layout.activity_main);
 		
@@ -210,7 +225,59 @@ public class MainActivity extends FragmentActivity implements
 //		}
 		startPaidFailedService();	
 	}
-	
+
+	private void checkVersion() {
+		NetDataHelper helper = NetDataHelper.getInstance(this);
+		helper.getVersion(new NetCallBack<VersionInfo>() {
+			@Override
+			public void onSuccess(final VersionInfo data) {
+				Log.i("test", data.toString());
+				if (data.getApp_version() > VersionUtils.getVersionCode(MainActivity.this)) {		//有新版
+					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+					builder.setTitle("发现新版本").setMessage(data.getApp_update_desc())
+							.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									VerifyDevicesAndDownload(data.getApp_file());
+									dialog.dismiss();
+								}
+							})
+							.setNegativeButton("以后再说", null)
+							.show();
+				}
+			}
+
+			@Override
+			public void onError(String error) {
+				Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
+			}
+		});
+
+	}
+
+	//判断设备类型并下载
+	private void VerifyDevicesAndDownload(String app_file) {
+		if (isLkl()) {        //lkl pos机
+			//TODO lkl应用市场下载
+
+		} else if (isWPos()) {       //WPOS机
+			//TODO 导向POS应用市场
+
+		} else {            //非pos机
+			new MyAsyncTask(MainActivity.this,app_file).execute();
+		}
+	}
+
+	//判断是否lkl设备
+	public boolean isLkl() {
+		return false;
+	}
+
+	//判断是否wpos设备
+	public boolean isWPos() {
+		return false;
+	}
+
 	private void showFrag(String frag) {
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		Fragment fragment = null;
@@ -545,4 +612,5 @@ public class MainActivity extends FragmentActivity implements
 			stopLocation();// 销毁掉定位
 		}
 	}
+
 }

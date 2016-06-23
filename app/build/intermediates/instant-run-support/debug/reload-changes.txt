@@ -1,10 +1,2 @@
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$8$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$23$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$16$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$27$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$3$1$override.class
 CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$6$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$4$override.class
-CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\ui\pay\ActNewPayment$2$override.class
+CHANGED,D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\meishipintu\assistant\dao\MyAsyncTask$override.class

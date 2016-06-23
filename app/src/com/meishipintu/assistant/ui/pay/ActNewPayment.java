@@ -189,7 +189,7 @@ public class ActNewPayment extends FragmentActivity {
         }
     };
 
-    // 绑定服务
+    // 绑定lakala服务
     public void bindService() {
         if (Cookies.getShopType().contains("lkl")) {
             Intent intent = new Intent();
@@ -218,6 +218,7 @@ public class ActNewPayment extends FragmentActivity {
         if(Cookies.getShopType().contains("ldi")){
             try {
                 isDeviceServiceLogined = false;
+                //当loginThrowException时则登录失败
                 DeviceService.login(this);
                 isDeviceServiceLogined = true;
                 Log.i("zcz","联迪设备服务绑定成功");
@@ -245,14 +246,14 @@ public class ActNewPayment extends FragmentActivity {
     }
 
     private void initPrinter() {
-        Log.i("lkl test", "is conn == null?" + (conn == null));
+        Log.i("zcz lkl test", "is conn == null?" + (conn == null));
         if (conn == null) {
-            Log.i("zzzzz", "连接拉卡拉设备");
+            Log.i("zcz", "连接拉卡拉设备");
             conn = new ServiceConnection() {
 
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder serviceBinder) {
-                    Log.i("zzzzz", "连接拉卡拉设备成功");
+                    Log.i("zcz", "连接拉卡拉设备成功");
                     if (serviceBinder != null) { // 绑定成功
                         AidlDeviceService serviceManager = AidlDeviceService.Stub.asInterface(serviceBinder);
                         onDeviceConnected(serviceManager);
@@ -261,11 +262,12 @@ public class ActNewPayment extends FragmentActivity {
 
                 @Override
                 public void onServiceDisconnected(ComponentName name) {
-                    Log.i("zzzzz", "拉卡拉设备断开");
+                    Log.i("zcz", "拉卡拉设备断开");
                 }
             };
         }
-        Log.i("zzzzz", "连接SPOS设备");
+
+        Log.i("zcz", "连接SPOS设备");
         if (SposManager.IsSposDevice()) {
             sposManager = SposManager.getInstance();
             if (!sposManager.isInit()) {
@@ -273,15 +275,15 @@ public class ActNewPayment extends FragmentActivity {
 
                     @Override
                     public void onInitOk() {
-                        Log.i("zzzzz", "SPOS设备连接成功");
-                        Log.i("zzzzz", "连接SPOS打印机");
+                        Log.i("zcz", "SPOS设备连接成功");
+                        Log.i("zcz", "连接SPOS打印机");
                         if (sposPrinter == null) {
                             sposPrinter = sposManager.openPrinter();
                             sposPrinter.setOnEventListener(new OnEventListener() {
 
                                 @Override
                                 public void onEvent(int code, String info) {
-                                    Log.i("zzzzz", " SPOS打印  CODE:" + code + " info:" + info);
+                                    Log.i("zcz", " SPOS打印  CODE:" + code + " info:" + info);
                                 }
                             });
                         }
@@ -289,11 +291,11 @@ public class ActNewPayment extends FragmentActivity {
 
                     @Override
                     public void onError(String paramString) {
-                        Log.i("zzzzz", "SPOS设备连接失败" + paramString);
+                        Log.i("zcz", "SPOS设备连接失败" + paramString);
                     }
                 });
             } else {
-                Log.i("zzzzz", "SPOS设备已连接");
+                Log.i("zcz", "SPOS设备已连接");
                 if (sposPrinter == null) {
                     sposPrinter = sposManager.openPrinter();
 
@@ -301,16 +303,18 @@ public class ActNewPayment extends FragmentActivity {
 
                         @Override
                         public void onEvent(int code, String info) {
-                            Log.i("zzzzz", " SPOS打印  CODE:" + code + " info:" + info);
+                            Log.i("zcz", " SPOS打印  CODE:" + code + " info:" + info);
                         }
                     });
                 }
             }
         } else {
-            Log.i("zzzzz", "非SPOS设备");
+            Log.i("zcz", "非SPOS设备");
         }
+
+
         if(isDeviceServiceLogined){
-            Log.i("zzzzz", "连接Landi成功");
+            Log.i("zcz", "连接Landi成功");
             progress = new com.landicorp.android.eptapi.device.Printer.Progress() {
                 @Override
                 public void doPrint(com.landicorp.android.eptapi.device.Printer printer) throws Exception {
@@ -345,10 +349,10 @@ public class ActNewPayment extends FragmentActivity {
     }
 
     public void printOrder() {
-        Log.i("zzzzz", "尝试打印订单");
+        Log.i("zcz", "尝试打印订单");
 
         if (lklPrinter != null) {
-            Log.i("zzzzz", "拉卡拉-打印订单");
+            Log.i("zcz", "拉卡拉-打印订单");
             List<PrintItemObj> list = new ArrayList<PrintItemObj>();
             list.add(new PrintItemObj(Cookies.getShopName() + "签购单"));
             list.add(new PrintItemObj("商户名称:" + Cookies.getShopName()));
@@ -374,11 +378,11 @@ public class ActNewPayment extends FragmentActivity {
 
                 @Override
                 public void onError(int arg0) throws RemoteException {
-                    Log.i("zzzzz","打印出错，错误码为：" + arg0);
+                    Log.i("zcz","打印出错，错误码为：" + arg0);
                 }
             });
         } else if (sposPrinter != null) {
-            Log.i("zzzzz", "SPOS-打印订单");
+            Log.i("zcz", "SPOS-打印订单");
             sposPrinter.printText(Cookies.getShopName() + "签购单", Printer.FontFamily.SONG, Printer.FontSize.MEDIUM,
                     Printer.FontStyle.NORMAL, Printer.Gravity.LEFT);
             sposPrinter.printText("商户名称:" + Cookies.getShopName(), Printer.FontFamily.SONG, Printer.FontSize.MEDIUM,
@@ -405,7 +409,7 @@ public class ActNewPayment extends FragmentActivity {
             sposPrinter.startNewLine();
             sposPrinter.startNewLine();
         }else if(progress!=null){
-            Log.i("zzzzz", "landi-打印订单");
+            Log.i("zcz", "landi-打印订单");
             try {
                 progress.start();
             } catch (RequestException e) {
@@ -415,7 +419,7 @@ public class ActNewPayment extends FragmentActivity {
             mPosdConnector.connect(getApplicationContext(), new BaseListener<String>() {
                 @Override
                 public void onSuccess(String response) {
-
+                    Log.i("zcz", "PosdConnect");
 
                     printActions = new PrintAction[1];
                     int offest = 0;
@@ -437,6 +441,8 @@ public class ActNewPayment extends FragmentActivity {
 
                 @Override
                 public void onFailure(int errcode, String errmsg) {
+                    Log.i("zcz", "PosdConnect failed");
+
                     Toast.makeText(getBaseContext(), "失败", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -448,7 +454,9 @@ public class ActNewPayment extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_new_payment);
         mActNewPayment = this;
+        //绑定联迪
         bindDeviceService();
+        //获取传输数据
         Intent in = getIntent();
         mTicketId = in.getLongExtra(ConstUtil.INTENT_EXTRA_NAME.TICKET_ID, -1);
         mPayMoney = in.getIntExtra(ConstUtil.INTENT_EXTRA_NAME.MONEY_AMOUNT, 0);

@@ -70,6 +70,10 @@ public class B0_HomeFrag extends Fragment {
 					Cookies.setPayType(5);
 					tvPrice.setText("拉卡拉支付");
 
+				} else if(path.equals("wpo")){	//旺POS
+					Cookies.setPayType(5);
+					tvPrice.setText("旺POS支付");
+
 				}else if (path.equals("cas")) {  //现金
 					Cookies.setPayType(4);
 					tvPrice.setText("现金支付");

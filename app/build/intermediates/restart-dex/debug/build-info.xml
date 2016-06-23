@@ -4,40 +4,52 @@
     api-level="22"
     density="xxhdpi"
     format="7"
-    timestamp="16933419400663"
+    timestamp="34362031894245"
     token="-5061299084194297080" >
 
     <task
         name="javac"
-        duration="2067" />
+        duration="5277" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="169" />
+        duration="130" />
     <task
         name="verifier"
-        duration="68" />
+        duration="19" />
 
     <artifact
-        location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+        location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
         type="DEX" />
 
-    <build timestamp="15918730185154" >
-        <artifact
-            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="16933419400663" >
-        <artifact
-            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
-            type="DEX" />
-    </build>
-    <build timestamp="33087817014304" >
+    <build timestamp="33063269032586" >
         <artifact
             location="D:\workshop-android\mstp_shop_assistant\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="33341393257107" >
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
+            type="DEX" />
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+            type="DEX" />
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_6\classes.dex"
+            type="DEX" />
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_7\classes.dex"
+            type="DEX" />
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="34362031894245" >
+        <artifact
+            location="D:\workshop-android\mstp_shop_assistant\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>
