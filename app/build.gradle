@@ -11,6 +11,7 @@ dependencies {
     compile files('libs/eptapilibrary.jar')
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile files('libs/gson-2.2.1.jar')
+    compile files('libs/wopensdk-1.0.jar')
 }
 
 android {

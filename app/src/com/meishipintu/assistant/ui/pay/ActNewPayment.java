@@ -108,6 +108,7 @@ import com.spos.sdk.interfac.Printer;
 import com.spos.sdk.interfac.PrinterBase.OnEventListener;
 import com.spos.sdk.interfac.Spos.OnInitListener;
 import com.umeng.analytics.MobclickAgent;
+import com.wangpos.wopensdk.tools.WPosOpenRequest;
 
 public class ActNewPayment extends FragmentActivity {
     private String Amoney=null;
@@ -2042,6 +2043,8 @@ public class ActNewPayment extends FragmentActivity {
 
     private static String unionPublicKey = null;
 
+//    private static WPosOpenRequest wPosOpenRequest;
+
     private void saveFailedToDataBase(int payType) {
         PaidFailed paidFailed = new PaidFailed();
         paidFailed.setId(0);
@@ -2073,6 +2076,9 @@ public class ActNewPayment extends FragmentActivity {
         paidFailed.setCouponSn(mCouponUse ? mCouponSn : "");
         Log.i("actnewpayment", "插入失败支付开始");
         PaymentProcessor.getInstance().insertPaidFailed(this, paidFailed);
+
+//        wPosOpenRequest = new WPosOpenRequest(APPID, SECRET, TOKEN);
+//        wPosOpenRequest.requestOpenApi(serviceKey, paramMap);
     }
 
     private void landiPosPay(String transName, int amount, String transId) {
