@@ -35,9 +35,9 @@ import android.widget.Toast;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.adapter.AdapterTeamList;
 import com.meishipintu.assistant.app.Cookies;
-import com.milai.http.ServerUrlConstants;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
+import com.milai.http.ServerUrlConstants;
 
 public class ActTeamList extends Activity {
 

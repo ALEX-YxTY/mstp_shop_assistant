@@ -3,14 +3,18 @@ package com.meishipintu.assistant.ui;
 import java.io.File;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,10 +26,16 @@ import android.widget.Toast;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.assistant.app.MsptApplication;
+import com.meishipintu.assistant.bean.VersionInfo;
+import com.meishipintu.assistant.dao.MyAsyncTask;
+import com.meishipintu.assistant.dao.NetCallBack;
+import com.meishipintu.assistant.dao.NetDataHelper;
 import com.meishipintu.assistant.mpos.ActMPosSetting;
 import com.meishipintu.assistant.orderdish.ActSelectTable;
 import com.meishipintu.assistant.ui.auth.ActBindShop;
 import com.meishipintu.assistant.ui.auth.ActChangePwd;
+import com.meishipintu.core.utils.VersionUtils;
+import com.meishipintu.core.utils.WposServiceUtils;
 import com.milai.asynctask.PostGetTask;
 import com.meishipintu.core.ui.ActAboutUs;
 import com.meishipintu.core.utils.ConstUtil;
@@ -38,11 +48,14 @@ import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 import com.umeng.update.UpdateStatus;
 
+import cn.weipass.pos.sdk.impl.WeiposImpl;
+
 public class ActSetting extends FragmentActivity {
 
 	public long mTableId = 0;
 	public String mTableName = null;
 	public static String LOGIN_INFO_FILE = "account_info";
+	public static final String LKL_SERVICE_ACTION = "lkl_cloudpos_mid_service";
 	private CheckBox check_table = null;
 	private SharedPreferences settings = null;
 	private TextView setting_table = null;
@@ -50,6 +63,7 @@ public class ActSetting extends FragmentActivity {
 	private int mWaitorType = -1;
 	private int mBoundResult = 0;
 	private EditText mEtPassword = null;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +93,11 @@ public class ActSetting extends FragmentActivity {
 
 		findViewById(R.id.rl_about).setOnClickListener(ll);
 		findViewById(R.id.rl_clear).setOnClickListener(ll);
-		findViewById(R.id.rl_check_update).setOnClickListener(ll);
+		if (WeiposImpl.IsWeiposDevice()) {
+			findViewById(R.id.rl_check_update).setVisibility(View.GONE);
+		} else {
+			findViewById(R.id.rl_check_update).setOnClickListener(ll);
+		}
 		findViewById(R.id.rl_change_pwd).setOnClickListener(ll);
 		findViewById(R.id.rl_bind_shop).setOnClickListener(ll);
 		findViewById(R.id.rl_mpos).setOnClickListener(ll);
@@ -123,7 +141,9 @@ public class ActSetting extends FragmentActivity {
 				break;
 
 			case R.id.rl_check_update:
-				doCheckUpdate();
+//				doCheckUpdate();
+				//从服务器检查更新
+				checkUpdate();
 				break;
 
 			case R.id.rl_bind_shop:
@@ -264,6 +284,7 @@ public class ActSetting extends FragmentActivity {
 		}.execute();
 	}
 
+	//友盟检查更新
 	private void doCheckUpdate() {
 		UmengUpdateAgent.setUpdateAutoPopup(false);
 		UmengUpdateAgent.setUpdateOnlyWifi(false);
@@ -297,6 +318,75 @@ public class ActSetting extends FragmentActivity {
 			}
 		});
 		UmengUpdateAgent.forceUpdate(this);
+	}
+
+	private void checkUpdate() {
+		NetDataHelper helper = NetDataHelper.getInstance(this);
+		helper.getVersion(new NetCallBack<VersionInfo>() {
+			@Override
+			public void onSuccess(final VersionInfo data) {
+				Log.i("test",data.getApp_version_name());
+
+				//新版本提示
+				if (data.getApp_version() > VersionUtils.getVersionCode(ActSetting.this)) {
+					//有新版
+					VerifyDevicesAndDownload(data);
+				} else {
+					Toast.makeText(ActSetting.this,"当前已是最新版，版本号："+data.getApp_version_name()
+							,Toast.LENGTH_SHORT).show();
+				}
+			}
+
+			@Override
+			public void onError(String error) {
+				Toast.makeText(ActSetting.this, error, Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+
+	private void VerifyDevicesAndDownload(final VersionInfo data) {
+		if (isLkl()) {        			//lkl pos机
+			//lkl应用市场下载
+			Log.i("test", "this device is lkl pos");
+			AlertDialog.Builder builder = new AlertDialog.Builder(ActSetting.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+					.setTitle("发现新版本")
+					.setMessage(data.getApp_update_desc() + "\n欢迎前往拉卡拉商城下载米来商户最新版本\n" +
+							"提示：请同步更新［拉卡拉收单］\n")
+					.setPositiveButton("确定", null);
+			builder.show();
+		} else {            			//非pos机
+			AlertDialog.Builder builder = new AlertDialog.Builder(ActSetting.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			builder.setTitle("发现新版本").setMessage(data.getApp_update_desc())
+					.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							new MyAsyncTask(ActSetting.this,data.getApp_file()).execute();
+							dialog.dismiss();
+						}
+					})
+					.setNegativeButton("以后再说", null)
+					.show();
+		}
+	}
+
+	//判断是否lkl设备
+	public boolean isLkl() {
+		Intent intent = new Intent();
+		intent.setAction(LKL_SERVICE_ACTION);
+		boolean flag = getApplicationContext().bindService(intent, new ServiceConnection() {
+			@Override
+			public void onServiceConnected(ComponentName name, IBinder serviceBinder) {
+				Log.i("test", "连接拉卡拉设备成功");
+			}
+
+			@Override
+			public void onServiceDisconnected(ComponentName name) {
+				Log.i("test", "拉卡拉设备断开");
+			}
+		}, Context.BIND_AUTO_CREATE);
+
+		Log.i("test", "isBindService:" + flag);
+		return flag;
 	}
 
 	@Override

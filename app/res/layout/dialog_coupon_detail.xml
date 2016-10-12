@@ -129,59 +129,64 @@
             android:text="1.lajsdfjalklasf\n2.alsdjfljaslfjl\n3.jalksdjflkjalfjasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf\n4.dhakiweifufjiandkfjbabwiefaijfasdjfiuwheiufhi\n5.hqiwefkasdfkjebqwhbfihasdfjaskdjfbfwaefiffasdf"
             android:textSize="@dimen/tv_30" />
 
-        <RelativeLayout 
-            android:id="@+id/rl_et_verify"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_26"
-            android:layout_marginRight="@dimen/margin_26"
-            android:layout_marginBottom="@dimen/margin_15"
-            android:paddingLeft="@dimen/margin_5"
-            android:visibility="gone"
-            >
-            <EditText 
-                android:id="@+id/et_coupon_use"
+            android:orientation="vertical"
+            android:id="@+id/ll_verify">
+            <RelativeLayout
+                android:id="@+id/rl_et_verify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_light_gray"
-                android:layout_toLeftOf="@+id/bt_send_coupon_sn"
-                android:padding="@dimen/margin_5"
-                android:inputType="phone"
-                android:textColor="@color/coupon_red"
-                android:maxLength="14"
-                android:textSize="@dimen/tv_43"
-                android:hint="请输入券号"
-                android:textColorHint="@color/light_gray"
-                android:layout_marginRight="@dimen/margin_5"
-                android:layout_centerVertical="true"
-                />
-            <Button 
-                android:id="@+id/bt_send_coupon_sn"
+                android:layout_marginLeft="@dimen/margin_26"
+                android:layout_marginRight="@dimen/margin_26"
+                android:layout_marginBottom="@dimen/margin_15"
+                android:paddingLeft="@dimen/margin_5"
+                >
+                <EditText
+                    android:id="@+id/et_coupon_use"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_light_gray"
+                    android:layout_toLeftOf="@+id/bt_send_coupon_sn"
+                    android:padding="@dimen/margin_5"
+                    android:inputType="phone"
+                    android:textColor="@color/coupon_red"
+                    android:maxLength="14"
+                    android:textSize="@dimen/tv_43"
+                    android:hint="请输入券号"
+                    android:textColorHint="@color/light_gray"
+                    android:layout_marginRight="@dimen/margin_5"
+                    android:layout_centerVertical="true"
+                    />
+                <Button
+                    android:id="@+id/bt_send_coupon_sn"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="发送券号"
+                    android:paddingLeft="@dimen/margin_30"
+                    android:paddingRight="@dimen/margin_30"
+                    android:paddingTop="@dimen/margin_15"
+                    android:paddingBottom="@dimen/margin_15"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_round_corner"/>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/bt_use_coupon"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="发送"
-                android:paddingLeft="@dimen/margin_30"
-                android:paddingRight="@dimen/margin_30"
-                android:paddingTop="@dimen/margin_15"
-                android:paddingBottom="@dimen/margin_15"
-                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_coupon_red"
+                android:padding="@dimen/margin_30"
+                android:text="验  证"
+                android:layout_marginLeft="@dimen/margin_26"
+                android:layout_marginRight="@dimen/margin_26"
+                android:layout_marginTop="@dimen/margin_20"
                 android:textColor="@color/white"
-                android:background="@drawable/bg_round_corner"/>
-        </RelativeLayout>
-        <Button
-            android:id="@+id/bt_use_coupon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_coupon_red"
-            android:padding="@dimen/margin_30"
-            android:text="使  用"
-            android:layout_marginLeft="@dimen/margin_26"
-            android:layout_marginRight="@dimen/margin_26"
-            android:layout_marginTop="@dimen/margin_20"
-            android:textColor="@color/white"
-            android:visibility="gone"
-            android:textSize="@dimen/tv_42" />
+                android:textSize="@dimen/tv_42" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <ImageView

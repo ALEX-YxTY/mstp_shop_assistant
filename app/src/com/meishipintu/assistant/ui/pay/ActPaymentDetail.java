@@ -1,5 +1,7 @@
 package com.meishipintu.assistant.ui.pay;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -38,9 +40,11 @@ import com.epos.bertlv.MisTLVValueConvert;
 import com.epos.bertlv.MisDataCenter;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
-import com.milai.http.ServerUrlConstants;
+import com.meishipintu.core.utils.CashierSign;
+import com.meishipintu.core.utils.WposServiceUtils;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
+import com.milai.http.ServerUrlConstants;
 import com.milai.utils.Des2;
 import com.milai.utils.TimeUtil;
 import com.newland.MPosSignatureVerify;
@@ -49,6 +53,10 @@ import com.newland.jsums.paylib.model.CancelRequest;
 import com.newland.jsums.paylib.model.NLResult;
 import com.newland.jsums.paylib.model.OrderInfo;
 import com.newland.jsums.paylib.model.ResultData;
+
+import cn.weipass.pos.sdk.BizServiceInvoker;
+import cn.weipass.service.bizInvoke.RequestInvoke;
+import cn.weipass.service.bizInvoke.RequestResult;
 
 public class ActPaymentDetail extends Activity {
 
@@ -77,13 +85,17 @@ public class ActPaymentDetail extends Activity {
 	private int mStatus = 0;
 	private String mCouponSn = null;
 
+	//wpos服务Invoker
+	private BizServiceInvoker mBizServiceInvoker = null;
+	private String mCashierTradeNo = null;
+
 	final int LANDI_POS_REQUEST_CODE = 75;//
 	final int LAKALA_POS_REQUEST_CODE = 76;//
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		mBizServiceInvoker = WposServiceUtils.getServiceInvokerInstance();
 		setContentView(R.layout.layout_payment_detail);
 		Intent in = getIntent();
 		mPaymentId = in.getLongExtra("paymentId", 0);
@@ -271,7 +283,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				String pwd = et_password.getText().toString();
 				String voutureId = et_sign.getText().toString();
 				String password = Des2.decodeValue("meishipintu", Cookies.getPassword());
@@ -287,13 +298,14 @@ public class ActPaymentDetail extends Activity {
 				}
 				if (pwd.equals(password)) {
 					if (type == 1) {
+						//刷卡退款
 						cardRefund(voutureId); // 弹窗后再确定按钮中调用
 					} else {
 						if (mPayType == 11) {
-
+							//unionPay退款
 							cardUnionPayMPosRefundSign(mOutTradeNo, mPayType);
 						} else {
-
+							//一般退款
 							refund(mOutTradeNo, mPayType);
 						}
 					}
@@ -309,7 +321,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				dia.dismiss();
 			}
 		});
@@ -322,7 +333,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			protected JSONObject doBackgroudJob() throws Exception {
-				// TODO Auto-generated method stub
 				JSONObject jParam = new JSONObject();
 				jParam.put("uid", Cookies.getUserId());
 				jParam.put("shopId", Cookies.getShopId());
@@ -336,7 +346,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			protected void doPostJob(Exception exception, JSONObject result) {
-				// TODO Auto-generated method stub
 				if (result != null && exception == null) {
 					try {
 						int resultCode = result.getInt("result");
@@ -415,7 +424,6 @@ public class ActPaymentDetail extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
@@ -495,7 +503,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			protected JSONObject doBackgroudJob() throws Exception {
-				// TODO Auto-generated method stub
 				JSONObject jParam = new JSONObject();
 				jParam.put("uid", Cookies.getUserId());
 				jParam.put("shopId", Cookies.getShopId());
@@ -509,7 +516,6 @@ public class ActPaymentDetail extends Activity {
 
 			@Override
 			protected void doPostJob(Exception exception, JSONObject result) {
-				// TODO Auto-generated method stub
 				if (result != null && exception == null) {
 					try {
 						int resultCode = result.getInt("result");
@@ -528,7 +534,9 @@ public class ActPaymentDetail extends Activity {
 		}.execute();
 	}
 
+	//刷卡退款
 	private void cardRefund(final String val) {
+
 		if (Cookies.getShopType().contains("lkl")) {
 
 			Intent intent = new Intent();
@@ -559,6 +567,31 @@ public class ActPaymentDetail extends Activity {
 			} catch (Exception e) {
 				Toast.makeText(getBaseContext(), "非拉卡拉设备支持店铺，请联系客服", Toast.LENGTH_LONG).show();
 			}
+		}else if (Cookies.getShopType().contains("wpos")) {
+			if (mBizServiceInvoker == null) {
+				Toast.makeText(this, "初始化服务调用失败", Toast.LENGTH_SHORT).show();
+				return;
+			}
+
+			if (!mTradeNo.isEmpty()) {
+				String[] strings = mTradeNo.split(",");
+				mTradeNo = strings[0];
+				mTradeNo = mTradeNo.replace("T", "");
+
+				if (strings.length > 1) {
+					mCashierTradeNo = strings[1];
+				} else {
+					Toast.makeText(this, "该笔消费不是在本机产生", Toast.LENGTH_SHORT).show();
+					return;
+				}
+
+				Log.i("test", "outTradeNo :" + mTradeNo);
+				Log.i("test", "CashierTradeNO :" + mCashierTradeNo);
+
+			}
+
+			refundRequestCashier();
+
 		} else if (Cookies.getShopType().contains("lan")) {
 
 			try {
@@ -598,6 +631,90 @@ public class ActPaymentDetail extends Activity {
 					// m_handler.sendEmptyMessage(0);
 				}
 			}.start();
+		}
+	}
+
+	//wpos调起退款服务
+	private void refundRequestCashier() {
+		// 发起请求，outradeNo不能相同，相同在收银会提示有存在订单
+		try {
+			RequestInvoke cashierReq = new RequestInvoke();
+			cashierReq.pkgName = this.getPackageName();
+			cashierReq.sdCode = "CASH002";// 收银服务的sdcode信息
+			cashierReq.bpId = CashierSign.InvokeCashier_BPID;
+			cashierReq.launchType = 0;
+			cashierReq.params = CashierSign.sign(
+					CashierSign.InvokeCashier_BPID,
+					CashierSign.InvokeCashier_KEY, mTradeNo, mCashierTradeNo, this);
+			cashierReq.seqNo = "1";
+
+			mBizServiceInvoker.setOnResponseListener(new BizServiceInvoker.OnResponseListener() {
+				@Override
+				public void onResponse(String s, String s1, byte[] bytes) {
+					Log.i("test", "sdCode = " + s
+							+ " , token = " + s1 + " , data = " + new String(bytes));
+					try {
+						JSONObject jsonObject = new JSONObject(new String(bytes));
+						if (jsonObject.getString("errCode").equals("0")) {
+//							Toast.makeText(getBaseContext(), "银行处理退款成功", Toast.LENGTH_LONG).show();
+							// mOutTradeNo=data.getStringExtra("traceNo");
+							refund(mOutTradeNo, 5);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+
+				@Override
+				public void onFinishSubscribeService(boolean b, String s) {
+
+				}
+			});
+
+			// 发送调用请求
+			RequestResult r = mBizServiceInvoker.request(cashierReq);
+			Log.i("test", r.token + "," + r.seqNo + ","
+					+ r.result);
+
+			if (r != null) {
+				Log.i("test", "request result:" + r.result
+						+ "|launchType:" + cashierReq.launchType);
+				String err = null;
+				switch (r.result) {
+					case BizServiceInvoker.REQ_SUCCESS: {
+						// 调用成功
+						Toast.makeText(this, "退款服务调用成功", Toast.LENGTH_SHORT).show();
+						break;
+					}
+					case BizServiceInvoker.REQ_ERR_INVAILD_PARAM: {
+						Toast.makeText(this, "请求参数错误！", Toast.LENGTH_SHORT).show();
+						break;
+					}
+					case BizServiceInvoker.REQ_ERR_NO_BP: {
+						Toast.makeText(this, "未知的合作伙伴！", Toast.LENGTH_SHORT).show();
+						break;
+					}
+					case BizServiceInvoker.REQ_ERR_NO_SERVICE: {
+						Toast.makeText(this, "未找到合适的服务！", Toast.LENGTH_SHORT)
+								.show();
+						break;
+					}
+					case BizServiceInvoker.REQ_NONE: {
+						Toast.makeText(this, "请求未知错误！", Toast.LENGTH_SHORT).show();
+						break;
+					}
+				}
+				if (err != null) {
+					Log.w("requestCashier", "serviceInvoker request err:" + err);
+				}
+			} else {
+				Log.i("test", "result r == null");
+			}
+
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
 	}
 

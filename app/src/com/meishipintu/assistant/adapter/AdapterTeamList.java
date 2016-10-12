@@ -38,7 +38,6 @@ public class AdapterTeamList extends BaseAdapter{
 	@SuppressWarnings("unchecked")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		ViewHolder holder = null;
 		if(convertView == null || convertView.getTag() == null)
 		{
@@ -100,8 +99,7 @@ public class AdapterTeamList extends BaseAdapter{
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+
 				//调用方法删除sharePreference的相关项
 				MyDialogUtil qDialog = new MyDialogUtil(mContext) {
 					@Override
@@ -125,19 +123,16 @@ public class AdapterTeamList extends BaseAdapter{
 	
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
 		return mTeamList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

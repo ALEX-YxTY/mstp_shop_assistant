@@ -47,11 +47,11 @@ public class JPushReceiver extends BroadcastReceiver {
 		if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
 			String regId = bundle
 					.getString(JPushInterface.EXTRA_REGISTRATION_ID);
-			Log.d(TAG, "接收Registration Id : " + regId);
+			Log.i(TAG, "接收Registration Id : " + regId);
 			// send the Registration Id to your server...
 		}  else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent
 				.getAction())) {
-			Log.d(TAG,
+			Log.i(TAG,
 					"接收到推送下来的自定义消息: "
 							+ bundle.getString(JPushInterface.EXTRA_MESSAGE));
 
@@ -64,10 +64,10 @@ public class JPushReceiver extends BroadcastReceiver {
 				if (jo.has("t")) {
 					int t = jo.getInt("t");
 					if (t == 4 || t == 5 || t==6) {
-						if (StringUtil.isNullOrEmpty(Cookies.getToken())) return ;
+						if (StringUtil.isNullOrEmpty(Cookies.getToken())) return;
 						SoundUtil.playFinishSound(context, R.raw.dingdong);
 						Intent it = new Intent(PUSH_ACTION);
-						Log.d("DD", "push received t="+t);
+						Log.i(TAG, "push received t="+t);
 						it.putExtra("type", t);
 						context.sendBroadcast(it);
 					}
@@ -128,7 +128,7 @@ public class JPushReceiver extends BroadcastReceiver {
 			}
 		} else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())){
 		} else {
-			Log.d(TAG, "Unhandled intent - " + intent.getAction());
+			Log.i(TAG, "Unhandled intent - " + intent.getAction());
 		}
 	}
 

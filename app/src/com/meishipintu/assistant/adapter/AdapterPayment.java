@@ -79,7 +79,7 @@ public class AdapterPayment extends SimpleCursorAdapter {
 
 		Cursor c = (Cursor) getItem(position);
 		long curMili = c.getLong(c
-				.getColumnIndex(Payment.COLUMN_NAME_CREATE_TIME));
+				.getColumnIndex(Payment.COLUMN_NAME_UPDATE_TIME));
 		Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(curMili);
 		String nick = c.getString(c.getColumnIndex(Payment.COLUMN_NAME_USER_NAME));
@@ -239,7 +239,7 @@ public class AdapterPayment extends SimpleCursorAdapter {
 		// viewHolder.tvPrice.setText("金额：" + "￥"
 		// + String.format("%.2f", (float) price / 100) + "元");
 		
-			Log.d("position== selectedPosition", position+":"+selectedPosition);
+			Log.i("test", position+":"+selectedPosition);
 			if ((position+1)== selectedPosition) {
 				convertView.setBackgroundResource(R.color.light_light_gray);
 	        }   

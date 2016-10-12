@@ -80,6 +80,10 @@ public class AdapterCalendar extends BaseAdapter implements OnItemClickListener 
 
 	@Override
 	public void onClick(int year, int month, int day) {
+		/*
+			还未设置开始日期或已经设完起止日期
+			此时点击为重设开始日期
+		 */
 		if ((!startSet) || (startSet && endSet)) {
 			for (CalendarView p : pickDateListenrs) {
 				p.onPickDate(year, month, day, true);
@@ -90,11 +94,15 @@ public class AdapterCalendar extends BaseAdapter implements OnItemClickListener 
 			startSet = true;
 			endSet = false;
 		} else {
+			/*
+				已设开始未设结束日期
+			 */
 			if (!endSet) {
 				if (year > startYear || ((year == startYear) && (month > startMonth))
-						|| ((year == startYear) && (month == startMonth) && (day > startDay))) {
+						|| ((year == startYear) && (month == startMonth) && (day > startDay))
+						|| ((year == startYear) && (month == startMonth) && (day == startDay))) {	//增加选择当天
 					for (CalendarView p : pickDateListenrs) {
-						p.onPickDate(year, month, day, false);
+						p.onPickDate(year, month, day, false);		//设置结尾日期，并修改背景
 					}
 					endYear = year;
 					endMonth = month;

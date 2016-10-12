@@ -8,6 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
 import cn.jpush.android.api.JPushInterface;
 
 import com.milai.model.Dishes;
@@ -52,6 +53,7 @@ public class MsptApplication extends Application {
         JPushInterface.setDebugMode(false);//debug模式
         JPushInterface.init(this);
     }
+
 
     private boolean initDirs() {
         boolean flag = true;

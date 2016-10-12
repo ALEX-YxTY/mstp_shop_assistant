@@ -14,7 +14,7 @@
         android:layout_marginLeft="@dimen/margin_26"
         android:background="@color/transparent"
         android:drawableLeft="@drawable/btn_back_nor"
-        android:drawablePadding="0dp"
+        android:drawablePadding="40dp"
         android:text="返回"
         android:textColor="@color/light_orange"
         android:textSize="@dimen/tv_36" />
@@ -48,15 +48,19 @@
         android:visibility="gone" />
     <ImageButton
         android:id="@+id/ib_report_forms"
-        android:layout_width="@dimen/tv_64"
-        android:layout_height="@dimen/tv_64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/margin_30"
         android:src="@drawable/icon_statistics"
         android:textColor="@color/btn_txt"
         android:layout_centerVertical="true"
-        android:visibility="gone" 
+        android:visibility="gone"
         android:background="@color/light_orange"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         />
 
     <LinearLayout

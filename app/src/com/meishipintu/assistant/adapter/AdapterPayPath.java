@@ -1,10 +1,6 @@
 package com.meishipintu.assistant.adapter;
 
-import com.meishipintu.assistant.R;
-import com.meishipintu.assistant.app.Cookies;
-
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.meishipintu.assistant.R;
+import com.meishipintu.assistant.app.Cookies;
 
 public class AdapterPayPath extends BaseAdapter{
 
@@ -78,19 +77,23 @@ public class AdapterPayPath extends BaseAdapter{
 		
 		if(path.equals("bfu")){
 			if(paytype==5) {
-				viewHolder.ivPayPath_T.setImageDrawable(mContext.getResources().getDrawable(R.drawable.index_choice));
+				viewHolder.ivPayPath_T.setVisibility(View.VISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.VISIBLE);
 			}
 			else {
-				convertView.setBackgroundColor(Color.WHITE);		
+				viewHolder.ivPayPath_T.setVisibility(View.INVISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.INVISIBLE);
 			}
 			viewHolder.ivPayPath.setImageDrawable(mContext.getResources().getDrawable(R.drawable.pos));
 			viewHolder.tvPayPath.setText("百富刷卡");
 		}else if(path.equals("ldi")){
 			if(paytype==5) {
-				viewHolder.ivPayPath_T.setImageDrawable(mContext.getResources().getDrawable(R.drawable.index_choice));
+				viewHolder.ivPayPath_T.setVisibility(View.VISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.VISIBLE);
 			}
 			else {
-				convertView.setBackgroundColor(Color.WHITE);		
+				viewHolder.ivPayPath_T.setVisibility(View.INVISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.INVISIBLE);
 			}
 			viewHolder.ivPayPath.setImageDrawable(mContext.getResources().getDrawable(R.drawable.pos));		
 			viewHolder.tvPayPath.setText("联迪刷卡");
@@ -106,6 +109,18 @@ public class AdapterPayPath extends BaseAdapter{
 			}
 			viewHolder.ivPayPath.setImageDrawable(mContext.getResources().getDrawable(R.drawable.pos));
 			viewHolder.tvPayPath.setText("拉卡拉支付");
+		}
+		else if(path.equals("wpos")){
+			if(paytype==5) {
+				viewHolder.ivPayPath_T.setVisibility(View.VISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.VISIBLE);
+			}
+			else {
+				viewHolder.ivPayPath_T.setVisibility(View.INVISIBLE);
+				viewHolder.ivPayPath_B.setVisibility(View.INVISIBLE);
+			}
+			viewHolder.ivPayPath.setImageDrawable(mContext.getResources().getDrawable(R.drawable.pos));
+			viewHolder.tvPayPath.setText("旺POS支付");
 		}
 		else if(path.equals("cas"))
 		{

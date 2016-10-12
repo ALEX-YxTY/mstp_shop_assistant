@@ -1,10 +1,5 @@
 package com.meishipintu.assistant.orderdish;
 
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -38,17 +33,22 @@ import android.widget.Toast;
 
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
+import com.meishipintu.core.utils.ConstUtil;
+import com.meishipintu.core.widget.StickyListView;
+import com.milai.asynctask.PostGetTask;
 import com.milai.dao.DishesDao;
 import com.milai.model.Dishes;
 import com.milai.model.TicketDetail;
 import com.milai.processor.OrderdishProcessor;
-import com.milai.asynctask.PostGetTask;
-import com.meishipintu.core.utils.ConstUtil;
 import com.milai.utils.CustomProgressDialog;
 import com.milai.utils.ScreenParam;
 import com.milai.utils.StringUtil;
-import com.meishipintu.core.widget.StickyListView;
 import com.umeng.analytics.MobclickAgent;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.HashMap;
 
 public class ActOrderdish extends FragmentActivity {
 	private ListView mListType = null;
@@ -271,6 +271,7 @@ public class ActOrderdish extends FragmentActivity {
 							+ "(" + mShopName + ")");
 					Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 					startActivity(intent);
+					Log.i("uri",uri+"");
 				} catch (Exception e) {
 					Toast.makeText(ActOrderdish.this, "您没有安装任何地图APP哦！", Toast.LENGTH_LONG).show();
 					e.printStackTrace();
@@ -438,47 +439,47 @@ public class ActOrderdish extends FragmentActivity {
 
 			@Override
 			protected void doPostJob(Exception e, Boolean result) {
-				long curTime = System.currentTimeMillis();
-				long timeDelay = 0;
-
-				if ((e != null) || (result == null)) {
-					// 网络出问题了，再试试
-					if ((curTime - mStartTime) < 500) {
-						timeDelay = 500;
-					}
-
-					mHandler.postDelayed(startNetCheck, timeDelay);
-
-					return;
-				}
-				{
+//				long curTime = System.currentTimeMillis();
+//				long timeDelay = 0;
+//				if ((e != null) || (result == null)) {
+//					// 网络出问题了，再试试
+//					if ((curTime - mStartTime) < 500) {
+//						timeDelay = 500;
+//					}
+//
+//					mHandler.postDelayed(startNetCheck, timeDelay);
+//
+//					return;
+//				}
+				if (e == null && result != null) {
 					mLlLivContainer.setVisibility(View.VISIBLE);
 					mShopName = Cookies.getShopName();
 					TextView tvTitle = (TextView) findViewById(R.id.tv_title);
 					tvTitle.setText(mShopName);
-				}
-				// 看看是不是修改，如果是修改要更新已有数量
-				if (tid != -1) {
-					// 同时更新点菜数据库，为修改做准备
-					String[] prj2 = { TicketDetail.COLUMN_NAME_DISH_ID,
-							TicketDetail.COLUMN_NAME_DISH_QUANTITY ,TicketDetail.COLUMN_NAME_COMMENT};
-					String sel = TicketDetail.COLUMN_NAME_TICKET_ID + "=" + tid;
+					// 看看是不是修改，如果是修改要更新已有数量
+					if (tid != -1) {
+						// 同时更新点菜数据库，为修改做准备
+						String[] prj2 = { TicketDetail.COLUMN_NAME_DISH_ID,
+								TicketDetail.COLUMN_NAME_DISH_QUANTITY ,TicketDetail.COLUMN_NAME_COMMENT};
+						String sel = TicketDetail.COLUMN_NAME_TICKET_ID + "=" + tid;
 
-					Cursor c2 = getBaseContext().getContentResolver().query(
-							TicketDetail.CONTENT_URI, prj2, sel, null, null);
-					if (c2 != null && c2.getCount() != 0) {
-						c2.moveToFirst();
-						do {
-							DishesDao.getInstance()
-							.updateDraftQuantity(ActOrderdish.this,
-									c2.getInt(0), c2.getInt(1),c2.getString(2));
-						} while (c2.moveToNext());
+						Cursor c2 = getBaseContext().getContentResolver().query(
+								TicketDetail.CONTENT_URI, prj2, sel, null, null);
+						if (c2 != null && c2.getCount() != 0) {
+							c2.moveToFirst();
+							do {
+								DishesDao.getInstance()
+										.updateDraftQuantity(ActOrderdish.this,
+												c2.getInt(0), c2.getInt(1),c2.getString(2));
+							} while (c2.moveToNext());
+						}
 					}
 				}
 
 				mAdapterDish.notifyDataSetChanged();
 				mAdapterType.notifyDataSetChanged();
 				mProgress.dismiss();
+
 			}
 
 		};
@@ -494,22 +495,22 @@ public class ActOrderdish extends FragmentActivity {
 	
 	private Handler mHandler = new Handler();
 
-	private Runnable startNetCheck = new Runnable() {
-
-		@Override
-		public void run() {
-			mProgress.dismiss();
-			Intent in = new Intent();
-			/*
-			 * if (mMsgId != 0) in.putExtra(ConstUtil.MSG_ID, mMsgId);
-			 */
-			in.putExtra(ConstUtil.SHOP_NAME, mShopName);
-			in.setClass(ActOrderdish.this, ActLoadMenuErr.class);
-			startActivity(in);
-			overridePendingTransition(R.anim.right_in, R.anim.left_out);
-			finish();
-		}
-	};
+//	private Runnable startNetCheck = new Runnable() {
+//
+//		@Override
+//		public void run() {
+//			mProgress.dismiss();
+//			Intent in = new Intent();
+//			/*
+//			 * if (mMsgId != 0) in.putExtra(ConstUtil.MSG_ID, mMsgId);
+//			 */
+//			in.putExtra(ConstUtil.SHOP_NAME, mShopName);
+//			in.setClass(ActOrderdish.this, ActLoadMenuErr.class);
+//			startActivity(in);
+//			overridePendingTransition(R.anim.right_in, R.anim.left_out);
+//			finish();
+//		}
+//	};
 
 	private LoaderCallbacks<Cursor> dishLoadCB = new LoaderCallbacks<Cursor>() {
 		@Override

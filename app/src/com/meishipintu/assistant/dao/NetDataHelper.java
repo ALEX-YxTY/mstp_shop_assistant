@@ -22,7 +22,7 @@ public class NetDataHelper {
     private static RequestQueue mQueue;
     private static Gson gson;
     private Context context;
-    //TODO 更改url
+
     public static String domain = "http://b.milaipay.com/";
 
     private NetDataHelper(Context context) {
@@ -46,6 +46,7 @@ public class NetDataHelper {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, new Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                Log.i("test", "response:" + response);
                 try {
                     if (response.getInt("status") == 1) {
                         VersionInfo versionInfo = gson.fromJson(response.getJSONObject("data").toString()

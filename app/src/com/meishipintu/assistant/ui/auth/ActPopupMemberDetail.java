@@ -27,10 +27,10 @@ import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.milai.http.AccountHttpMgr;
-import com.milai.http.ServerUrlConstants;
 import com.meishipintu.assistant.ui.ActVipCenter;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
+import com.milai.http.ServerUrlConstants;
 
 public class ActPopupMemberDetail extends PopupWindow {
 

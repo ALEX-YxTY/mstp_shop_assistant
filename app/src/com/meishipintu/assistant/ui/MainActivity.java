@@ -12,12 +12,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.wifi.WpsInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -37,12 +40,26 @@ import android.widget.Toast;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
+import cn.weipass.pos.sdk.AuthorizationManager;
+import cn.weipass.pos.sdk.BizServiceInvoker;
+import cn.weipass.pos.sdk.LatticePrinter;
+import cn.weipass.pos.sdk.MagneticReader;
+import cn.weipass.pos.sdk.Photograph;
+import cn.weipass.pos.sdk.Printer;
+import cn.weipass.pos.sdk.PsamManager;
+import cn.weipass.pos.sdk.Scanner;
+import cn.weipass.pos.sdk.ServiceManager;
+import cn.weipass.pos.sdk.Sonar;
+import cn.weipass.pos.sdk.Weipos;
+import cn.weipass.pos.sdk.impl.WeiposImpl;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
+import com.lkl.cloudpos.aidl.AidlDeviceService;
+import com.lkl.cloudpos.util.LklUtility;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.assistant.app.MsptApplication;
@@ -71,7 +88,11 @@ import com.meishipintu.core.ui.ActCitySel;
 import com.meishipintu.core.utils.MyDialogUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengDialogButtonListener;
 import com.umeng.update.UmengUpdateAgent;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends FragmentActivity implements
 		AMapLocationListener, Runnable {
@@ -93,15 +114,12 @@ public class MainActivity extends FragmentActivity implements
 	private int mCityId = 0;
 	private int mWaitorType = 3;
 	private static String PAID_FAILED_SERVICE_NAME="com.meishipintu.assistant.ui.pay.PaidFailedService";
+	public static final String LKL_SERVICE_ACTION = "lkl_cloudpos_mid_service";
 
 	private Animation mScaleAniDown=null;
 	private Intent inPaidFailedService=null;
 	
 	public static MainActivity mActivity = null;
-	private boolean pos;
-	private boolean lkl;
-	private boolean WPos;
-	private int versionCode;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -223,7 +241,8 @@ public class MainActivity extends FragmentActivity implements
 //			mAl.setInexactRepeating(AlarmManager.RTC_WAKEUP, now,
 //					1000 * 60 * 60 * 7, mSender);
 //		}
-		startPaidFailedService();	
+		startPaidFailedService();
+
 	}
 
 	private void checkVersion() {
@@ -231,19 +250,33 @@ public class MainActivity extends FragmentActivity implements
 		helper.getVersion(new NetCallBack<VersionInfo>() {
 			@Override
 			public void onSuccess(final VersionInfo data) {
-				Log.i("test", data.toString());
-				if (data.getApp_version() > VersionUtils.getVersionCode(MainActivity.this)) {		//有新版
-					AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-					builder.setTitle("发现新版本").setMessage(data.getApp_update_desc())
-							.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									VerifyDevicesAndDownload(data.getApp_file());
-									dialog.dismiss();
-								}
-							})
-							.setNegativeButton("以后再说", null)
-							.show();
+
+				Log.i("test", "data:" + data.toString());
+				if (isWPos()) {					//WPOS机
+						//pos静默下载
+						Log.i("test", "this device is Wpos pos");
+						//初始化Wpos服务
+						WeiposImpl.as().init(MainActivity.this, new Weipos.OnInitListener() {
+							@Override
+							public void onInitOk() {
+							}
+
+							@Override
+							public void onError(String s) {
+								Log.i("test", "error string:" + s);
+							}
+
+							@Override
+							public void onDestroy() {
+								Log.i("test", "Weipos destoryed");
+							}
+						});
+
+					}
+				//新版本提示
+				if (data.getApp_version() > VersionUtils.getVersionCode(MainActivity.this)) {
+					//有新版
+					VerifyDevicesAndDownload(data);
 				}
 			}
 
@@ -256,26 +289,57 @@ public class MainActivity extends FragmentActivity implements
 	}
 
 	//判断设备类型并下载
-	private void VerifyDevicesAndDownload(String app_file) {
-		if (isLkl()) {        //lkl pos机
-			//TODO lkl应用市场下载
-
-		} else if (isWPos()) {       //WPOS机
-			//TODO 导向POS应用市场
-
-		} else {            //非pos机
-			new MyAsyncTask(MainActivity.this,app_file).execute();
+	private void VerifyDevicesAndDownload(final VersionInfo versionInfo) {
+		if (isLkl()) {        			//lkl pos机
+			//lkl应用市场下载
+			Log.i("test", "this device is lkl pos");
+			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
+					.setTitle("发现新版本")
+					.setMessage(versionInfo.getApp_update_desc() + "\n欢迎前往拉卡拉商城下载米来商户最新版本\n" +
+							"提示：请同步更新［拉卡拉收单］\n")
+					.setPositiveButton("确定", null);
+			builder.show();
+		} else {            			//非pos机
+			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+			builder.setTitle("发现新版本").setMessage(versionInfo.getApp_update_desc())
+					.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							new MyAsyncTask(MainActivity.this,versionInfo.getApp_file()).execute();
+							dialog.dismiss();
+						}
+					})
+					.setNegativeButton("以后再说", null)
+					.show();
 		}
 	}
 
 	//判断是否lkl设备
 	public boolean isLkl() {
-		return false;
+		Intent intent = new Intent();
+		intent.setAction(LKL_SERVICE_ACTION);
+		boolean flag = getApplicationContext().bindService(intent, new ServiceConnection() {
+			@Override
+			public void onServiceConnected(ComponentName name, IBinder serviceBinder) {
+				Log.i("test", "连接拉卡拉设备成功");
+			}
+
+			@Override
+			public void onServiceDisconnected(ComponentName name) {
+				Log.i("test", "拉卡拉设备断开");
+			}
+		}, Context.BIND_AUTO_CREATE);
+
+		Log.i("test", "isBindService:" + flag);
+		return flag;
 	}
 
 	//判断是否wpos设备
 	public boolean isWPos() {
-		return false;
+		boolean isWeiPose = WeiposImpl.IsWeiposDevice();
+		Log.i("test", "isWeiPose:" + isWeiPose);
+
+		return isWeiPose;
 	}
 
 	private void showFrag(String frag) {
@@ -571,6 +635,9 @@ public class MainActivity extends FragmentActivity implements
 		// stopLocation();// 停止定位
 		if (mWaitorType == 0 || mWaitorType == 1) {
 			unregisterReceiver(pushReceiver);
+		}
+		if (WeiposImpl.IsWeiposDevice()) {
+			WeiposImpl.as().destroy();
 		}
 	}
 

@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.milai.utils.QrUtil;
+import com.google.zxing.client.android.QrUtil;
 import com.meishipintu.assistant.R;
 
 public class ActAliPay extends PopupWindow {

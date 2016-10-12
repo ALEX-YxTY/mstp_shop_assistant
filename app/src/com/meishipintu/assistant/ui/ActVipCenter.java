@@ -1,26 +1,27 @@
 package com.meishipintu.assistant.ui;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
+import com.meishipintu.assistant.interfaces.OnUseCouponOrMi;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
 import com.milai.http.ServerUrlConstants;
@@ -29,14 +30,22 @@ import com.meishipintu.assistant.adapter.AdapterCoupons;
 import com.meishipintu.assistant.ui.auth.ActPopupMemberDetail;
 import com.meishipintu.core.utils.MyDialogUtil;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ActVipCenter extends FragmentActivity {
+public class ActVipCenter extends FragmentActivity implements OnUseCouponOrMi{
 
 	private TextView mTvTitle = null;
 	private String mTel = "";
 	private int isFromCode = 0;//0直接打开，1。从收银
 	public static ActVipCenter mVipCenter;
+	private CheckBox cbUseMi;
+	private boolean mMiUsed = false;
+	private  AdapterCoupons adapter = null;
+	private ArrayList<Coupons> couponArray = null;
+
+	private int discount = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +53,28 @@ public class ActVipCenter extends FragmentActivity {
 		setContentView(R.layout.layout_vip_center);
 		Intent inFrom = getIntent();
 		isFromCode = inFrom.getIntExtra("From", 0);
+		if (isFromCode == 1) {
+			discount = inFrom.getIntExtra("discount", 0);
+		}
 		mTvTitle = (TextView) findViewById(R.id.tv_title);
 		mTvTitle.setText("会员详情");
 		Button btBack = (Button) findViewById(R.id.btn_back);
 		btBack.setOnClickListener(mClickListener);
-		
+		//从收银进入显示使用米
+		cbUseMi = (CheckBox) findViewById(R.id.cb_use_mi);
+		if (isFromCode == 1) {
+			cbUseMi.setVisibility(View.VISIBLE);
+			cbUseMi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					TextView tvMiUseCheck = (TextView) findViewById(R.id.tv_mi_use_check);
+					tvMiUseCheck.setText(isChecked ? "使用米币" : "未使用");
+					mMiUsed = isChecked;
+					Log.i("test", "isMiused" + mMiUsed);
+				}
+			});
+		}
+
 		Button btChangeDetail=(Button)findViewById(R.id.bt_title_right);
 		btChangeDetail.setVisibility(View.VISIBLE);
 		btChangeDetail.setOnClickListener(mClickListener);
@@ -66,17 +92,15 @@ public class ActVipCenter extends FragmentActivity {
 			String average = data.getStringExtra("average");
 			mTel = data.getStringExtra("tel");
 			String name = data.getStringExtra("name");
+			int totalMi = data.getIntExtra("totalMi", 0);
 			int sex = data.getIntExtra("sex", 0);
-			ArrayList<Coupons> couponArray = null;
-			AdapterCoupons adapter = null;
 			couponArray = (ArrayList<Coupons>) data
 					.getSerializableExtra("dataArray");
 			if (couponArray != null && couponArray.size() > 0) {
 				adapter = new AdapterCoupons(ActVipCenter.this,
 						couponArray,isFromCode);
 			}
-			refreshView(mTel, name, sex, items, amount, average,
-					adapter);
+			refreshView(mTel, name, sex, items, amount, average, totalMi);
 		}else{
 			if (mTel == null || mTel.length() != 11) {
 				finish();
@@ -86,7 +110,7 @@ public class ActVipCenter extends FragmentActivity {
 
 
 	private void refreshView(final String tel, String name, int sex, int items,
-							 String amount, String average, AdapterCoupons adapter) {
+							 String amount, String average, int totalMi) {
 		mTel = tel;
 		TextView tvTel = (TextView) findViewById(R.id.tv_vip_tel);
 		TextView tvAmount = (TextView) findViewById(R.id.tv_amount);
@@ -95,6 +119,9 @@ public class ActVipCenter extends FragmentActivity {
 		TextView tvName = (TextView) findViewById(R.id.tv_user_name);
 		TextView tvIconSex=(TextView)findViewById(R.id.icon_user_sex);
 		TextView tvSex = (TextView) findViewById(R.id.tv_user_sex);
+		TextView tvTotalMi = (TextView) findViewById(R.id.mi_amount);
+		TextView tvMiDiscount = (TextView) findViewById(R.id.tv_mi_use);
+		RelativeLayout rlUseMi = (RelativeLayout) findViewById(R.id.rl_use_mi);
 
 		TextView tvNoCoupon = (TextView) findViewById(R.id.tv_no_coupon);
 
@@ -102,9 +129,13 @@ public class ActVipCenter extends FragmentActivity {
 
 		TextView tvPay = (TextView) findViewById(R.id.tv_pay);
 		tvPay.setOnClickListener(mClickListener);
-		if(isFromCode==0)
+		if (isFromCode == 0)        //从会员界面进入
 		{
 			tvPay.setVisibility(View.GONE);
+			rlUseMi.setVisibility(View.GONE);
+			tvMiDiscount.setText("--");
+		} else {
+			tvMiDiscount.setText(discount + "");
 		}
 
 		if (name != null && name.length() > 0) {
@@ -124,28 +155,10 @@ public class ActVipCenter extends FragmentActivity {
 
 		tvAmount.setText(amount);
 		tvAverage.setText(average);
+		tvTotalMi.setText(totalMi+"");
 		ListView dataListView = (ListView) findViewById(R.id.listview_coupon);
 		if (adapter != null){
-			final AdapterCoupons adapterFinal = adapter;
 			dataListView.setAdapter(adapter);
-			dataListView.setOnItemClickListener(new OnItemClickListener() {
-
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view,
-										int position, long id) {
-					// Coupons coupon = (Coupons) adapterFinal
-					// .getItem(position);
-					// String detail=coupon.getCouponDetail();
-					// if(detail==null||detail.length()==0)
-					// {
-					// detail="暂无红包描述";
-					// }
-					// Toast toast=Toast.makeText(getBaseContext(), detail,
-					// 10000);
-					// toast.show();
-					// sendSns(coupon.getId(), tel);
-				}
-			});
 		} else {
 			tvNoCoupon.setVisibility(View.VISIBLE);
 		}
@@ -163,7 +176,7 @@ public class ActVipCenter extends FragmentActivity {
 			}
 			//支付，isFromCode=0时，不显示
 			case R.id.tv_pay: {
-				payToPayment(mTel,0);
+				payToPayment(mTel);
 				break;
 			}
 			case R.id.ll_tel: {
@@ -181,11 +194,11 @@ public class ActVipCenter extends FragmentActivity {
 	};
 
 	//发送SN号码后返回支付页面
-	public void payToPayment(String tel,int show) {
+	public void payToPayment(String tel) {
 		Intent in = new Intent();
 		in.putExtra("USER_TEL", tel);
-		Log.d("ActVipCenter_topayment", tel);
-		in.putExtra("SHOW_MESSAGE_DIALOG", show);
+		in.putExtra("USE_MI", mMiUsed);
+		Log.i("test", "use_mi:" + mMiUsed);
 		ActVipCenter.this.setResult(RESULT_OK, in);
 		finish();
 	}
@@ -199,6 +212,8 @@ public class ActVipCenter extends FragmentActivity {
 		in.putExtra("USN_NAME", name);
 		in.putExtra("USN_VALUE", value);
 		in.putExtra("USN_MINPRICE", minprice);
+		in.putExtra("USE_MI", mMiUsed);
+		Log.i("test", "use_mi:" + mMiUsed);
 		ActVipCenter.this.setResult(RESULT_OK, in);
 		finish();
 	}
@@ -289,5 +304,79 @@ public class ActVipCenter extends FragmentActivity {
 	@Override
 	protected void onStop() {
 		super.onStop();
+	}
+
+	public boolean ismMiUsed() {
+		return mMiUsed;
+	}
+
+
+	//重新获取卡券信息
+	private void verifyTelFromNet() {
+		com.milai.asynctask.PostGetTask<JSONObject> mGetVerifyTask = new PostGetTask<JSONObject>(this
+				, R.string.submiting, R.string.submit_failed, true, true, false) {
+
+			@Override
+			protected JSONObject doBackgroudJob() throws Exception {
+				JSONObject jsonParams = new JSONObject();
+				jsonParams.put("shopId", Cookies.getShopId());
+				jsonParams.put("mobile", mTel);
+				jsonParams.put("uid", Cookies.getUserId());
+				jsonParams.put("token", Cookies.getToken());
+				JSONObject jRet = null;
+				jRet = HttpMgr.getInstance().postJson(
+						ServerUrlConstants.getVerifyTelUrl(), jsonParams, true);
+				Log.i("test", "jRet" + jRet.toString());
+				return jRet;
+			}
+
+			@Override
+			protected void doPostJob(Exception exception, JSONObject result) {
+				if (exception == null && result != null) {
+					try {
+						if (result.getInt("result") == 1) {
+
+							JSONArray data = null;
+							try {
+								data = result.getJSONArray("list");
+								List<Coupons> coupons = new ArrayList<Coupons>();
+								for (int i = 0; i < data.length(); i++) {
+									JSONObject coupon = data.getJSONObject(i);
+									try {
+										Coupons couponMode = new Coupons(coupon);
+										if (couponMode.getMinPrice().equals("0")) {
+											coupons.add(i, couponMode);
+										}
+									} catch (Exception e) {
+										Log.i("ActVerifyVipTel", "数据解析异常");
+										e.printStackTrace();
+									}
+								}
+								couponArray.clear();
+								couponArray.addAll(coupons);
+								adapter.notifyDataSetChanged();
+							} catch (JSONException e) {
+								Toast.makeText(ActVipCenter.this,"解析红包数据错误",Toast.LENGTH_SHORT).show();
+							}
+						}
+					} catch (JSONException e) {
+						Toast.makeText(ActVipCenter.this,"网络连接失败，请检查网络配置",Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+		};
+		mGetVerifyTask.execute();
+	}
+
+	@Override
+	public void onUseCoupon() {
+		if (adapter != null) {
+			verifyTelFromNet();
+		}
+	}
+
+	@Override
+	public void onUseMi() {
+
 	}
 }

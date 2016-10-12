@@ -8,11 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.zxing.client.android.QrUtil;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.core.utils.ConstUtil;
 import com.umeng.analytics.MobclickAgent;
-import com.milai.utils.QrUtil;
 
 public class ActPayQRCode extends Activity {
 

@@ -16,6 +16,7 @@ import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.assistant.bean.Payrepost;
 import com.milai.asynctask.PostGetTask;
+import com.milai.exception.NetworkConnectionException;
 import com.milai.http.HttpMgr;
 
 import org.json.JSONException;
@@ -84,40 +85,47 @@ public class TransactionSummaryActivity extends Activity implements
 
 				jParam.put("start_time",Cookies.getStarttime());
 				jParam.put("end_time",Cookies.getEndtime());
-				JSONObject resp = HttpMgr.getInstance().postJson(
-						domain,
-						jParam, false);
-				Log.d("zcz",jParam.toString());
-				return resp;
+				try {
+					JSONObject resp = HttpMgr.getInstance().postJson(
+							domain,
+							jParam, false);
+					Log.i("test", jParam.toString());
+					return resp;
+				} catch (NetworkConnectionException e) {
+					Toast.makeText(TransactionSummaryActivity.this,"无网络连接",Toast.LENGTH_SHORT)
+							.show();
+					return null;
+				}
+
 			}
 
 			@Override
 			protected void doPostJob(Exception exception, JSONObject result) {
 				try {
-
-					Log.d("zcz", result.getJSONObject("data").toString());
-						if(result.getJSONObject("data").getString("sum_total_fee")==null){
-                            tv_amount_receivable.setText("0元");
-						}else {
-							tv_amount_receivable.setText(result.getJSONObject("data").getString("sum_total_fee")+"元");
+					if (result != null) {
+						Log.d("zcz", result.getJSONObject("data").toString());
+						if (result.getJSONObject("data").getString("sum_total_fee") != null) {
+							tv_amount_receivable.setText(result.getJSONObject("data").getString("sum_total_fee") + "元");
 						}
-                        if(result.getJSONObject("data").getString("sum_real_price")==null){
-                            tv_amount_paid_up.setText("0元");
-                        }else{
-							tv_amount_paid_up.setText(result.getJSONObject("data").getString("sum_real_price")+"元");
+						if (result.getJSONObject("data").getString("sum_real_price") != null) {
+							tv_amount_paid_up.setText(result.getJSONObject("data").getString("sum_real_price") + "元");
 						}
 
-					
-						tv_order_quantity.setText(result.getJSONObject("data").getString("total_business_count")+"笔");
-                        if(result.getJSONObject("data").getString("sum_refund_fee")==null){
-                            tv_amount_refund.setText("0元");
-                        }else{
 
-							tv_amount_refund.setText(result.getJSONObject("data").getString("sum_refund_fee")+"元");
+						tv_order_quantity.setText(result.getJSONObject("data").getString("total_business_count") + "笔");
+						if (result.getJSONObject("data").getString("sum_refund_fee") == null) {
+							tv_amount_refund.setText("0元");
+						} else {
+
+							tv_amount_refund.setText(result.getJSONObject("data").getString("sum_refund_fee") + "元");
 						}
 
-					
-						tv_refund_quantity.setText(result.getJSONObject("data").getString("sum_refund_count")+"笔");
+
+						tv_refund_quantity.setText(result.getJSONObject("data").getString("sum_refund_count") + "笔");
+					} else {
+						Toast.makeText(TransactionSummaryActivity.this,"无网络连接",Toast.LENGTH_LONG)
+								.show();
+					}
 
 					
 				} catch (JSONException e) {

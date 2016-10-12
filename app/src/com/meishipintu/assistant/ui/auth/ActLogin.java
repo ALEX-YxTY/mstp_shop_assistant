@@ -217,6 +217,7 @@ public class ActLogin extends Activity {
 			protected void doPostJob(Exception e, JSONObject result) {
 				if (e == null && result != null) {
 					try {
+						Log.i("test", "result:" + result.toString());
 						if (result.getInt("result") == 1) {
 							JSONObject uinfo = result
 									.getJSONObject("waiterInfo");
@@ -236,6 +237,7 @@ public class ActLogin extends Activity {
 								savePwd = pwd;
 								Cookies.setRemenber(1);
 							}
+							Log.i("test", "shopId:" + uinfo.getString("shopId"));
 							Cookies.saveUserInfo(uinfo.getString("uid"),
 									uinfo.getString("token"), pwd, tel,
 									uinfo.getString("nickname"),

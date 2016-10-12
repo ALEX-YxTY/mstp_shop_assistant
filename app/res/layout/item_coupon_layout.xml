@@ -62,14 +62,14 @@
                 android:textSize="@dimen/tv_30" />
         </RelativeLayout>
 
-        <TextView
+        <View
             android:id="@+id/sep_vertical"
-            android:layout_width="2px"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_30"
             android:layout_marginLeft="@dimen/margin_8"
             android:layout_marginRight="@dimen/margin_8"
-            android:background="@color/light_gray" />
+            android:background="@drawable/xuxian_grey" />
 
         <RelativeLayout
             android:layout_width="0dp"

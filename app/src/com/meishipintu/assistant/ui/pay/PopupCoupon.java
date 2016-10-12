@@ -26,10 +26,10 @@ import android.widget.Toast;
 
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
-import com.milai.http.ServerUrlConstants;
 import com.meishipintu.assistant.orderdish.ActCaptureTicket;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
+import com.milai.http.ServerUrlConstants;
 import com.milai.utils.CustomProgressDialog;
 
 public class PopupCoupon extends PopupWindow {
@@ -227,7 +227,7 @@ public class PopupCoupon extends PopupWindow {
 
 	private void useConpon(boolean use, String couponName, float couponValue,
 			String couponSn) {
-//		ActNewPayment.mActNewPayment.setCoupon(use, couponName, couponValue,
+//		ActNewPayment.mActNewPayment.setCouponAndMi(use, couponName, couponValue,
 //				couponSn);
 	}
 

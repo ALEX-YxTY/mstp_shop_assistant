@@ -27,7 +27,7 @@
 		  	    android:id="@+id/ll_price"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:background="@drawable/bg_main_home_edit_tel"
+	            android:background="@drawable/bg_main_home_edit_tel_line"
 	            android:focusable="false"
 	            android:paddingLeft="@dimen/margin_36"
 	            android:paddingRight="@dimen/margin_36"
@@ -108,6 +108,7 @@
 		        >
 	
 			  	<LinearLayout
+					android:id="@+id/ll_tel"
 			  	    android:layout_width="0dip"
 			  	    android:layout_height="wrap_content"
 			  	    android:layout_marginBottom="@dimen/margin_20"
@@ -146,9 +147,9 @@
 			  	        android:focusable="true"
 			  	        android:focusableInTouchMode="true"
 			  	        android:hint="请输入SN码或手机号"
-			  	        android:singleLine="true"
-			  	        android:textColor="@color/white"
-			  	        android:textColorHint="@color/light_gray"
+						android:textColorHint="#99ffffff"
+						android:singleLine="true"
+						android:textColor="@color/white"
 			  	        android:textSize="@dimen/tv_52"
 			  	         />			  	    
 			  	  	<View
@@ -222,6 +223,40 @@
                     />
 
               </LinearLayout>
+
+			<!--用米信息-->
+			<LinearLayout
+				android:id="@+id/ll_mi_info"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:layout_marginLeft="@dimen/margin_56"
+				android:visibility="gone"
+				>
+
+
+				<TextView
+					android:id="@+id/iv_mi_able"
+					android:layout_width="@dimen/tv_36"
+					android:layout_height="@dimen/tv_36"
+					android:layout_gravity="center_vertical"
+					android:background="@drawable/visible1"
+					android:layout_marginBottom="@dimen/margin_10"
+					/>
+
+				<TextView
+					android:id="@+id/tv_mi_able"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="米可用，满100使用30元"
+					android:textSize="@dimen/tv_36"
+					android:layout_gravity="center_vertical"
+					android:textColor="@color/light_gray1"
+					android:layout_marginBottom="@dimen/margin_10"
+					/>
+
+			</LinearLayout>
+
 		</LinearLayout>
 	</LinearLayout>
     

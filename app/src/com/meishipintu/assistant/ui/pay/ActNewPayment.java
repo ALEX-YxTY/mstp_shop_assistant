@@ -1,6 +1,7 @@
 package com.meishipintu.assistant.ui.pay;
 
-import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -14,7 +15,6 @@ import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.http.cookie.Cookie;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,13 +29,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Parcel;
 import android.os.RemoteException;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
@@ -52,7 +50,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,7 +71,6 @@ import com.lkl.cloudpos.aidl.AidlDeviceService;
 import com.lkl.cloudpos.aidl.printer.AidlPrinter;
 import com.lkl.cloudpos.aidl.printer.AidlPrinterListener;
 import com.lkl.cloudpos.aidl.printer.PrintItemObj;
-import com.lkl.cloudpos.util.Debug;
 import com.epos.bertlv.MisDataCenter;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
@@ -83,7 +79,10 @@ import com.meishipintu.assistant.posd.PosdConnector;
 import com.meishipintu.assistant.posd.PosdTerminalTrans;
 import com.meishipintu.assistant.posd.PrintAction;
 import com.meishipintu.assistant.posd.PrintTaskListener;
+import com.meishipintu.core.utils.CashierSign;
 import com.meishipintu.core.utils.CommonUtils;
+import com.meishipintu.core.utils.WposServiceUtils;
+import com.meishipintu.core.utils.WposToolsUtil;
 import com.milai.http.ServerUrlConstants;
 import com.milai.model.Coupons;
 import com.milai.model.PaidFailed;
@@ -102,19 +101,27 @@ import com.newland.jsums.paylib.model.ConsumeRequest;
 import com.newland.jsums.paylib.model.NLResult;
 import com.newland.jsums.paylib.model.OrderInfo;
 import com.newland.jsums.paylib.model.ResultData;
-import com.spos.sdk.debug.Alog;
 import com.spos.sdk.imp.SposManager;
 import com.spos.sdk.interfac.Printer;
 import com.spos.sdk.interfac.PrinterBase.OnEventListener;
 import com.spos.sdk.interfac.Spos.OnInitListener;
 import com.umeng.analytics.MobclickAgent;
-import com.wangpos.wopensdk.tools.WPosOpenRequest;
+
+import cn.weipass.pos.sdk.BizServiceInvoker;
+import cn.weipass.pos.sdk.IPrint;
+import cn.weipass.pos.sdk.impl.WeiposImpl;
+import cn.weipass.service.bizInvoke.RequestInvoke;
+import cn.weipass.service.bizInvoke.RequestResult;
 
 public class ActNewPayment extends FragmentActivity {
+
     private String Amoney=null;
     private String orderno=null;
     private String mRcvShop = null;
+    //以分为单位
     private int mPayMoney = 0;
+    //保存金额
+    private int mSaveMoney = 0;
     private long mTicketId = -1;
     private long mShopId = 0;
     private String mTransId = null;
@@ -124,16 +131,20 @@ public class ActNewPayment extends FragmentActivity {
     private String mOutTradeNo = null;
 
     private String printTradeNo = null;
+//    private String lastTradeNo = null;  //标注上次打印单号
+//    private int printTimes = 0;         //标注此单号打印次数
     private String printPayType = null;
 
     private String mCouponId = "";
     private String mCouponName = "";
     private float mCouponValue = 0;
     private float mCouponMinPrice = 0;
-    private boolean mCouponUse = false;     //flag 标注是否已经验证卡券
+    private boolean mCouponUse = false;     //flag 标注是否已经使用卡券
     private String mCouponSn = "";
     private String mUserTel = "";
     private boolean mIsCanChangeMoney = true;
+    private boolean mMiUse = false;        //标注是否已经使用米
+    private int mMiUseAmount = 0;              //使用米金额
 
     private String mFormatTemp = "";
     private String mFormatMoney = "";
@@ -153,6 +164,9 @@ public class ActNewPayment extends FragmentActivity {
     private EditText mPreEditText = null;
     private EditText mEtTelCoupon = null;
     private Button mVerifyTelCoupon = null;
+    private LinearLayout ll_use_mi;
+    private TextView tvMiAble;
+    private LinearLayout ll_price, ll_tel;
 
     private View mPayPathView = null;
     private Timer mCardTimer;
@@ -173,6 +187,13 @@ public class ActNewPayment extends FragmentActivity {
     private PosdConnector mPosdConnector = PosdConnector.getInstance();
     private PosdTerminalTrans mPosdTrans = PosdTerminalTrans.build();
     private PrintAction[] printActions;
+
+    //weipos相关对象
+    private cn.weipass.pos.sdk.Printer wPosPrinter = null;
+    private BizServiceInvoker mBizServiceInvoker = null;
+    private ProgressDialog pd;
+    public static final int mediumSize = 16 * 2;
+    private String mCashierTradeNo = null;   //使用wpos支付返回的cashier_trade_no号
 
 
     private final PrintTaskListener mPrintListener = new PrintTaskListener() {
@@ -198,9 +219,9 @@ public class ActNewPayment extends FragmentActivity {
             boolean flag = getApplicationContext().bindService(intent, conn, Context.BIND_AUTO_CREATE);
 
             if(flag){
-                Log.i("zcz", "服务绑定成功");
+                Log.i("test", "服务绑定成功");
             }else{
-                Log.i("zcz", "服务绑定失败");
+                Log.i("test", "服务绑定失败");
             }
         }
     }
@@ -222,7 +243,7 @@ public class ActNewPayment extends FragmentActivity {
                 //当loginThrowException时则登录失败
                 DeviceService.login(this);
                 isDeviceServiceLogined = true;
-                Log.i("zcz","联迪设备服务绑定成功");
+                Log.i("test","联迪设备服务绑定成功");
             } catch (RequestException e) {
 
                 e.printStackTrace();
@@ -235,9 +256,9 @@ public class ActNewPayment extends FragmentActivity {
             }
         }
         if(isDeviceServiceLogined){
-            Log.i("zcz", "landi服务绑定成功");
+            Log.i("test", "landi服务绑定成功");
         }else{
-            Log.i("zcz", "landi服务绑定失败");
+            Log.i("test", "landi服务绑定失败");
         }
     }
 
@@ -249,12 +270,12 @@ public class ActNewPayment extends FragmentActivity {
     private void initPrinter() {
         Log.i("zcz lkl test", "is conn == null?" + (conn == null));
         if (conn == null) {
-            Log.i("zcz", "连接拉卡拉设备");
+            Log.i("test", "连接拉卡拉设备");
             conn = new ServiceConnection() {
 
                 @Override
                 public void onServiceConnected(ComponentName name, IBinder serviceBinder) {
-                    Log.i("zcz", "连接拉卡拉设备成功");
+                    Log.i("test", "连接拉卡拉设备成功");
                     if (serviceBinder != null) { // 绑定成功
                         AidlDeviceService serviceManager = AidlDeviceService.Stub.asInterface(serviceBinder);
                         onDeviceConnected(serviceManager);
@@ -263,12 +284,12 @@ public class ActNewPayment extends FragmentActivity {
 
                 @Override
                 public void onServiceDisconnected(ComponentName name) {
-                    Log.i("zcz", "拉卡拉设备断开");
+                    Log.i("test", "拉卡拉设备断开");
                 }
             };
         }
 
-        Log.i("zcz", "连接SPOS设备");
+        Log.i("test", "连接SPOS设备");
         if (SposManager.IsSposDevice()) {
             sposManager = SposManager.getInstance();
             if (!sposManager.isInit()) {
@@ -276,15 +297,15 @@ public class ActNewPayment extends FragmentActivity {
 
                     @Override
                     public void onInitOk() {
-                        Log.i("zcz", "SPOS设备连接成功");
-                        Log.i("zcz", "连接SPOS打印机");
+                        Log.i("test", "SPOS设备连接成功");
+                        Log.i("test", "连接SPOS打印机");
                         if (sposPrinter == null) {
                             sposPrinter = sposManager.openPrinter();
                             sposPrinter.setOnEventListener(new OnEventListener() {
 
                                 @Override
                                 public void onEvent(int code, String info) {
-                                    Log.i("zcz", " SPOS打印  CODE:" + code + " info:" + info);
+                                    Log.i("test", " SPOS打印  CODE:" + code + " info:" + info);
                                 }
                             });
                         }
@@ -292,11 +313,11 @@ public class ActNewPayment extends FragmentActivity {
 
                     @Override
                     public void onError(String paramString) {
-                        Log.i("zcz", "SPOS设备连接失败" + paramString);
+                        Log.i("test", "SPOS设备连接失败" + paramString);
                     }
                 });
             } else {
-                Log.i("zcz", "SPOS设备已连接");
+                Log.i("test", "SPOS设备已连接");
                 if (sposPrinter == null) {
                     sposPrinter = sposManager.openPrinter();
 
@@ -304,18 +325,18 @@ public class ActNewPayment extends FragmentActivity {
 
                         @Override
                         public void onEvent(int code, String info) {
-                            Log.i("zcz", " SPOS打印  CODE:" + code + " info:" + info);
+                            Log.i("test", " SPOS打印  CODE:" + code + " info:" + info);
                         }
                     });
                 }
             }
-        } else {
-            Log.i("zcz", "非SPOS设备");
+        }
+        else {
+            Log.i("test", "非SPOS设备");
         }
 
-
         if(isDeviceServiceLogined){
-            Log.i("zcz", "连接Landi成功");
+            Log.i("test", "连接Landi成功");
             progress = new com.landicorp.android.eptapi.device.Printer.Progress() {
                 @Override
                 public void doPrint(com.landicorp.android.eptapi.device.Printer printer) throws Exception {
@@ -343,17 +364,28 @@ public class ActNewPayment extends FragmentActivity {
 
                 }
             };
-
         }
 
+        if (WeiposImpl.IsWeiposDevice()) {
+            wPosPrinter = WposServiceUtils.getPrinterInstance();
+            mBizServiceInvoker = WposServiceUtils.getServiceInvokerInstance();
+        }
 
     }
 
     public void printOrder() {
-        Log.i("zcz", "尝试打印订单");
+        Log.i("test", "is Wpos Printer null?" + (wPosPrinter == null));
+        Log.i("test", "is Wpos ServiceInvoker null?" + (mBizServiceInvoker == null));
+        Log.i("test", "is lkl is null?" + (lklPrinter == null));
+        //增加金额判断，防止网络出错时重复打印0金额订单
+        if (mPayMoney <= 0) {
+            return;
+        }
+        Log.i("test", "尝试打印订单");
 
-        if (lklPrinter != null) {
-            Log.i("zcz", "拉卡拉-打印订单");
+        //lakala打印
+        if (lklPrinter != null ) {
+            Log.i("test", "拉卡拉-打印订单");
             List<PrintItemObj> list = new ArrayList<PrintItemObj>();
             list.add(new PrintItemObj(Cookies.getShopName() + "签购单"));
             list.add(new PrintItemObj("商户名称:" + Cookies.getShopName()));
@@ -361,8 +393,7 @@ public class ActNewPayment extends FragmentActivity {
             if (!TextUtils.isEmpty(printTradeNo)) {
                 list.add(new PrintItemObj("订单号:" + printTradeNo));
             }
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/DD hh:mm:ss", Locale.CHINA);
-           // 获取当前时间
+            // 获取当前时间
             String time = CommonUtils.DateUtilOne(System.currentTimeMillis());
             list.add(new PrintItemObj("日期时间:" + time));
             String realAmount = String.valueOf(((float) mPayMoney) / 100.0f);
@@ -379,11 +410,14 @@ public class ActNewPayment extends FragmentActivity {
 
                 @Override
                 public void onError(int arg0) throws RemoteException {
-                    Log.i("zcz","打印出错，错误码为：" + arg0);
+                    Log.i("test", "打印出错，错误码为：" + arg0);
                 }
             });
-        } else if (sposPrinter != null) {
-            Log.i("zcz", "SPOS-打印订单");
+            return;
+        }
+        //Spos打印
+        if (sposPrinter != null) {
+            Log.i("test", "SPOS-打印订单");
             sposPrinter.printText(Cookies.getShopName() + "签购单", Printer.FontFamily.SONG, Printer.FontSize.MEDIUM,
                     Printer.FontStyle.NORMAL, Printer.Gravity.LEFT);
             sposPrinter.printText("商户名称:" + Cookies.getShopName(), Printer.FontFamily.SONG, Printer.FontSize.MEDIUM,
@@ -409,45 +443,150 @@ public class ActNewPayment extends FragmentActivity {
             sposPrinter.startNewLine();
             sposPrinter.startNewLine();
             sposPrinter.startNewLine();
-        }else if(progress!=null){
-            Log.i("zcz", "landi-打印订单");
+            return;
+
+        }
+        //landi打印
+        if (progress != null) {
+            Log.i("test", "landi-打印订单");
             try {
                 progress.start();
             } catch (RequestException e) {
                 e.printStackTrace();
             }
-        }else{
+            return;
+
+        }
+        //wPos打印
+        if (wPosPrinter != null) {
+            //wpos 打印凭条
+            if (pd == null) {
+                pd = new ProgressDialog(ActNewPayment.this);
+            }
+            pd.setMessage("正在打印小票...");
+            pd.show();
+            wPosPrinter.setOnEventListener(new IPrint.OnEventListener() {
+
+                @Override
+                public void onEvent(final int what, String in) {
+                    final String info = in;
+                    // 回调函数中不能做UI操作，所以可以使用runOnUiThread函数来包装一下代码块
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            if (pd != null) {
+                                pd.hide();
+                            }
+                            final String message = WposToolsUtil
+                                    .getPrintErrorInfo(what, info);
+                            if (message == null || message.length() < 1) {
+                                return;
+                            }
+                            showResultInfo("打印", "打印结果信息", message);
+                        }
+                    });
+                }
+            });
+
+            wPosPrintNormal(wPosPrinter);
+            return;
+
+        }
+        //seuic Pos 打印
+        else {
             mPosdConnector.connect(getApplicationContext(), new BaseListener<String>() {
                 @Override
                 public void onSuccess(String response) {
-                    Log.i("zcz", "PosdConnect");
+                    Log.i("test", "PosdConnect");
 
                     printActions = new PrintAction[1];
                     int offest = 0;
                      /* TEXT START */
 
 
-                    String text = Cookies.getShopName() + "签购单\n"+"商户名称:" +
-                            Cookies.getShopName() + "\n"+"支付渠道:" + printPayType + "\n"+"金额: RMB "
-                            + Amoney + "元\n"+"--------------------------------\n\n\n\n"+ Cookies.getShopName() + "签购单\n"+"商户名称:" +
-                            Cookies.getShopName() + "\n"+"支付渠道:" + printPayType + "\n"+"金额: RMB "
-                            + Amoney + "元\n"+"--------------------------------\n\n\n\n";
+                    String text = Cookies.getShopName() + "签购单\n" + "商户名称:" +
+                            Cookies.getShopName() + "\n" + "支付渠道:" + printPayType + "\n" + "金额: RMB "
+                            + Amoney + "元\n" + "--------------------------------\n\n\n\n" + Cookies.getShopName() + "签购单\n" + "商户名称:" +
+                            Cookies.getShopName() + "\n" + "支付渠道:" + printPayType + "\n" + "金额: RMB "
+                            + Amoney + "元\n" + "--------------------------------\n\n\n\n";
                     printActions[offest] = new PrintAction(PrintAction.PRINT_TYPE.TEXT);
                     printActions[offest].buildString(text);
                     offest += 1;
-                    printActions = Arrays.copyOf(printActions,offest);
+                    printActions = Arrays.copyOf(printActions, offest);
                     mPosdTrans.startPrint(printActions, mPrintListener);
 
                 }
 
                 @Override
                 public void onFailure(int errcode, String errmsg) {
-                    Log.i("zcz", "PosdConnect failed");
+                    Log.i("test", "PosdConnect failed");
 
-                    Toast.makeText(getBaseContext(), "失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "打印单据失败", Toast.LENGTH_SHORT).show();
                 }
             });
         }
+    }
+
+    //Wpos用，dialog显示打印结果
+    private void showResultInfo(String operInfo, String titleHeader, String info) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(titleHeader + ":" + info)
+                .setTitle(operInfo)
+                .setPositiveButton("确认",
+                new android.content.DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    //Wpos用，格式化打印方法
+    public void wPosPrintNormal(cn.weipass.pos.sdk.Printer printer) {
+        Log.i("test", "wpos 打印信息");
+        // 标准打印，每个字符打印所占位置可能有一点出入（尤其是英文字符）
+        String mediumSpline = "";
+        for (int i = 0; i < mediumSize - 5; i++) {
+            mediumSpline += "-";
+        }
+
+        printer.printText("商家名称："+Cookies.getShopName(),
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.LARGE,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.CENTER);
+        printer.printText(mediumSpline,
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.CENTER);
+        printer.printText(
+                "支付渠道:" + printPayType,
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.LEFT);
+        if (!TextUtils.isEmpty(printTradeNo)) {
+            printer.printText(
+                    "订单号："+printTradeNo,
+                    cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                    cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.LEFT);
+        }
+        // 获取当前时间
+        String time = CommonUtils.DateUtilOne(System.currentTimeMillis());
+        printer.printText(
+                "下单时间：" + time,
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.LEFT);
+        float realAmount = (float) mPayMoney/ 100.0f;
+        printer.printText(
+                String.format("消费金额：RMB %.2f 元" ,realAmount),
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.LEFT);
+        printer.printText(mediumSpline+"\n",
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.MEDIUM,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.CENTER);
+
+        printer.printText("米来支付\nwww.milaipay.com/\n\n\n\n\n",
+                cn.weipass.pos.sdk.Printer.FontFamily.SONG, cn.weipass.pos.sdk.Printer.FontSize.LARGE,
+                cn.weipass.pos.sdk.Printer.FontStyle.NORMAL, cn.weipass.pos.sdk.Printer.Gravity.LEFT);
     }
 
     @Override
@@ -477,7 +616,9 @@ public class ActNewPayment extends FragmentActivity {
         mFocusEditText = mEtMoney;
         mPreEditText = mEtMoney;
 
-        LinearLayout ll_price = (LinearLayout) findViewById(R.id.ll_price);
+        ll_price = (LinearLayout) findViewById(R.id.ll_price);
+        ll_tel = (LinearLayout) findViewById(R.id.ll_tel);
+        ll_tel.setOnTouchListener(mOnTouchFocusChangeListener);
         ll_price.setOnTouchListener(mOnTouchFocusChangeListener);
         mEtMoney.setOnTouchListener(mOnTouchFocusChangeListener);
         mEtTelCoupon.setOnTouchListener(mOnTouchFocusChangeListener);
@@ -489,7 +630,8 @@ public class ActNewPayment extends FragmentActivity {
         editTextGetFocus();
         mPreferential = (TextView) findViewById(R.id.tv_preferential);
         mPreferential.setText("优惠价格：" + ZERO + "元");
-
+        ll_use_mi = (LinearLayout) findViewById(R.id.ll_mi_info);
+        tvMiAble = (TextView) findViewById(R.id.tv_mi_able);
         findViewById(R.id.rl_7).setOnClickListener(mOnKeyClkListener);
         findViewById(R.id.rl_8).setOnClickListener(mOnKeyClkListener);
         findViewById(R.id.rl_9).setOnClickListener(mOnKeyClkListener);
@@ -570,7 +712,7 @@ public class ActNewPayment extends FragmentActivity {
             switch (id) {
                 case R.id.et_receivable:
                 case R.id.ll_price: {
-                    if (mCouponUse) {
+                    if (mCouponUse||mMiUse) {
                         selfToastShow("红包已验证不可改价");
                     } else {
                         isInputEtChange = true;
@@ -578,16 +720,21 @@ public class ActNewPayment extends FragmentActivity {
                         mFormatTemp = mFormatMoney;
                         findViewById(R.id.vw_focusprice).setVisibility(View.VISIBLE);
                         findViewById(R.id.vw_focussn).setVisibility(View.INVISIBLE);
+                        ll_price.setBackgroundResource(R.drawable.bg_main_home_edit_tel_line);
+                        ll_tel.setBackgroundResource(R.drawable.bg_main_home_edit_tel);
                     }
 
                     break;
                 }
+                case R.id.ll_tel:
                 case R.id.et_user_tel_coupon: {
                     if (getPayMoney()) {
                         mFocusEditText = mEtTelCoupon;
                         mFormatTemp = mFormatTelCoupon;
                         findViewById(R.id.vw_focusprice).setVisibility(View.INVISIBLE);
                         findViewById(R.id.vw_focussn).setVisibility(View.VISIBLE);
+                        ll_price.setBackgroundResource(R.drawable.bg_main_home_edit_tel);
+                        ll_tel.setBackgroundResource(R.drawable.bg_main_home_edit_tel_line);
                     }
                     break;
                 }
@@ -598,40 +745,6 @@ public class ActNewPayment extends FragmentActivity {
             return true;
         }
     };
-
-    public void setCoupon(boolean use, String couponId, String couponName, float couponValue, String couponSn,
-                          float miniPrice, String tel) {
-
-        mCouponUse = use;
-        mCouponId = couponId;
-        mCouponName = couponName;
-        mCouponValue = couponValue;
-        mCouponSn = couponSn;
-        mCouponMinPrice = miniPrice;
-        mUserTel = tel;
-        if (use) {
-            mVerifyTelCoupon.setEnabled(false);
-            float money = ((float) mSaveMoney / 100.0f) - mCouponValue;
-            if (money <= 0) {
-                money = 0.0f;
-                // selfToastShow("最少支付0.01元");
-            }
-            mEtMoney.setText(String.format("%.2f", money));// 使用红包
-            mPreferential.setText("优惠价格" + String.format("%.2f", mCouponValue) + "元");
-            findViewById(R.id.ll_coupon_info).setVisibility(View.VISIBLE);
-            TextView tvValue = (TextView) findViewById(R.id.tv_coupon_value);
-            tvValue.setText(String.format("%.2f", mCouponValue) + "元");
-            TextView tvMinPrice = (TextView) findViewById(R.id.tv_coupon_able);
-            tvMinPrice.setText("红包可用,满" + String.format("%.2f", mCouponMinPrice) + "元使用"
-                    + String.format("%.2f", mCouponValue) + "元");
-
-        } else {
-            mVerifyTelCoupon.setEnabled(true);
-            mEtMoney.setText(String.format("%.2f", ((float) mSaveMoney / 100.0f)));// 使用红包
-            mPreferential.setText("红包不可用，优惠价格:" + ZERO + "元");
-            findViewById(R.id.ll_coupon_info).setVisibility(View.INVISIBLE);
-        }
-    }
 
     private void editTextGetFocus() {
         Log.i("onclick-mFormatTemp", mFormatTemp);
@@ -669,19 +782,130 @@ public class ActNewPayment extends FragmentActivity {
     }
 
     private void clearCoupon() {
+        Log.i("test", "mCounpnUse:" + mCouponUse + ", mCouponValue:" + mCouponValue
+                + ", mMiUse:" + mMiUse + ", mMiAmount:" + mMiUseAmount);
+        mSaveMoney = (int) (Float.parseFloat(mEtMoney.getText().toString())*100.0);
+        if (mMiUse) {
+            mSaveMoney += mMiUseAmount*100;
+            Log.i("test", "moneyNow+Mi:" + mSaveMoney);
+        }
+        if (mCouponUse) {
+            mSaveMoney += mCouponValue*100;
+            Log.i("test", "CouponValue：" + mCouponValue);
+            Log.i("test", "moneyNow+Coupon:" + mSaveMoney);
+        }
+        Log.i("test", "mEtMoney:" + String.format("%.2f", mSaveMoney/100.0f));
         mFormatTelCoupon = "";
         mEtTelCoupon.setText("");
         if (mEtTelCoupon == mFocusEditText) {
             mFormatTemp = mFormatTelCoupon;
         }
-        if (mCouponUse) {
-            setCoupon(false, "", "", 0, "", 0, "");
-        }
+        setCouponAndMi(false, "", "", 0, "", 0, "", false);
+        Log.i("test", "setCouponAndMi:true");
+        mMiUse = false;
         mCouponUse = false;
         mCouponName = "";
         mCouponValue = 0;
         mCouponSn = "";
         mCouponMinPrice = 0;
+        mMiUseAmount = 0;
+    }
+
+    public void setCouponAndMi(boolean couponUse, String couponId, String couponName, float couponValue, String couponSn,
+                               float miniPrice, String tel, boolean miUse) {
+
+        mCouponUse = couponUse;
+        mCouponId = couponId;
+        mCouponName = couponName;
+        mCouponValue = couponValue;
+        mCouponSn = couponSn;
+        mCouponMinPrice = miniPrice;
+        mUserTel = tel;
+        mMiUse = miUse;
+        if (couponUse) {
+            mVerifyTelCoupon.setEnabled(false);
+            float money = ((float) mSaveMoney / 100.0f) - mCouponValue;
+            mSaveMoney = mSaveMoney - (int) (mCouponValue * 100);
+            if (money <= 0) {
+                money = 0.0f;
+                mSaveMoney = 0;
+                // selfToastShow("最少支付0.01元");
+            }
+            mEtMoney.setText(String.format("%.2f", money));// 使用红包
+            mPreferential.setText("优惠价格" + String.format("%.2f", mCouponValue) + "元");
+            findViewById(R.id.ll_coupon_info).setVisibility(View.VISIBLE);
+            TextView tvValue = (TextView) findViewById(R.id.tv_coupon_value);
+            tvValue.setText(String.format("%.2f", mCouponValue) + "元");
+            TextView tvMinPrice = (TextView) findViewById(R.id.tv_coupon_able);
+            tvMinPrice.setText("红包可用,满" + String.format("%.2f", mCouponMinPrice) + "元使用"
+                    + String.format("%.2f", mCouponValue) + "元");
+        } else {
+            mVerifyTelCoupon.setEnabled(true);
+            mEtMoney.setText(String.format("%.2f", ((float) mSaveMoney / 100.0f))); // 使用红包
+            mPreferential.setText("优惠价格:" + ZERO + "元");
+            findViewById(R.id.ll_coupon_info).setVisibility(View.INVISIBLE);
+        }
+
+        if (miUse) {
+            mVerifyTelCoupon.setEnabled(false);
+            ll_use_mi.setVisibility(View.VISIBLE);
+            //获取当前金额的可用米值
+            getMiUseAvailable(mUserTel);
+        } else {
+            ll_use_mi.setVisibility(View.GONE);
+        }
+    }
+
+    private void getMiUseAvailable(final String tel) {
+
+        final int[] miUseAvailable = {0};
+        getPayMoney();
+
+        mGetVerifyTask = new PostGetTask<JSONObject>(this) {
+
+            @Override
+            protected JSONObject doBackgroudJob() throws Exception {
+                JSONObject jsonParams = new JSONObject();
+                jsonParams.put("shopId", Cookies.getShopId());
+                jsonParams.put("mobile", tel);
+                jsonParams.put("uid", Cookies.getUserId());
+                jsonParams.put("token", Cookies.getToken());
+                jsonParams.put("totalfee", mPayMoney / 100.0f);
+                JSONObject jRet = null;
+
+                //使用HttpClient连接，是否需要替换为HttpUrlConnection或Volley？
+                jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getVerifyTelUrl(), jsonParams, true);
+                Log.i("test", "jRet2:" + jRet);
+                return jRet;
+            }
+
+            @Override
+            protected void doPostJob(Exception exception, JSONObject result) {
+                if (exception == null && result != null) {
+                    try {
+                        if (result.getInt("result") == 1) {
+
+                            //取出总米数和可用米数
+                            JSONObject signInfo = result.getJSONObject("signinfo");
+                            if (signInfo.getInt("result") == 1) {
+                                 miUseAvailable[0] = signInfo.getInt("discount");
+                                //设置减去用米优惠值
+                                mMiUseAmount = miUseAvailable[0];
+                                tvMiAble.setText("可使用" + mMiUseAmount + "米");
+                                mSaveMoney = mSaveMoney - miUseAvailable[0]*100;
+                                if (mSaveMoney < 0) {
+                                    mSaveMoney = 0;
+                                }
+                                mEtMoney.setText(String.format("%.2f", mSaveMoney/100.0f));
+                            }
+                        }
+                    } catch (JSONException e) {
+                        selfToastShow("网络连接失败，请检查网络配置");
+                    }
+                }
+            }
+        };
+        mGetVerifyTask.execute();
     }
 
     //使用卡券
@@ -691,11 +915,23 @@ public class ActNewPayment extends FragmentActivity {
             protected JSONObject doBackgroudJob() throws Exception {
                 JSONObject jPara = new JSONObject();
                 jPara.put("uid", Cookies.getUserId());
-                jPara.put("couponId", couponId);// totalfee
+                jPara.put("couponId", couponId);// couponId
                 jPara.put("shopId", Cookies.getShopId());// shopid
                 jPara.put("token", Cookies.getToken());
                 jPara.put("couponSn", couponSn);
                 jPara.put("totalFee", 9999);// totalfee
+                //增加参数，判断因用米及米券共用造成的0值情况
+                if (!mMiUse) {
+                    jPara.put("type", 1);       //只使用红包
+                } else {
+                    jPara.put("mobile", mUserTel);
+                    jPara.put("mi_use", mMiUseAmount);
+                    if (!mCouponUse) {
+                        jPara.put("type", 2);       //只使用米
+                    } else {
+                        jPara.put("type", 3);       //两者都使用
+                    }
+                }
                 JSONObject jReturn = HttpMgr.getInstance().postJson(ServerUrlConstants.getUseCouponResult(), jPara,
                         true);
                 return jReturn;
@@ -717,9 +953,23 @@ public class ActNewPayment extends FragmentActivity {
                                 public void onClickNagative() {
                                 }
                             };
-                            qDialog.showCustomMessageOK(ActNewPayment.this.getString(R.string.notice), "红包验证使用成功",
+                            qDialog.showCustomMessageOK(ActNewPayment.this.getString(R.string.notice), "红包及米验证使用成功",
                                     "知道了");
 
+                        } else if (result.getInt("result") == -8) {
+                            clearMoney(); // 验证卡券
+                            // selfToastShow("红包验证使用成功");
+                            MyDialogUtil qDialog = new MyDialogUtil(ActNewPayment.this) {
+                                @Override
+                                public void onClickPositive() {
+                                }
+
+                                @Override
+                                public void onClickNagative() {
+                                }
+                            };
+                            qDialog.showCustomMessageOK(ActNewPayment.this.getString(R.string.notice), "红包验证使用成功，米不可用",
+                                    "知道了");
                         } else {
                             String msg = "红包使用失败";
                             if (result.has("msg")) {
@@ -831,9 +1081,10 @@ public class ActNewPayment extends FragmentActivity {
                         // 金额为0的支付方式，如果有卡券，就直接使用
                         String strmey = ((EditText) findViewById(R.id.et_receivable)).getText().toString();
                         float money = Float.parseFloat(strmey);
-                        Amoney=String.valueOf((float)money);
+                        Amoney=String.valueOf(money);
+                        mUserTel = mEtTelCoupon.getText().toString().replace(" ", "");
 
-                        if (money < 0.01f && mCouponUse && mCouponSn.length() > 0 && mCouponId.length() > 0) {
+                        if (money < 0.01f && (mCouponUse||mMiUse)) {
                             MyDialogUtil qDialog = new MyDialogUtil(ActNewPayment.this) {
 
                                 @Override
@@ -842,6 +1093,7 @@ public class ActNewPayment extends FragmentActivity {
 
                                 @Override
                                 public void onClickNagative() {
+                                    //金额为0，仅使用卡券和米
                                     useCoupon(mCouponId, mCouponSn);
                                 }
                             };
@@ -879,13 +1131,17 @@ public class ActNewPayment extends FragmentActivity {
                         } else if (paytype == 10) { // 如果是ic卡支付
                             showICCardDialog();
                         } else {
+                            //点击收款调用
                             signType(paytype, false);
                         }
                     }
                     break;
                 }
+
                 case R.id.bt_clear_tel_coupon: {
+                    //清除卡券与米
                     clearCoupon();
+
                     break;
                 }
 
@@ -975,9 +1231,6 @@ public class ActNewPayment extends FragmentActivity {
         }
     };
 
-    /*
-
-     */
     private void dishplayNum(String key) {
 
         String num_1 = "0";
@@ -1001,7 +1254,8 @@ public class ActNewPayment extends FragmentActivity {
             }
             mPreEditText = mFocusEditText;
             isInputEtChange = false;
-        } else if (key.equals("back")) {
+        }
+        else if (key.equals("back")) {
             DecimalFormat dfNum = (DecimalFormat) NumberFormat.getInstance();
             dfNum.applyPattern("0.00");
             if (mFormatTemp.contains(".")) {
@@ -1041,7 +1295,8 @@ public class ActNewPayment extends FragmentActivity {
             }
             // mPreEditText = mFocusEditText;
             isInputEtChange = false;
-        } else if (key.equals("clear")) { // 按了清空按钮
+        }
+        else if (key.equals("clear")) { // 按了清空按钮
             clearMoney();
             isInputEtChange = true;
         }
@@ -1086,7 +1341,7 @@ public class ActNewPayment extends FragmentActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (mCouponUse) {
-                setCoupon(false, "", "", 0, "", 0, "");
+                setCouponAndMi(false, "", "", 0, "", 0, "", false);
             }
         }
 
@@ -1163,8 +1418,7 @@ public class ActNewPayment extends FragmentActivity {
         return true;
     }
 
-    //支付金额
-    private int mSaveMoney = 0;
+
 
     private int getSavePreMoney() {
         String strmey = ((EditText) findViewById(R.id.et_receivable)).getText().toString();
@@ -1236,24 +1490,24 @@ public class ActNewPayment extends FragmentActivity {
         }
     };
 
-    private Handler m_handler_check = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 401: {
-                    showDialog(-1, "提示", "支付成功");
-                    break;
-                }
-                case 402: {
-                    showDialog(-1, "提示", "支付超时");
-                    break;
-                }
-            }
-            mAlipayScanerTimer.cancel();
-            m_progressDialog.dismiss();
-        }
-    };
+//    private Handler m_handler_check = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what) {
+//                case 401: {
+//                    showDialog(-1, "提示", "支付成功");
+//                    break;
+//                }
+//                case 402: {
+//                    showDialog(-1, "提示", "支付超时");
+//                    break;
+//                }
+//            }
+//            mAlipayScanerTimer.cancel();
+//            m_progressDialog.dismiss();
+//        }
+//    };
 
     private void cardPay(final String sub, final String body, final String price, final long shopId, final long tid,
                          String transId) {
@@ -1477,7 +1731,6 @@ public class ActNewPayment extends FragmentActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.i("onActivityResult", "resultCode");
         if (resultCode == Activity.RESULT_CANCELED) {
             // Toast.makeText(this, data.getExtras().getString("reason"),
             // Toast.LENGTH_SHORT).show();
@@ -1528,7 +1781,7 @@ public class ActNewPayment extends FragmentActivity {
                     从会员界面返回卡券信息
                  */
                 case ConstUtil.REQUEST_CODE.PAY_REQUEST_VIP_INFO: {
-                    //从短信发送SN码返回
+                    //从VIP界面点击支付返回
                     if (data.hasExtra("USER_TEL")) {
                         mUserTel = data.getStringExtra("USER_TEL");
                         //Log.i("ActNewPayment_from_vicenter", mUserTel);
@@ -1536,21 +1789,19 @@ public class ActNewPayment extends FragmentActivity {
                         if (mFocusEditText == mEtTelCoupon) {
                             mFormatTemp = "";
                         }
-                        int isShowMessageDialog = data.getIntExtra("SHOW_MESSAGE_DIALOG", 0);
-                        //Log.i("onNewPayment_onActRESULT", Integer.toString(isShowMessageDialog));
-                        if (isShowMessageDialog == 1) {
-                            String message = "红包SN已发送至用户手机\n请在卡劵框中输入SN验证码";
-                            showCouponNoticeMessage(message);
-                            mEtTelCoupon.setText("");
-                        } else {
-                            mEtTelCoupon.setText(mUserTel);
-                            mFormatTelCoupon = mUserTel;
-                            if (mFocusEditText == mEtTelCoupon) {
-                                mFormatTemp = mFormatTelCoupon;
-                            }
+                        mEtTelCoupon.setText(mUserTel);
+                        mFormatTelCoupon = mUserTel;
+                        if (mFocusEditText == mEtTelCoupon) {
+                            mFormatTemp = mFormatTelCoupon;
                         }
 
-                    } else if (data.hasExtra("USN_SN")) {   //从直接使用卡券返回
+                        getSavePreMoney();
+                        boolean miUse = data.getBooleanExtra("USE_MI",false);
+                        Log.i("test", "miUse2:" + miUse);
+                        setCouponAndMi(false, "", "", 0, "", 0, mUserTel, miUse);
+
+                    }
+                    else if (data.hasExtra("USN_SN")) {   //从直接使用卡券返回
                         String tel = data.getStringExtra("USN_TEL");
                         String id = data.getStringExtra("USN_ID");
                         String sn = data.getStringExtra("USN_SN");
@@ -1561,11 +1812,15 @@ public class ActNewPayment extends FragmentActivity {
                         float couponMinPrice = Float.parseFloat(minprice);
                         //获取输入金额，复制给mSavaMoney
                         getSavePreMoney();
+                        //标记是否使用米
+                        boolean miUse = data.getBooleanExtra("USE_MI",false);
+                        Log.i("test", "miUse?:" + miUse);
+                        Log.i("test", "mMiUsed:" + mMiUseAmount);
                         //标记卡券是否满足使用条件
                         boolean isCouponUes = ((mSaveMoney/100.0f) >= couponMinPrice) ? true : false;
-                        setCoupon(isCouponUes, id, couponName, couponValue, sn, couponMinPrice, tel);
-
+                        setCouponAndMi(isCouponUes, id, couponName, couponValue, sn, couponMinPrice, tel, miUse);
                     }
+
                     break;
                 }
 
@@ -1750,7 +2005,7 @@ public class ActNewPayment extends FragmentActivity {
 
     public void signCheckAli(String dynamicid, int from) {
         mDynamicid = dynamicid;
-        Log.i("ActNewPayment", dynamicid + ":" + Integer.toString(from));
+        Log.i("test", "dynamicid:" + dynamicid + "," + "from:" + Integer.toString(from));
         if (from == -1) {
             Toast.makeText(getBaseContext(), "扫码来源异常。请重新发起扫描", Toast.LENGTH_LONG).show();
             return;
@@ -1821,12 +2076,16 @@ public class ActNewPayment extends FragmentActivity {
                 jParam.put("token", Cookies.getToken());
                 jParam.put("subject", mRcvShop + "-消费");
                 jParam.put("body", mRcvShop + body + "<And>");
-                if (mUserTel != null && mUserTel.length() == 11) {
+                if (mUserTel != null && mUserTel.trim().length() == 11) {
                     jParam.put("mobile", mUserTel);
                 }
 
                 if (mCouponUse) {
                     jParam.put("couponSn", mCouponSn);
+                }
+
+                if (mMiUse) {
+                    jParam.put("score", mMiUseAmount);
                 }
 
                 if (payType == 10) {
@@ -1842,24 +2101,30 @@ public class ActNewPayment extends FragmentActivity {
                             jParam.put("transId", mTransId);
                         } else if (Cookies.getShopType().contains("bfu")) {
                             jParam.put("transId", mTransId + mVoucher);
+                        } else
+                        if (Cookies.getShopType().contains("wpos")) {
+                            jParam.put("transId", mTransId + "," + mCashierTradeNo);
                         }
                     } else if (payType == 11) { // 银联刷卡支付
                         jParam.put("transId", mTransId);
                     }
                     jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getSignCash(), jParam, true);
-                } else {
+                }
+                else {
                     if (payType == 7 || payType == 12) {
                         jParam.put("dynamicid", mDynamicid);
                     }
-                    jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getPaySignUrl(), jParam, true);
+                    Log.i("test", "jParam" + jParam.toString());
+                    jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getPaySignUrlTest2(), jParam, true);
+                    Log.i("test", "jRet:" + jRet.toString());
                 }
                 return jRet;
             }
 
             @Override
             protected void doPostJob(Exception exception, JSONObject result) {
-
                 if (result != null && exception == null) {
+                    Log.i("test", "result" + result.toString());
                     try {
                         if (result.getInt("result") == 1) {
                             if (cash) {
@@ -1873,8 +2138,9 @@ public class ActNewPayment extends FragmentActivity {
 
                                 clearMoney(); // 现金等收银成功
                                 finish();
-                            } else {
-                                Toast.makeText(getBaseContext(), "打印订单成功", Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                Toast.makeText(getBaseContext(), "订单生成成功", Toast.LENGTH_LONG).show();
                                 if (payType == 4) { // 现金支付
                                     ShowPayMessage("请确定是否收到正确数额现金", "已收到", "未收到", payType);
                                 } else if (payType == 14) { // 其它支付
@@ -1904,6 +2170,9 @@ public class ActNewPayment extends FragmentActivity {
                                         lklPosPay("消费", mPayMoney, mTransId);
                                     } else if (Cookies.getShopType().contains("ldi")) {
                                         landiPosPay("消费", mPayMoney, mTransId);
+                                    } else
+                                    if (Cookies.getShopType().contains("wpos")) {
+                                        wposPosPay("POS消费", mPayMoney, mTransId);
                                     } else {
                                         cardPay(mRcvShop + "-消费", mRcvShop + "-消费刷卡支付", Integer.toString(mPayMoney),
                                                 mShopId, mTicketId, mTransId);
@@ -1925,13 +2194,13 @@ public class ActNewPayment extends FragmentActivity {
                                     mQrPay.showAtLocation(mEtMoney, failTip, failTip, failTip);
                                 }
                             }
-                        } else {// 判断result
+                        }
+                        else {// 判断result
                             String msg = "";
                             if (result.has("msg")) {
                                 msg = result.getString("msg");
                             }
                             Toast.makeText(getBaseContext(), "打印订单失败:" + msg, Toast.LENGTH_LONG).show();
-
 
                         }
                     } catch (JSONException ej) {// 判断异常
@@ -2043,8 +2312,6 @@ public class ActNewPayment extends FragmentActivity {
 
     private static String unionPublicKey = null;
 
-//    private static WPosOpenRequest wPosOpenRequest;
-
     private void saveFailedToDataBase(int payType) {
         PaidFailed paidFailed = new PaidFailed();
         paidFailed.setId(0);
@@ -2076,11 +2343,9 @@ public class ActNewPayment extends FragmentActivity {
         paidFailed.setCouponSn(mCouponUse ? mCouponSn : "");
         Log.i("actnewpayment", "插入失败支付开始");
         PaymentProcessor.getInstance().insertPaidFailed(this, paidFailed);
-
-//        wPosOpenRequest = new WPosOpenRequest(APPID, SECRET, TOKEN);
-//        wPosOpenRequest.requestOpenApi(serviceKey, paramMap);
     }
 
+    //LANDI 通过POS刷卡支付
     private void landiPosPay(String transName, int amount, String transId) {
         Intent in = new Intent();
         try {
@@ -2101,6 +2366,7 @@ public class ActNewPayment extends FragmentActivity {
         }
     }
 
+    //LAKALA 通过POS刷卡支付
     private void lklPosPay(String transName, int amount, String transId) {
         Intent intent = new Intent();
         String realAmount = String.valueOf(((float) amount) / 100.0f);
@@ -2130,6 +2396,117 @@ public class ActNewPayment extends FragmentActivity {
         }
     }
 
+    //Wpos 通过POS刷卡支付
+    private void wposPosPay(String transName, int amount, String transId) {
+        if (mBizServiceInvoker == null) {
+            Toast.makeText(this, "初始化服务调用失败", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mBizServiceInvoker.setOnResponseListener(mOnResponseListener);
+
+        innerRequestCashier(transName, amount, transId);
+    }
+
+    //Wpos 调起收银请求
+    private void innerRequestCashier(String transName, int amount, String transId) {
+        // 发起请求，outradeNo不能相同，相同在收银会提示有存在订单
+        try {
+            RequestInvoke cashierReq = new RequestInvoke();
+            cashierReq.pkgName = this.getPackageName();
+            cashierReq.sdCode = "CASH002";// 收银服务的sdcode信息
+            cashierReq.bpId = CashierSign.InvokeCashier_BPID;
+            cashierReq.launchType = 0;
+            cashierReq.params = CashierSign.sign(
+                    CashierSign.InvokeCashier_BPID,
+                    CashierSign.InvokeCashier_KEY, "POS", "10004", transId,
+                    transName, "attach", "1", amount+"", this);
+            cashierReq.seqNo = "1";
+
+            // 发送调用请求
+            RequestResult r = mBizServiceInvoker.request(cashierReq);
+            Log.i("test", r.token + "," + r.seqNo + ","
+                    + r.result);
+
+            if (r != null) {
+                Log.i("test", "request result:" + r.result
+                        + "|launchType:" + cashierReq.launchType);
+                String err = null;
+                switch (r.result) {
+                    case BizServiceInvoker.REQ_SUCCESS: {
+                        // 调用成功
+                        Toast.makeText(this, "收银服务调用成功", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    case BizServiceInvoker.REQ_ERR_INVAILD_PARAM: {
+                        Toast.makeText(this, "请求参数错误！", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    case BizServiceInvoker.REQ_ERR_NO_BP: {
+                        Toast.makeText(this, "未知的合作伙伴！", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    case BizServiceInvoker.REQ_ERR_NO_SERVICE: {
+                        Toast.makeText(this, "未找到合适的服务！", Toast.LENGTH_SHORT)
+                                .show();
+                        break;
+                    }
+                    case BizServiceInvoker.REQ_NONE: {
+                        Toast.makeText(this, "请求未知错误！", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
+                if (err != null) {
+                    Log.w("requestCashier", "serviceInvoker request err:" + err);
+                }
+            } else {
+                Log.i("test", "result r == null");
+            }
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 这个是wpos服务调用完成后的响应监听方法
+     */
+    private BizServiceInvoker.OnResponseListener mOnResponseListener
+            = new BizServiceInvoker.OnResponseListener() {
+
+        @Override
+        public void onResponse(String sdCode, String token, byte[] data) {
+            Log.i("test", "sdCode = " + sdCode
+                    + " , token = " + token + " , data = " + new String(data));
+//            Toast.makeText(ActNewPayment.this, "接收到服务调用完成回调", Toast.LENGTH_SHORT)
+//                    .show();
+
+            try {
+                JSONObject jsonObject = new JSONObject(new String(data));
+                Log.i("test", "data:" + jsonObject.toString());
+                if (jsonObject.getString("errCode").equals("0")) {
+                    mCashierTradeNo = jsonObject.getString("cashier_trade_no");
+                    signType(5, true);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        public void onFinishSubscribeService(boolean result, String err) {
+            pd.hide();
+            // bp订阅收银服务返回结果
+            if (!result) {
+                Toast.makeText(ActNewPayment.this, err, Toast.LENGTH_SHORT)
+                        .show();
+            }
+        }
+    };
+
     private void checkStatus(final String outTradeNo, final int payType) {
         printTradeNo = outTradeNo;
         m_progressDialog = new ProgressDialog(this);
@@ -2152,15 +2529,16 @@ public class ActNewPayment extends FragmentActivity {
                         jParam.put("shopId", Cookies.getShopId());
                         JSONObject jRet = null;
                         jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getAlipayScaner(), jParam, true);
-                        timeTemp++;
+                        timeTemp++;     //最多执行9次
+                        Log.i("test", "jRet:" + jRet.toString());
                         return jRet;
                     }
 
                     @Override
                     protected void doPostJob(Exception exception, JSONObject result) {
 
-
                         try {
+                            Log.i("test", "扫码支付result:" + result.toString());
                             // Message timeOutMsg_1 = new Message();
                             if (result != null && exception == null) {
                                 int resultCode = result.getInt("result");
@@ -2245,6 +2623,7 @@ public class ActNewPayment extends FragmentActivity {
     // }
     // }
     // }
+
     private String logByteToString(byte[] dataArray) {
         String temp = "";
         if (dataArray != null && dataArray.length > 0) {
@@ -2303,6 +2682,12 @@ public class ActNewPayment extends FragmentActivity {
 
     //验证手机号 - 通过接口验证
     private void verifyTelFromNet(final String tel) {
+        Log.i("payMoney before:", mPayMoney + "");
+
+        //对当前输入金额进行存储
+        getPayMoney();
+        Log.i("payMoney after:", mPayMoney + "");
+
         mGetVerifyTask = new PostGetTask<JSONObject>(this) {
 
             @Override
@@ -2312,6 +2697,7 @@ public class ActNewPayment extends FragmentActivity {
                 jsonParams.put("mobile", tel);
                 jsonParams.put("uid", Cookies.getUserId());
                 jsonParams.put("token", Cookies.getToken());
+                jsonParams.put("totalfee", mPayMoney / 100.0f);
                 Log.i("test", "cookies.shopid:" + Cookies.getShopId());
                 Log.i("test", "cookies.mobile:" + tel);
                 Log.i("test", "cookies.uid:" + Cookies.getUserId());
@@ -2344,8 +2730,17 @@ public class ActNewPayment extends FragmentActivity {
                             }
                             String amount = result.getString("amount");
                             String average = result.getString("average");
-                            Log.i("name:sex", name + ":" + Integer.toString(sex));
-                            setData(tel, name, sex, items, amount, average, data);
+                            //取出总米数和可用米数
+                            JSONObject signInfo = result.getJSONObject("signinfo");
+                            Log.i("test", "signIngo:" + signInfo.toString());
+                            int totalMi = 0;
+                            int discount = 0;
+                            if (signInfo.getInt("result") == 1) {
+                                totalMi = signInfo.getInt("credit");
+                                discount = signInfo.getInt("discount");
+                            }
+                            //设置参数并跳转VIP页面
+                            setData(tel, name, sex, items, amount, average, data, totalMi, discount);
                         }
                     } catch (JSONException e) {
                         selfToastShow("网络连接失败，请检查网络配置");
@@ -2358,7 +2753,7 @@ public class ActNewPayment extends FragmentActivity {
 
     //获取数据后启动会员信息页面
     private void setData(String tel, String name, int sex, int items, String amount, String average,
-                         JSONArray arrayJsonCoupon) throws JSONException {
+                         JSONArray arrayJsonCoupon, int totalMi, int discount) throws JSONException {
         // Toast.makeText(getBaseContext(), "setData",
         // Toast.LENGTH_LONG).show();
         Intent in = new Intent();
@@ -2368,6 +2763,8 @@ public class ActNewPayment extends FragmentActivity {
         in.putExtra("items", items);
         in.putExtra("amount", amount);
         in.putExtra("average", average);
+        in.putExtra("totalMi", totalMi);
+        in.putExtra("discount", discount);
         if (name != null && name.length() > 0 && !name.equals("null")) {
             in.putExtra("name", name);
             Log.i("name", name);
@@ -2384,7 +2781,9 @@ public class ActNewPayment extends FragmentActivity {
                 JSONObject coupon = arrayJsonCoupon.getJSONObject(i);
                 try {
                     Coupons couponMode = new Coupons(coupon);
-                    couponArray.add(i, couponMode);
+                    if (Integer.parseInt(couponMode.getMinPrice()) <= (mPayMoney/100.0f)) {
+                        couponArray.add(i, couponMode);
+                    }
                 } catch (Exception e) {
                     Log.i("ActVerifyVipTel", "数据解析异常");
                     e.printStackTrace();
@@ -2440,7 +2839,7 @@ public class ActNewPayment extends FragmentActivity {
                             getSavePreMoney();
                             //标记卡券是否满足使用条件
                             boolean isCouponUes = ((mSaveMoney/100.0f) >= couponMinPrice) ? true : false;
-                            setCoupon(isCouponUes, couponId, couponName, couponValue, couponSn, couponMinPrice, tel);
+                            setCouponAndMi(isCouponUes, couponId, couponName, couponValue, couponSn, couponMinPrice, tel, mMiUse);
                         } else {
                             if (result.has("msg")) {
                                 String msg = result.getString("msg");
@@ -2471,5 +2870,6 @@ public class ActNewPayment extends FragmentActivity {
             getApplicationContext().unbindService(conn);
         }
         mPosdConnector.disconnect();
+        WeiposImpl.as().destroy();
     }
 }

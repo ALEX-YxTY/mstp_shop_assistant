@@ -11,9 +11,9 @@ import org.json.JSONObject;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
 import com.meishipintu.assistant.orderdish.ActCaptureTicket;
-import com.meishipintu.assistant.ui.ActVipCenter;
+import com.meishipintu.assistant.ui.ActVipCenterNew;
 import com.meishipintu.core.utils.ConstUtil;
-import com.meishipintu.core.utils.MyDialogUtil;
+import com.meishipintu.jnilibrary.JNIUtils;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
 import com.milai.http.ServerUrlConstants;
@@ -39,12 +39,15 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class C0_VipFrag extends Fragment{
-	
-    private FragClickListener mFraglistener;	
+
+	private static final int VIP_SCAN = 50;
+	private static final long BIG_PRIME = 9785935849l;
+	private FragClickListener mFraglistener;
     
 	private String mTelNum = null;
 	private int mIsFrom = 0;		////0直接打开，1。从收银
@@ -174,8 +177,8 @@ public class C0_VipFrag extends Fragment{
 			case R.id.tv_icon_scan:{
 				Intent intent = new Intent();
 				intent.setClass(getActivity(), ActCaptureTicket.class);
-				intent.putExtra("CHECK_CODE", 4);//
-				C0_VipFrag.this.startActivityForResult(intent, 50);
+				intent.putExtra("CHECK_CODE", 4);//从会员扫码进入
+				C0_VipFrag.this.startActivityForResult(intent, VIP_SCAN);
 				break;
 			}
 			case R.id.tv_clear_tel: {
@@ -186,6 +189,7 @@ public class C0_VipFrag extends Fragment{
 		}
 	};
 
+	//验证券号
 	private void verifySnFromNet(final String couponSn) {
 		if (couponSn.length() == 0) {
 			selfToastShow("券号不能为空");
@@ -210,6 +214,7 @@ public class C0_VipFrag extends Fragment{
 				JSONObject jRet = null;
 				jRet = HttpMgr.getInstance().postJson(
 						ServerUrlConstants.getCouponVerifyUrl(), jParam, true);
+				Log.i("test", "jRet useCouponNet:" + jRet.toString());
 				return jRet;
 			}
 
@@ -254,6 +259,8 @@ public class C0_VipFrag extends Fragment{
 	private String mCouponSn=null;
 	private String mCouponId=null;
 	private Dialog mDialogShowDetail= null;
+
+	//弹出卡券详细信息窗
 	private void showDialogCouponDetail(String couponName, float couponValue,
 			String couponSn, long startTime, long endTime,String couponId) {
 		mCouponSn=couponSn;
@@ -264,7 +271,8 @@ public class C0_VipFrag extends Fragment{
 
 		TextView tvValue = (TextView) v.findViewById(R.id.tv_coupon_value);
 		tvValue.setText(String.format("%.2f", couponValue));
-
+		RelativeLayout rlSendSn = (RelativeLayout) v.findViewById(R.id.rl_et_verify);
+		rlSendSn.setVisibility(View.GONE);
 		LinearLayout llSn = (LinearLayout) v.findViewById(R.id.ll_coupon_sn);
 		llSn.setVisibility(View.VISIBLE);
 		
@@ -290,6 +298,7 @@ public class C0_VipFrag extends Fragment{
 
 		Button btUseCoupon = (Button) v.findViewById(R.id.bt_use_coupon);
 		btUseCoupon.setVisibility(View.VISIBLE);
+		btUseCoupon.setText("使用");
 		btUseCoupon.setOnClickListener(onDialogButtonListener);
 
 		mDialogShowDetail.setContentView(v);
@@ -306,6 +315,7 @@ public class C0_VipFrag extends Fragment{
 			mDialogShowDetail.dismiss();
 		}
 	}
+
 	private OnClickListener onDialogButtonListener = new OnClickListener() {
 
 		@Override
@@ -320,6 +330,7 @@ public class C0_VipFrag extends Fragment{
 		}
 	};
 
+	//在线使用卡券
 	private void useCouponNet(final String couponSn,final String couponId)
 	{
 		new PostGetTask<JSONObject>(this.getActivity()) {
@@ -333,6 +344,7 @@ public class C0_VipFrag extends Fragment{
 				jsonParams.put("token", Cookies.getToken());
 				jsonParams.put("couponSn", couponSn);
 				jsonParams.put("couponId", couponId);
+				jsonParams.put("type", 1);		//仅使用卡券
 				JSONObject jRet = null;
 				jRet = HttpMgr.getInstance().postJson(
 						ServerUrlConstants.getUseCouponResult(), jsonParams, true);
@@ -345,26 +357,32 @@ public class C0_VipFrag extends Fragment{
 					try {
 						if (result.getInt("result") == 1) {
 							//selfToastShow("红包验证使用成功");
-							
-							MyDialogUtil qDialog = new MyDialogUtil(getActivity().getBaseContext()) {
+							mDialogShowDetail.dismiss();
+							final Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
+							View dialogView = View.inflate(getActivity(), R.layout.mydialog_okdialogview, null);
+							dialog.setContentView(dialogView);
+							TextView tvTitle = (TextView) dialogView.findViewById(R.id.dialog_title);
+							tvTitle.setText("提示");
+							TextView tvMessage = (TextView) dialogView.findViewById(R.id.dialog_message);
+							tvMessage.setText("   红包验证使用成功   ");
+							Button btOk = (Button) dialogView.findViewById(R.id.ok);
+							btOk.setOnClickListener(new OnClickListener() {
 								@Override
-								public void onClickPositive() {
-									clearCoupon();
+								public void onClick(View v) {
+									if ( dialog.isShowing()) {
+										dialog.dismiss();
+										mEtVerifyTel.setText("");
+									}
 								}
-								
-								@Override
-								public void onClickNagative() {
-								}
-							};
-							qDialog.showCustomMessageOK(getActivity().getBaseContext().getString(R.string.notice),"红包验证使用成功", "知道了");
+							});
+							dialog.show();
 						}else{
 							String msg="红包使用失败";
 							if(result.has("msg"))
 							{
-								try{
-									msg=result.getString("msg");
-								}catch(Exception e){
-									
+								try {
+									msg = result.getString("msg");
+								} catch (Exception e) {
 								}
 								
 							}
@@ -377,8 +395,7 @@ public class C0_VipFrag extends Fragment{
 			}
 		}.execute();
 	}
-	private void selfToastShow(String message)
-	{
+	private void selfToastShow(String message) {
 		Toast toast=Toast.makeText(this.getActivity().getBaseContext(), "", Toast.LENGTH_LONG);
 		LayoutInflater infalter=(LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v=infalter.inflate(R.layout.layout_toast, null);
@@ -388,6 +405,7 @@ public class C0_VipFrag extends Fragment{
 		toast.setView(v);
 		toast.show();
 	}
+
 	private void verifyTelNative(String tel) {
 		if (tel != null && tel.length() > 0) {
 			tel = tel.replace(" ", "");
@@ -423,6 +441,7 @@ public class C0_VipFrag extends Fragment{
 				JSONObject jRet = null;
 				jRet = HttpMgr.getInstance().postJson(
 						ServerUrlConstants.getVerifyTelUrl(), jsonParams, true);
+				Log.i("test", "jRet_show" + jRet.toString());
 				return jRet;
 			}
 
@@ -449,8 +468,15 @@ public class C0_VipFrag extends Fragment{
 							String average = result.getString("average");
 							Log.d("name:sex",
 									name + ":" + Integer.toString(sex));
+							//取出总米数和可用米数
+							JSONObject signInfo = result.getJSONObject("signinfo");
+							Log.i("test", "signIngo:" + signInfo.toString());
+							int totalMi = 0;
+							if (signInfo.getInt("result") == 1) {
+								totalMi = signInfo.getInt("credit");
+							}
 							setData(tel, name, sex, items, amount, average,
-									data);
+									data,totalMi);
 						}
 					} catch (JSONException e) {
 						selfToastShow("网络连接失败，请检查网络配置");
@@ -463,20 +489,22 @@ public class C0_VipFrag extends Fragment{
 
 	//设置intent并跳转至VipCenter界面
 	private void setData(String tel, String name, int sex, int items,
-			String amount, String average, JSONArray arrayJsonCoupon)
+						 String amount, String average, JSONArray arrayJsonCoupon, int totalMi)
 			throws JSONException {
+
 		// Toast.makeText(getBaseContext(), "setData",
 		// Toast.LENGTH_LONG).show();
 		Intent in = new Intent();
 		Bundle bd = new Bundle();
-		in.setClass(getActivity(), ActVipCenter.class);
+		in.setClass(getActivity(), ActVipCenterNew.class);
 		in.putExtra("tel", tel);
 		in.putExtra("items", items);
 		in.putExtra("amount", amount);
 		in.putExtra("average", average);
+		in.putExtra("totalMi", totalMi);
 		if (name != null && name.length() > 0 && !name.equals("null")) {
 			in.putExtra("name", name);
-			Log.d("name", name);
+			Log.i("name", name);
 		} else {
 			in.putExtra("name", "暂无");
 		}
@@ -494,7 +522,7 @@ public class C0_VipFrag extends Fragment{
 						couponArray.add(i, couponMode);
 					}
 				} catch (Exception e) {
-					Log.d("ActVerifyVipTel", "数据解析异常");
+					Log.i("ActVerifyVipTel", "数据解析异常");
 					e.printStackTrace();
 				}
 			}
@@ -535,11 +563,10 @@ public class C0_VipFrag extends Fragment{
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if(resultCode==Activity.RESULT_OK)
-		{
+		if(resultCode==Activity.RESULT_OK) {
 			switch(requestCode)
 			{
-			case 50:{
+			case VIP_SCAN:{			//从扫码返回
 				if(data!=null)
 				{
 					String sn=data.getStringExtra("CSN");
@@ -555,7 +582,38 @@ public class C0_VipFrag extends Fragment{
 				break;
 			}
 			}
+		} else if (resultCode == 100 && requestCode == VIP_SCAN) {
+			//读取c端二维码
+			String pwd = data.getStringExtra("pwd");
+			if (checkPwd(pwd)) {
+				//二维码验证成功
+				Intent intent = new Intent(getActivity(), ActVipCenterNew.class);
+				intent.putExtra("From", 2);        //from =2 扫描进入
+				intent.putExtra("tel", mTelNum);
+				startActivity(intent);
+			} else {
+				selfToastShow("无效二维码");
+				mTelNum = "";
+			}
 		}
 	}
-	
+
+	private boolean checkPwd(String pwd) {
+		String rawPwd = pwd.substring(2);
+		long totpGet = Long.valueOf(rawPwd) / BIG_PRIME;
+		long numberGet = Long.valueOf(rawPwd) % BIG_PRIME;
+		mTelNum = "1" + numberGet;
+		Log.i("test", "totp:" + totpGet + ",tel:" + mTelNum);
+		long timeStamp = System.currentTimeMillis() / 1000 / 60;		//步进值
+//		long timeStamp = 12345678l;
+		for(int i=-2;i<3;i++) {
+			String totpGen = JNIUtils.getTotp(mTelNum, (int) timeStamp + i);
+			Log.i("test", "totpGen:" + totpGen + ", tel:" + mTelNum);
+			if (totpGen.equals(totpGet + "")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

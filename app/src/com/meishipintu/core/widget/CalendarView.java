@@ -205,15 +205,25 @@ public class CalendarView extends LinearLayout {
 			}
 		} else if (startSet && endSet) {
 			if (year == startYear && startYear == endYear && startMonth == month && endMonth == month) {
-				for (int i = startDay; i <= endDay; i++) {
-					items.get(i).setBackgroundColor(colorOrange);
-					tv_days.get(i).setTextColor(colorWhite);
-					tv_tags.get(i).setVisibility(INVISIBLE);
+				//增加选择当日
+				if (startDay == endDay) {
+					items.get(startDay).setBackgroundColor(colorOrange);
+					tv_days.get(startDay).setTextColor(colorWhite);
+					tv_tags.get(startDay).setVisibility(INVISIBLE);
+					tv_tags.get(startDay).setText("起始/结束");
+					tv_tags.get(startDay).setVisibility(VISIBLE);
+				} else {
+					for (int i = startDay; i <= endDay; i++) {
+						items.get(i).setBackgroundColor(colorOrange);
+						tv_days.get(i).setTextColor(colorWhite);
+						tv_tags.get(i).setVisibility(INVISIBLE);
+					}
+					tv_tags.get(startDay).setText("起始");
+					tv_tags.get(startDay).setVisibility(VISIBLE);
+					tv_tags.get(endDay).setText("结束");
+					tv_tags.get(endDay).setVisibility(VISIBLE);
 				}
-				tv_tags.get(startDay).setText("起始");
-				tv_tags.get(startDay).setVisibility(VISIBLE);
-				tv_tags.get(endDay).setText("结束");
-				tv_tags.get(endDay).setVisibility(VISIBLE);
+
 			} else if ((startYear == year && startMonth < month && endMonth == month && endYear == year)
 					|| (startYear < year && endMonth == month && endYear == year)) {
 				for (int i = 0; i <= endDay; i++) {

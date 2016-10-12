@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class B0_HomeFrag extends Fragment {
 
-    private FragClickListener mFraglistener;	
+	private FragClickListener mFraglistener;
 	private AdapterPayPath adapterPayPath;
     
     public static B0_HomeFrag createInstance(FragClickListener l) {
@@ -70,7 +70,7 @@ public class B0_HomeFrag extends Fragment {
 					Cookies.setPayType(5);
 					tvPrice.setText("拉卡拉支付");
 
-				} else if(path.equals("wpo")){	//旺POS
+				} else if(path.equals("wpos")){	//旺POS
 					Cookies.setPayType(5);
 					tvPrice.setText("旺POS支付");
 

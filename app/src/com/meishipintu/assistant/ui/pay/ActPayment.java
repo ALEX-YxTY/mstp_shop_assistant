@@ -67,7 +67,9 @@ public class ActPayment extends FragmentActivity {
 	private String mPrice = null;
 	private String mSubject = null;
 	private int mPayType = 0;
+	//用于pos刷卡的流水号
 	private String mTradeNo = null;
+	//用于扫码支付的流水号
 	private String mOutTradeNo = null;
 	private long mPaymentId = 0;
 	private int mStatus = 0;
@@ -135,7 +137,6 @@ public class ActPayment extends FragmentActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
 				mAdapter.setSelectedPosition(position);
 				mAdapter.notifyDataSetChanged();
 				Cursor c = (Cursor) parent.getAdapter().getItem(position);
@@ -151,8 +152,10 @@ public class ActPayment extends FragmentActivity {
 						.getColumnIndex(Payment.COLUMN_NAME_UPDATE_TIME));
 				mSubject = c.getString(c
 						.getColumnIndex(Payment.COLUMN_NAME_SUBJECT));
+				//用于pos刷卡的流水号
 				mTradeNo = c.getString(c
 						.getColumnIndex(Payment.COLUMN_NAME_TRADE_NO));
+				//用于微信、支付宝等扫码的流水号
 				mOutTradeNo = c.getString(c
 						.getColumnIndex(Payment.COLUMN_NAME_OUT_TRADE_NO));
 				mPrice = c.getString(c
@@ -391,7 +394,6 @@ public class ActPayment extends FragmentActivity {
 	
 	@Override
 	protected void onRestart() {
-		// TODO Auto-generated method stub
 		super.onRestart();
 		ib_report_forms.setVisibility(View.VISIBLE);
 		
@@ -415,7 +417,6 @@ public class ActPayment extends FragmentActivity {
 	}
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		ib_report_forms.setVisibility(View.GONE);
 	}

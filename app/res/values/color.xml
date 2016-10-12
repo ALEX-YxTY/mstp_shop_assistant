@@ -4,6 +4,7 @@
     <color name="alpha_gray">#f4f4f4</color>
     <color name="light_light_gray">#eeeeee</color>
     <color name="light_gray">#cccccc</color>
+    <color name="tv_gray_2">#808080</color>
     <color name="tv_gray">#adadad</color>
 	<color name="bg_gray">#f4f3f3</color>
     <color name="light_gray1">#f2cab8</color>
@@ -74,7 +75,9 @@
     
     <color name="nofity">#33c895</color>
     <color name="ticket_hist">#3aaaeb</color>
-    <color name="order_dish">#ff841a</color>
+    <color name="order_dish">#ed6a1b</color>
+    <color name="mi_color">#5d4e47</color>
+
     <color name="order_dish1">#fff9c0</color>
     
     <color name="tv_light_yellow">#ff831a</color>

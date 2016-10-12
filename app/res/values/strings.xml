@@ -215,7 +215,7 @@
     <string name="amount_refund">商家退款金额</string>
     <string name="refund_quantity">商家退款笔数</string>
     <string name="net_income">商家实收净额(扣除0.6%手续费后的实收)</string>
-    <string name="acount_discount">商家折扣金额(所有打折金额总和)商家折扣金额(所有打折金额总和)商家折扣金额(所有打折金额总和)商家折扣金额(所有打折金额总和)</string>
+    <string name="acount_discount">商家实收金额(扣除折扣、卡券、退款)</string>
     <!-- 商户备注 -->
 
 
@@ -233,5 +233,7 @@
     <string name="send_coupon_sn">发送券号</string>
     <string name="title_activity_act_choose_date">ActChooseDate</string>
     <string name="hello_world">Hello world!</string>
+    <string name="communicating">正在通信</string>
+    <string name="fail_communicate">通信失败</string>
 
 </resources>

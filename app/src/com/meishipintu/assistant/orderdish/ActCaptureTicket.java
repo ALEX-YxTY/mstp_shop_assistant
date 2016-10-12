@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.zxing.client.android.CaptureActivity;
 import com.meishipintu.assistant.R;
 import com.meishipintu.assistant.app.Cookies;
@@ -40,6 +41,7 @@ import com.umeng.analytics.MobclickAgent;
 
 public class ActCaptureTicket extends CaptureActivity {
 
+	private static final int LOAD_USER_PWD = 100;
 	private int mTakeaway = 0;
 	private int mStatus = 0;
 	private long mTicketId = -1;
@@ -77,12 +79,12 @@ public class ActCaptureTicket extends CaptureActivity {
 		TextView tv = (TextView) findViewById(R.id.status_view);
 		tv.setText("请扫用户手机上的订单二维码");
 		doRefresh();
-		etTextPayCode = (EditText) findViewById(R.id.et_scancode_gun);
-		if (mCheckCode == 1 || mCheckCode == 2) {
-			etTextPayCode.setVisibility(View.VISIBLE);
-			etTextPayCode.addTextChangedListener(txtWatcher);
-			closeBoard();
-		}
+//		etTextPayCode = (EditText) findViewById(R.id.et_scancode_gun);
+//		if (mCheckCode == 1 || mCheckCode == 2) {
+//			etTextPayCode.setVisibility(View.VISIBLE);
+//			etTextPayCode.addTextChangedListener(txtWatcher);
+//			closeBoard();
+//		}
 	}
 
 	private void closeBoard()
@@ -170,13 +172,19 @@ public class ActCaptureTicket extends CaptureActivity {
 					return true;
 				}
 			}
-			if(mCheckCode==4)
-			{		
-				if(str!=null&&str.length()==14)
+			if(mCheckCode==4)		//从会员扫码进入
+			{
+				if (str.startsWith("47")) {
+					//从c端扫码进入
+					Intent data=new Intent();
+					data.putExtra("pwd", str);
+					ActCaptureTicket.this.setResult(LOAD_USER_PWD, data);
+				}else if(str!=null&&(str.length()==14||str.length()==12))
 				{
 					String temp=str.replace(" ", "");
 					if(temp.length()==12)
 					{
+						Log.i("test", "CSN" + str);
 						Intent data=new Intent();
 						data.putExtra("CSN", str);
 						ActCaptureTicket.this.setResult(RESULT_OK, data);
@@ -223,6 +231,7 @@ public class ActCaptureTicket extends CaptureActivity {
 		   } 
 		   return true; 
 		}
+
 	private void getTicketDetail(final long ticketId) {
 		mLoadingDialog = new CustomProgressDialog(this, "正在查询订单");
 		mLoadingDialog.show();
