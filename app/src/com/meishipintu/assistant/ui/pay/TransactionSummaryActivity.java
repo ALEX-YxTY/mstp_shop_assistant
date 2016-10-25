@@ -103,7 +103,9 @@ public class TransactionSummaryActivity extends Activity implements
 			protected void doPostJob(Exception exception, JSONObject result) {
 				try {
 					if (result != null) {
-						Log.d("zcz", result.getJSONObject("data").toString());
+						if (result.getJSONObject("data") != null) {
+							Log.d("zcz", result.getJSONObject("data").toString());
+						}
 						if (result.getJSONObject("data").getString("sum_total_fee") != null) {
 							tv_amount_receivable.setText(result.getJSONObject("data").getString("sum_total_fee") + "元");
 						}

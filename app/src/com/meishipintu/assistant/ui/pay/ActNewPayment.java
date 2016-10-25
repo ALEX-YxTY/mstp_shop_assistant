@@ -536,7 +536,6 @@ public class ActNewPayment extends FragmentActivity {
                 new android.content.DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         dialog.dismiss();
                     }
                 })
@@ -1486,7 +1485,9 @@ public class ActNewPayment extends FragmentActivity {
                 }
             }
             mCardTimer.cancel();
-            m_progressDialog.dismiss();
+            if (m_progressDialog != null && m_progressDialog.isShowing()) {
+                m_progressDialog.dismiss();
+            }
         }
     };
 
@@ -1884,6 +1885,7 @@ public class ActNewPayment extends FragmentActivity {
     private OrderInfo lastOrderInfo = null;
 
     // SignUtils.verifySignData(getUnionPublicKey(), data,rslt.getSignData())
+
     public void showResult(NLResult rslt) {
         String resultMsg = "";
         StringBuilder sb = new StringBuilder();
@@ -1939,7 +1941,6 @@ public class ActNewPayment extends FragmentActivity {
         mDia = new Dialog(this, R.style.dialog);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.my_dialog_with_2editor, null);
-        mDia.setContentView(v);
         TextView title = (TextView) v.findViewById(R.id.tv_dialogtitle);
         title.setText("IC刷卡提示框");
         etTextPayCode = (EditText) v.findViewById(R.id.pos_sign);
@@ -1991,9 +1992,12 @@ public class ActNewPayment extends FragmentActivity {
 
             @Override
             public void onClick(View v) {
-                mDia.dismiss();
+                if (mDia != null && mDia.isShowing()) {
+                    mDia.dismiss();
+                }
             }
         });
+        mDia.setContentView(v);
         mDia.show();
     }
 
@@ -2114,9 +2118,11 @@ public class ActNewPayment extends FragmentActivity {
                     if (payType == 7 || payType == 12) {
                         jParam.put("dynamicid", mDynamicid);
                     }
-                    Log.i("test", "jParam" + jParam.toString());
+//                    Log.i("test", "jParam" + jParam.toString());
                     jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getPaySignUrlTest2(), jParam, true);
-                    Log.i("test", "jRet:" + jRet.toString());
+                    if (jRet != null) {
+                        Log.i("test", "jRet:" + jRet.toString());
+                    }
                 }
                 return jRet;
             }
@@ -2155,7 +2161,7 @@ public class ActNewPayment extends FragmentActivity {
                                     mQrPay.showAtLocation(mEtMoney, failTip, failTip, failTip);
                                 } else if (payType == 7 || payType == 12) { // 支付宝条码，微信刷卡
                                     String outTradeNo = result.getString("outTradeNo");
-                                    if (mLoadingDialog.isShowing()) {
+                                    if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
                                         mLoadingDialog.dismiss();
                                     }
                                     checkStatus(outTradeNo, payType);
@@ -2206,7 +2212,7 @@ public class ActNewPayment extends FragmentActivity {
                     } catch (JSONException ej) {// 判断异常
                         mLoadingDialog.setTitle("网络出现问题，数据解析失败，请重试");
                         Toast.makeText(getBaseContext(), "连接打印机出现问题", Toast.LENGTH_LONG).show();
-                        if (mLoadingDialog.isShowing()) {
+                        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
                             mLoadingDialog.dismiss();
                         }
                     }
@@ -2217,11 +2223,11 @@ public class ActNewPayment extends FragmentActivity {
                     if (cash) {
                         saveFailedToDataBase(payType);
                     }
-                    if (mLoadingDialog.isShowing()) {
+                    if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
                         mLoadingDialog.dismiss();
                     }
                 }
-                if (mLoadingDialog.isShowing()) {
+                if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
                     mLoadingDialog.dismiss();
                 }
             }
@@ -2229,7 +2235,7 @@ public class ActNewPayment extends FragmentActivity {
     }
 
     private void showICCardResult(String payMoney, String restMoney) {
-        if (mDia.isShowing()) {
+        if (mDia != null && mDia.isShowing()) {
             mDia.dismiss();
         }
         final Dialog dia = new Dialog(this, android.R.style.Theme_Translucent_NoTitleBar);
@@ -2485,7 +2491,7 @@ public class ActNewPayment extends FragmentActivity {
 
             try {
                 JSONObject jsonObject = new JSONObject(new String(data));
-                Log.i("test", "data:" + jsonObject.toString());
+//                Log.i("test", "data:" + jsonObject.toString());
                 if (jsonObject.getString("errCode").equals("0")) {
                     mCashierTradeNo = jsonObject.getString("cashier_trade_no");
                     signType(5, true);
@@ -2530,7 +2536,9 @@ public class ActNewPayment extends FragmentActivity {
                         JSONObject jRet = null;
                         jRet = HttpMgr.getInstance().postJson(ServerUrlConstants.getAlipayScaner(), jParam, true);
                         timeTemp++;     //最多执行9次
-                        Log.i("test", "jRet:" + jRet.toString());
+                        if (jRet != null) {
+                            Log.i("test", "jRet:" + jRet.toString());
+                        }
                         return jRet;
                     }
 
@@ -2538,12 +2546,14 @@ public class ActNewPayment extends FragmentActivity {
                     protected void doPostJob(Exception exception, JSONObject result) {
 
                         try {
-                            Log.i("test", "扫码支付result:" + result.toString());
                             // Message timeOutMsg_1 = new Message();
                             if (result != null && exception == null) {
+                                Log.i("test", "扫码支付result:" + result.toString());
                                 int resultCode = result.getInt("result");
                                 if (resultCode == 1) {
-                                    m_progressDialog.dismiss();
+                                    if (m_progressDialog != null && m_progressDialog.isShowing()) {
+                                        m_progressDialog.dismiss();
+                                    }
                                     Toast.makeText(getBaseContext(), "用户支付成功", Toast.LENGTH_LONG).show();
                                     // timeOutMsg_1.what = CHECK_TIME_OK;
                                     // m_handler_check
@@ -2558,11 +2568,14 @@ public class ActNewPayment extends FragmentActivity {
                                     return;
                                 }else{
                                     Toast.makeText(getBaseContext(), "订单数据解析失败", Toast.LENGTH_LONG).show();
+
                                 }
                             }
                             if (timeTemp == 9) {
                                 // timeOutMsg_1.what = CHECK_TIME_OUT;
-                                m_progressDialog.dismiss();
+                                if (m_progressDialog != null && m_progressDialog.isShowing()){
+                                    m_progressDialog.dismiss();
+                                }
                                 Toast.makeText(getBaseContext(), "支付超时", Toast.LENGTH_LONG).show();
                                 // m_handler_check.sendMessage(timeOutMsg_1);
                                 mAlipayScanerTimer.cancel();
@@ -2570,8 +2583,6 @@ public class ActNewPayment extends FragmentActivity {
                             }
                         } catch (JSONException ej) {
                             Toast.makeText(getBaseContext(), "数据解析失败", Toast.LENGTH_LONG).show();
-
-
                         }
                     }
                 }.execute();
@@ -2732,7 +2743,9 @@ public class ActNewPayment extends FragmentActivity {
                             String average = result.getString("average");
                             //取出总米数和可用米数
                             JSONObject signInfo = result.getJSONObject("signinfo");
-                            Log.i("test", "signIngo:" + signInfo.toString());
+                            if (signInfo != null) {
+                                Log.i("test", "signIngo:" + signInfo.toString());
+                            }
                             int totalMi = 0;
                             int discount = 0;
                             if (signInfo.getInt("result") == 1) {
@@ -2850,7 +2863,7 @@ public class ActNewPayment extends FragmentActivity {
                     } catch (JSONException e) {
                         selfToastShow("数据解析失败");
                     }
-                    if (mLoadingDialog.isShowing()) {
+                    if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
                         mLoadingDialog.dismiss();
                     }
                 }

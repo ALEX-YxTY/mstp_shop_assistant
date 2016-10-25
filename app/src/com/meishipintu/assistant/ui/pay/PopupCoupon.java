@@ -308,7 +308,9 @@ public class PopupCoupon extends PopupWindow {
 							changeCouponInfo(2, mCouponName, mCouponValue);
 							useConpon(true, mCouponName, mCouponValue,
 									mCouponSn);
-							dismiss();
+							if (isShowing()) {
+								dismiss();
+							}
 						} else {
 							if (result.has("msg")) {
 								String msg = result.getString("msg");
