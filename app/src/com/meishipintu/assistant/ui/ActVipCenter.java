@@ -98,7 +98,7 @@ public class ActVipCenter extends FragmentActivity implements OnUseCouponOrMi{
 					.getSerializableExtra("dataArray");
 			if (couponArray != null && couponArray.size() > 0) {
 				adapter = new AdapterCoupons(ActVipCenter.this,
-						couponArray,isFromCode);
+						couponArray, isFromCode, mTel);
 			}
 			refreshView(mTel, name, sex, items, amount, average, totalMi);
 		}else{
@@ -238,10 +238,6 @@ public class ActVipCenter extends FragmentActivity implements OnUseCouponOrMi{
 		}
 	}
 
-	public String getTel() {
-		return this.mTel;
-	}
-
 	private void dailDialog() {
 		if (mTel != null && mTel.length() > 8) {
 			MyDialogUtil qDialog = new MyDialogUtil(this) {
@@ -344,8 +340,9 @@ public class ActVipCenter extends FragmentActivity implements OnUseCouponOrMi{
 									JSONObject coupon = data.getJSONObject(i);
 									try {
 										Coupons couponMode = new Coupons(coupon);
-										if (couponMode.getMinPrice().equals("0")) {
-											coupons.add(i, couponMode);
+										if (couponMode.getMinPrice().equals("0")
+												&& (Double.parseDouble(couponMode.getCouponValue()) > 0.0)) {
+											coupons.add(couponMode);
 										}
 									} catch (Exception e) {
 										Log.i("ActVerifyVipTel", "数据解析异常");

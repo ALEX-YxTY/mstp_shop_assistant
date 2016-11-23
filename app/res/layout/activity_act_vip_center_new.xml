@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9E9E9"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/title_include"
+        layout="@layout/title_with_back" />
+
+    <!--上部信息条-->
+    <LinearLayout
+        android:id="@+id/ll_name_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_include"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingTop="@dimen/margin_20"
+        android:paddingBottom="@dimen/margin_20"
+        android:paddingLeft="@dimen/margin_15"
+        android:paddingRight="@dimen/margin_15"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:paddingRight="@dimen/margin_15"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/icon_user_name"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:layout_marginLeft="@dimen/margin_26"
+                android:background="@drawable/icon_vip_username"/>
+            <TextView
+                android:id="@+id/tag_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_user_name"
+                android:layout_centerVertical="true"
+                android:textColor="@color/light_gray"
+                android:layout_marginRight="@dimen/margin_8"
+                android:textSize="@dimen/tv_43"
+                android:text="姓名"/>
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tag_name"
+                android:gravity="center"
+                android:textSize="@dimen/tv_43"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/light_gray"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_15"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/icon_user_sex"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:background="@drawable/icon_vip_usersex"/>
+            <TextView
+                android:id="@+id/tag_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon_user_sex"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_8"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/tv_43"
+                android:text="性别"/>
+            <TextView
+                android:id="@+id/tv_user_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tag_sex"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/margin_8"
+                android:textSize="@dimen/tv_43"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sep_3"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_below="@+id/ll_name_sex"
+        android:background="@color/light_gray" />
+
+    <!--中部手机号码-->
+    <LinearLayout
+        android:id="@+id/ll_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_below="@+id/sep_3"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_18">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_30"
+            android:layout_marginLeft="@dimen/margin_26"
+            android:background="@drawable/icon_vip_tel" />
+
+        <TextView
+            android:id="@+id/tv_vip_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tv_60" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sep_2"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_below="@+id/ll_tel"
+        android:background="@color/light_gray" />
+
+    <!--消费记录-->
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sep_2"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <!--消费金额-->
+        <RelativeLayout
+            android:id="@+id/rl_amounts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_13"
+            android:paddingTop="@dimen/margin_13" >
+
+            <RelativeLayout
+                android:id="@+id/ll_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:maxEms="6"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/tv_64" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_amount"
+                    android:layout_toRightOf="@+id/tv_amount"
+                    android:text="元"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/tv_26" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_amount"
+                android:layout_marginTop="@dimen/margin_15"
+                android:gravity="center"
+                android:text="消费金额"
+                android:textSize="@dimen/tv_30"
+                android:textColor="@color/tv_gray_2" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/light_gray" />
+
+        <!--消费笔数-->
+        <RelativeLayout
+            android:id="@+id/rl_items"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:paddingBottom="@dimen/margin_13"
+            android:paddingTop="@dimen/margin_13" >
+
+            <RelativeLayout
+                android:id="@+id/ll_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_items"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:maxEms="6"
+                    android:text="0"
+                    android:textColor="@color/button_blue"
+                    android:textSize="@dimen/tv_64" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_items"
+                    android:layout_toRightOf="@+id/tv_items"
+                    android:text="笔"
+                    android:textColor="@color/button_blue"
+                    android:textSize="@dimen/tv_26" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_item"
+                android:layout_marginTop="@dimen/margin_15"
+                android:gravity="center"
+                android:textSize="@dimen/tv_30"
+                android:text="消费笔数"
+                android:textColor="@color/tv_gray_2" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@color/light_gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_average"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_13"
+            android:paddingBottom="@dimen/margin_13" >
+
+            <RelativeLayout
+                android:id="@+id/ll_average"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/mi_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textColor="@color/text_orange"
+                    android:textSize="@dimen/tv_64"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/mi_amount"
+                    android:layout_toRightOf="@+id/mi_amount"
+                    android:text="米"
+                    android:textColor="@color/text_orange"
+                    android:textSize="@dimen/tv_26"
+                    android:layout_marginLeft="2dp"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_average"
+                android:layout_marginTop="@dimen/margin_15"
+                android:gravity="center"
+                android:textSize="@dimen/tv_30"
+                android:text="他的米"
+                android:textColor="@color/tv_gray_2" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_info"
+        android:layout_marginTop="@dimen/margin_20"
+        android:paddingLeft="@dimen/margin_88"
+        android:paddingRight="@dimen/margin_88"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+
+        <RadioButton
+            android:id="@+id/mi_active"
+            style="@style/my_tab"
+            android:text="米来活动"
+            android:textColor="@color/txt_radio_color"
+            android:paddingTop="@dimen/margin_18"
+            android:paddingBottom="@dimen/margin_18"
+            android:textSize="@dimen/tv_36"
+            android:background="@drawable/rg_selector"/>
+
+        <View
+            android:layout_width="@dimen/margin_64"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+        <RadioButton
+            android:id="@+id/coupon"
+            style="@style/my_tab"
+            android:text="他的商户券"
+            android:textColor="@color/txt_radio_color"
+            android:paddingTop="@dimen/margin_18"
+            android:paddingBottom="@dimen/margin_18"
+            android:background="@drawable/rg_selector"/>
+
+    </RadioGroup>
+
+
+
+
+    <!--卡券列表-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/lv_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="@dimen/margin_20"
+            android:padding="@dimen/margin_20"/>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/listview_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/margin_20"
+            >
+        </android.support.v4.view.ViewPager>
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

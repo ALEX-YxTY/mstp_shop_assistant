@@ -57,6 +57,7 @@ public class AdapterCoupons extends BaseAdapter {
 	private ProgressDialog mProgressDialog;
 	private OnUseCouponOrMi refreshListener;
 
+	private String mTel;
 	private String dateLimitCons;
 	private String detailLimitCons;
 
@@ -72,10 +73,11 @@ public class AdapterCoupons extends BaseAdapter {
 	}
 
 	public AdapterCoupons(Activity ctx, ArrayList<Coupons> arraylist,
-						  int isFrom) {
+						  int isFrom, String tel) {
 		inflater = LayoutInflater.from(ctx);
 		this.context = ctx;
 		this.dataArrayList = arraylist;
+		this.mTel = tel;
 		//关联接口
 		this.refreshListener = (OnUseCouponOrMi) ctx;
 		Log.d("coupon list array", Integer.toString(arraylist.size()));
@@ -164,18 +166,20 @@ public class AdapterCoupons extends BaseAdapter {
 				if (mIsFrom == 1) {
 					//发送券号
 					if (coupon.getCouponSn().length() == 0) {
-						sendSns(coupon,dateLimit, finalDetail,ActVipCenter.mVipCenter.getTel());
+						sendSns(coupon,dateLimit, finalDetail,mTel);
 					} else {
 						//返回支付页面并验证
 						ActVipCenter.mVipCenter.payToSn(Long.toString(coupon.getId()), coupon.getCouponSn(), coupon.getCouponName(), coupon.getCouponValue(), coupon.getMinPrice());
 					}
 				} else {
+					Log.i("test", "click:" + coupon.toString());
 					//会员时验证——直接验证
 					if(coupon.getCouponSn().length() != 0){
 						showDialogUse(coupon);
 					} else {
+						Log.i("test", "tel:" + mTel);
 						//会员时验证-发送券号并返回验证界面
-						sendSns(coupon,dateLimit, finalDetail, ActVipCenter.mVipCenter.getTel());
+						sendSns(coupon,dateLimit, finalDetail, mTel);
 					}
 				}
 
@@ -358,6 +362,7 @@ public class AdapterCoupons extends BaseAdapter {
 
 	//发送卡券号到用户手机
 	private void sendSns(final Coupons coupon, final String dateLimit, final String detail, final String tel) {
+		Log.i("test", "sendSns");
 		mProgressDialog=new ProgressDialog(context);
 		mProgressDialog.setCanceledOnTouchOutside(false);
 		mProgressDialog.setMessage("正在发送短信");
@@ -372,6 +377,7 @@ public class AdapterCoupons extends BaseAdapter {
 				JSONObject jRet = null;
 				jRet = HttpMgr.getInstance().postJson(
 						ServerUrlConstants.getUseCouponSnsUrl(), jPara, true);
+				Log.i("test", "result:" + jRet.toString());
 				return jRet;
 			}
 
@@ -469,7 +475,7 @@ public class AdapterCoupons extends BaseAdapter {
 						selfToastShow("验证码已发送，请稍后再试");
 						return;
 					}
-					sendSns(mCoupon, dateLimitCons, detailLimitCons, ActVipCenter.mVipCenter.getTel());
+					sendSns(mCoupon, dateLimitCons, detailLimitCons, mTel);
 					mCount = 60;
 					mHandler.post(timeWaitRunnable);
 					break;

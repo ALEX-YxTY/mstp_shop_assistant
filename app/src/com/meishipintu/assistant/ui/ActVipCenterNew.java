@@ -170,7 +170,7 @@ public class ActVipCenterNew extends FragmentActivity implements OnUseCouponOrMi
                     .getSerializableExtra("dataArray");
             if (couponsArray != null && couponsArray.size() > 0) {
                 couponAdapter = new AdapterCoupons(ActVipCenterNew.this,
-                        couponsArray,isFromCode);
+                        couponsArray,isFromCode,mTel);
             }
             refreshView(mTel, name, sex, items, amount, totalMi);
         }
@@ -220,6 +220,7 @@ public class ActVipCenterNew extends FragmentActivity implements OnUseCouponOrMi
                 CouponFrag couponFrag = new CouponFrag();
                 Bundle bundleCoupon = new Bundle();
                 bundleCoupon.putString("couponArray", couponArray.toString());
+                bundleCoupon.putString("mTel", mTel);
                 couponFrag.setArguments(bundleCoupon);
                 MiActiveFrag activeFrag = new MiActiveFrag();
                 Bundle bundleActive = new Bundle();
@@ -350,8 +351,9 @@ public class ActVipCenterNew extends FragmentActivity implements OnUseCouponOrMi
                                     JSONObject coupon = data.getJSONObject(i);
                                     try {
                                         Coupons couponMode = new Coupons(coupon);
-                                        if (couponMode.getMinPrice().equals("0")) {
-                                            coupons.add(i, couponMode);
+                                        if (couponMode.getMinPrice().equals("0")
+                                                && (Double.parseDouble(couponMode.getCouponValue()) > 0.0)) {
+                                            coupons.add(couponMode);
                                         }
                                     } catch (Exception e) {
                                         Log.i("ActVerifyVipTel", "数据解析异常");

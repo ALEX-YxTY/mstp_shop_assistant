@@ -42,12 +42,15 @@ public class CouponFrag extends Fragment implements OnRefreshingCouponOrMi{
             , @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_list, container, false);
         lv = (ListView) view.findViewById(R.id.lv_list);
-        couponArray = getCouponList(getArguments().getString("couponArray"));
-
-        adapter = new AdapterCoupons(getActivity(),couponArray,0);//isFrom=0 从vip界面进入
-        lv.setAdapter(adapter);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            couponArray = getCouponList(bundle.getString("couponArray"));
+            adapter = new AdapterCoupons(getActivity(),couponArray,0,bundle.getString("mTel"));//isFrom=0 从vip界面进入
+            lv.setAdapter(adapter);
+        }
         return view;
     }
+
 
     private ArrayList<Coupons> getCouponList(String couponArray) {
         ArrayList<Coupons> couponsArrayList = new ArrayList<Coupons>();

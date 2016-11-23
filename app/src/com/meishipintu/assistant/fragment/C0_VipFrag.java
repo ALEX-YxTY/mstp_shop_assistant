@@ -513,13 +513,14 @@ public class C0_VipFrag extends Fragment{
 		in.putExtra("From", mIsFrom);
 		ArrayList<Coupons> couponArray = null;
 		if (arrayJsonCoupon != null && arrayJsonCoupon.length() > 0) {
-			couponArray = new ArrayList<Coupons>();
+			couponArray = new ArrayList<>();
 			for (int i = 0; i < arrayJsonCoupon.length(); i++) {
 				JSONObject coupon = arrayJsonCoupon.getJSONObject(i);
 				try {
 					Coupons couponMode = new Coupons(coupon);
-					if (couponMode.getMinPrice().equals("0")) {
-						couponArray.add(i, couponMode);
+					if (couponMode.getMinPrice().equals("0")
+							&& (Double.parseDouble(couponMode.getCouponValue()) > 0.0)) {
+						couponArray.add(couponMode);
 					}
 				} catch (Exception e) {
 					Log.i("ActVerifyVipTel", "数据解析异常");
