@@ -1,12 +1,5 @@
 package com.meishipintu.assistant.adapter;
 
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -15,9 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -25,8 +15,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,15 +27,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.meishipintu.assistant.R;
-import com.meishipintu.assistant.interfaces.OnUseCouponOrMi;
-import com.milai.model.Coupons;
-import com.meishipintu.assistant.ui.ActVipCenter;
 import com.meishipintu.assistant.app.Cookies;
+import com.meishipintu.assistant.interfaces.OnUseCouponOrMi;
+import com.meishipintu.assistant.ui.ActVipCenter;
 import com.meishipintu.core.utils.MyDialogUtil;
-import com.milai.http.ServerUrlConstants;
+import com.meishipintu.core.utils.NumUtil;
 import com.milai.asynctask.PostGetTask;
 import com.milai.http.HttpMgr;
+import com.milai.http.ServerUrlConstants;
+import com.milai.model.Coupons;
 import com.milai.utils.TimeUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class AdapterCoupons extends BaseAdapter {
 
@@ -68,6 +64,8 @@ public class AdapterCoupons extends BaseAdapter {
 		TextView tvMinPrice;
 		TextView tvStartTime;
 		TextView tvBordor;
+		TextView tvCouponMi;
+		TextView tvCoupontag;
 		Button btUseCoupon;
 		ImageView ivTopSep;
 	}
@@ -113,6 +111,10 @@ public class AdapterCoupons extends BaseAdapter {
 			convertView = inflater.inflate(R.layout.item_coupon_layout, null);
 			viewHolder.tvCouponValue = (TextView) convertView
 					.findViewById(R.id.tv_coupon_value);
+			viewHolder.tvCoupontag = (TextView) convertView
+					.findViewById(R.id.coupon_tag);
+			viewHolder.tvCouponMi = (TextView) convertView
+					.findViewById(R.id.coupon_mi);
 			viewHolder.tvShopName = (TextView) convertView
 					.findViewById(R.id.tv_coupon_shopname);
 			viewHolder.tvEndTime = (TextView) convertView
@@ -144,7 +146,23 @@ public class AdapterCoupons extends BaseAdapter {
 			viewHolder.btUseCoupon.setText("发送券号");
 		}
 //		}
-		viewHolder.tvCouponValue.setText(coupon.getCouponValue());
+
+		/*---2016年11月24改判别券的类型是米券还是卡券---*/
+		if("1".equals(coupon.getisMi())) {
+			viewHolder.tvCoupontag.setVisibility(View.GONE);
+			viewHolder.tvCouponMi.setVisibility(View.VISIBLE);
+			viewHolder.tvMinPrice.setVisibility(View.GONE);
+		}else {
+			viewHolder.tvCoupontag.setVisibility(View.VISIBLE);
+			viewHolder.tvCouponMi.setVisibility(View.GONE);
+			viewHolder.tvMinPrice.setVisibility(View.VISIBLE);
+		}
+		/*---2016年11月24改判别券的类型是米券还是卡券---*/
+		//工具类，一位小数显示小数。小数位为零显示整数位
+		String CouponValue;
+		CouponValue=NumUtil.NumberFormatAuto(Double.parseDouble(coupon.getCouponValue()));
+
+		viewHolder.tvCouponValue.setText(CouponValue);
 		viewHolder.tvShopName.setText(coupon.getCouponName());
 		String timeEndString = TimeUtil.convertLongToFormatString(
 				coupon.getEndTime() * 1000, "yyyy.MM.dd");
@@ -197,6 +215,7 @@ public class AdapterCoupons extends BaseAdapter {
 		return convertView;
 	}
 
+
 	//显示使用卡券弹窗
 	private void showDialogUse(final Coupons coupon) {
 		// 显示是否验证对话框
@@ -240,6 +259,22 @@ public class AdapterCoupons extends BaseAdapter {
 			btUseCoupon.setText("直接使用");
 		}
 		etCouponSn.addTextChangedListener(mTextWatcher);
+				/*---2016年11月24改判别券的类型是米券还是卡券---*/
+		TextView tvcoupontag = (TextView) v.findViewById(R.id.coupon_tag);
+		TextView tvcouponmi = (TextView) v.findViewById(R.id.coupon_mi);
+
+		if("1".equals(coupon.getisMi())) {
+
+			tvcoupontag.setVisibility(View.GONE);
+			tvcouponmi.setVisibility(View.VISIBLE);
+		}else {
+			tvcouponmi.setVisibility(View.VISIBLE);
+			tvcouponmi.setVisibility(View.GONE);
+		}
+			/*---2016年11月24改判别券的类型是米券还是卡券---*/
+		//工具类，一位小数显示小数。小数位为零显示整数位
+		String CouponValue;
+		CouponValue=NumUtil.NumberFormatAuto(Double.parseDouble(coupon.getCouponValue()));
 
 //		if (mIsFrom == 0) {
 //			rlEtCouponSn.setVisibility(View.VISIBLE);
@@ -262,7 +297,7 @@ public class AdapterCoupons extends BaseAdapter {
 		tvDateLimit.setText(couponDateLimit);
 
 		TextView tvValue = (TextView) v.findViewById(R.id.tv_coupon_value);
-		tvValue.setText(value);
+		tvValue.setText(CouponValue);
 		dialogShowCouponDetail.setContentView(v);
 		dialogShowCouponDetail.show();
 		if (mCount > 0) {

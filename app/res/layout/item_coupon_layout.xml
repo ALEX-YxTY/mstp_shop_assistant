@@ -41,6 +41,7 @@
                     android:textColor="@color/cafe_coupon_value"
                     android:textSize="@dimen/tv_64" />
 
+
                 <TextView
                     android:id="@+id/coupon_tag"
                     android:layout_width="wrap_content"
@@ -48,6 +49,16 @@
                     android:layout_alignBaseline="@+id/tv_coupon_value"
                     android:text="¥"
                     android:textColor="@color/cafe_coupon_value"
+                    android:textSize="@dimen/tv_36" />
+                <TextView
+                    android:id="@+id/coupon_mi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_coupon_value"
+                    android:layout_alignBaseline="@+id/coupon_tag"
+                    android:text="米"
+                    android:textColor="@color/cafe_coupon_value"
+                    android:visibility="invisible"
                     android:textSize="@dimen/tv_36" />
             </RelativeLayout>
 
