@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -51,7 +52,8 @@ public class B0_HomeFrag extends Fragment {
 		}
 		
 		gv.setAdapter(adapterPayPath);
-		
+
+		Log.i("test", "shoptype:" + Cookies.getShopType());
 		gv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -148,4 +150,11 @@ public class B0_HomeFrag extends Fragment {
 
 		}
 	};
+
+	public void refreshFragment() {
+		if (adapterPayPath != null) {
+			adapterPayPath.updateData();
+			adapterPayPath.notifyDataSetChanged();
+		}
+	}
 }

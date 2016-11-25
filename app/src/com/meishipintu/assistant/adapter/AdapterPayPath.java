@@ -255,4 +255,9 @@ public class AdapterPayPath extends BaseAdapter{
 		}
 		return path;
 	}
+
+	public void updateData() {
+		pathString=Cookies.getShopType();	//支付方式以字串保存在SP中
+		pathArray=pathString.split(",");
+	}
 }

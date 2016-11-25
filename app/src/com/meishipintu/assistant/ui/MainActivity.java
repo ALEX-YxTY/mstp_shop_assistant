@@ -107,9 +107,12 @@ public class MainActivity extends FragmentActivity implements
 	private AsyncTask<Void, Void, String> mGetDishTask = null;
 
 	private FragmentManager fragmentManager;
-	
+	private Fragment fragment = null;
+
+
 	private TextView mTvCityName = null;
 	private ProgressBar mPbLocating = null;
+	private RadioGroup radioGroup;
 	final Handler mHandler = new Handler();
 	private int mCityId = 0;
 	private int mWaitorType = 3;
@@ -136,7 +139,7 @@ public class MainActivity extends FragmentActivity implements
 		mActivity = this;	
 		
 		fragmentManager = getSupportFragmentManager();
-		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.rg_tab);
+		radioGroup = (RadioGroup) findViewById(R.id.rg_tab);
 		
 		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
@@ -150,7 +153,7 @@ public class MainActivity extends FragmentActivity implements
 				}
 			}
 		});
-		radioGroup.check(findViewById(R.id.rb_home).getId());
+
 
 		//mWaitOrType字段意义不明
 		mWaitorType = Cookies.getWaitorType();
@@ -162,19 +165,6 @@ public class MainActivity extends FragmentActivity implements
 		btn_right.setBackgroundResource(R.drawable.pay_list_detail);
 		btn_right.setOnClickListener(ll);
 
-		TextView tv_title = (TextView) findViewById(R.id.tv_title);
-		tv_title.setText(Cookies.getShopName());
-
-		mTvCityName = (TextView) findViewById(R.id.tv_cur_city);
-		mPbLocating = (ProgressBar) findViewById(R.id.pb_locating);
-		String city = Cookies.getCity();
-		if (city == null || city.equals("")) {
-			mTvCityName.setVisibility(View.GONE);
-			mPbLocating.setVisibility(View.VISIBLE);
-		} else {
-			mTvCityName.setText(Cookies.getCity());
-			mCityId = Cookies.getCityId();
-		}
 
 		//图片点击动态效果
 		mScaleAniDown=new ScaleAnimation(0.9f, 1, 0.9f, 1, Animation.RELATIVE_TO_SELF, 0.5f,Animation.RELATIVE_TO_SELF,0.5f);
@@ -344,7 +334,6 @@ public class MainActivity extends FragmentActivity implements
 
 	private void showFrag(String frag) {
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
-		Fragment fragment = null;
 		if (frag.equals("home")) {
 			fragment = B0_HomeFrag.createInstance(fragClickListener);
 		} else if (frag.equals("vip")) {
@@ -616,6 +605,26 @@ public class MainActivity extends FragmentActivity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
+		//显示时刷新界面，避免在重新登录后页面信息得不到刷新2016.11.25
+		TextView tv_title = (TextView) findViewById(R.id.tv_title);
+		tv_title.setText(Cookies.getShopName());
+		mTvCityName = (TextView) findViewById(R.id.tv_cur_city);
+		mPbLocating = (ProgressBar) findViewById(R.id.pb_locating);
+		String city = Cookies.getCity();
+		if (city == null || city.equals("")) {
+			mTvCityName.setVisibility(View.GONE);
+			mPbLocating.setVisibility(View.VISIBLE);
+		} else {
+			mTvCityName.setText(Cookies.getCity());
+			mCityId = Cookies.getCityId();
+		}
+		radioGroup.check(findViewById(R.id.rb_home).getId());
+		//刷新fragment中数据
+		if (fragment instanceof B0_HomeFrag) {
+			((B0_HomeFrag) fragment).refreshFragment();
+		}
+
+
 		if (mCityId != Cookies.getCityId()) {
 			mTvCityName.setText(Cookies.getCity());
 			mCityId = Cookies.getCityId();
