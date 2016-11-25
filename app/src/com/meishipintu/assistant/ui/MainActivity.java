@@ -153,7 +153,7 @@ public class MainActivity extends FragmentActivity implements
 				}
 			}
 		});
-
+		radioGroup.check(findViewById(R.id.rb_home).getId());
 
 		//mWaitOrType字段意义不明
 		mWaitorType = Cookies.getWaitorType();
@@ -618,7 +618,6 @@ public class MainActivity extends FragmentActivity implements
 			mTvCityName.setText(Cookies.getCity());
 			mCityId = Cookies.getCityId();
 		}
-		radioGroup.check(findViewById(R.id.rb_home).getId());
 		//刷新fragment中数据
 		if (fragment instanceof B0_HomeFrag) {
 			((B0_HomeFrag) fragment).refreshFragment();

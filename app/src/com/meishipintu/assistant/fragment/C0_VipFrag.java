@@ -569,6 +569,7 @@ public class C0_VipFrag extends Fragment{
 			switch(requestCode)
 			{
 			case VIP_SCAN:{			//从扫码返回
+				Log.i("test", "come here");
 				if(data!=null)
 				{
 					String sn=data.getStringExtra("CSN");
