@@ -2789,13 +2789,14 @@ public class ActNewPayment extends FragmentActivity {
         in.putExtra("From", 1);
         ArrayList<Coupons> couponArray = null;
         if (arrayJsonCoupon != null && arrayJsonCoupon.length() > 0) {
-            couponArray = new ArrayList<Coupons>();
+            couponArray = new ArrayList<>();
             for (int i = 0; i < arrayJsonCoupon.length(); i++) {
                 JSONObject coupon = arrayJsonCoupon.getJSONObject(i);
                 try {
                     Coupons couponMode = new Coupons(coupon);
-                    if (Integer.parseInt(couponMode.getMinPrice()) <= (mPayMoney/100.0f)) {
-                        couponArray.add(i, couponMode);
+                    if ((Integer.parseInt(couponMode.getMinPrice()) <= (mPayMoney/100.0f))
+                            && (Double.parseDouble(couponMode.getCouponValue()) > 0.0)) {
+                        couponArray.add(couponMode);
                     }
                 } catch (Exception e) {
                     Log.i("ActVerifyVipTel", "数据解析异常");
