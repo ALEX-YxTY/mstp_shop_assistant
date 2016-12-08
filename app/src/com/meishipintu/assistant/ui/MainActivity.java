@@ -280,16 +280,8 @@ public class MainActivity extends FragmentActivity implements
 
 	//判断设备类型并下载
 	private void VerifyDevicesAndDownload(final VersionInfo versionInfo) {
-		if (isLkl()) {        			//lkl pos机
-			//lkl应用市场下载
-			Log.i("test", "this device is lkl pos");
-			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT)
-					.setTitle("发现新版本")
-					.setMessage(versionInfo.getApp_update_desc() + "\n欢迎前往拉卡拉商城下载米来商户最新版本\n" +
-							"提示：请同步更新［拉卡拉收单］\n")
-					.setPositiveButton("确定", null);
-			builder.show();
-		} else {            			//非pos机
+		if (!isLkl()) {
+			//非lklpos机
 			AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
 			builder.setTitle("发现新版本").setMessage(versionInfo.getApp_update_desc())
 					.setPositiveButton("立即下载", new DialogInterface.OnClickListener() {
